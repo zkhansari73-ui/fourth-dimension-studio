@@ -26,3 +26,12 @@ The final WordPress Hero file is `fourth-dimension-hero-fullhd.mp4` and its inte
 
 Keep the old `hero.mp4` only as a backup. The final Hero remains landscape 16:9, starts by click and preserves Sound ON behavior.
 
+## Rebuild the backed-up Sites Hero
+
+GitHub API transfer stores the available `hero.mp4` losslessly in numbered parts under `backup/hero-mp4-parts/`.
+
+- Windows PowerShell: `Get-Content backup/hero-mp4-parts/hero.mp4.part-* -AsByteStream | Set-Content dist/assets/hero.mp4 -AsByteStream`
+- macOS/Linux: `cat backup/hero-mp4-parts/hero.mp4.part-* > dist/assets/hero.mp4`
+- Expected SHA-256: `339250db5d7fc860bee7309de0da72cce7a5df5efe3a5280b1f3801844afa293`
+
+The locked WordPress file `fourth-dimension-hero-fullhd.mp4` is not included yet because it was not present in the available project files. Export it from InfinityFree and add it separately without replacing this backup.
