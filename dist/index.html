@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050608" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/app-icon-192.png" />
+  <meta name="description" content="Fourth Dimension Studio — architecture, AI, motion, web and digital products." />
+  <title>Fourth Dimension Studio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Fourth Dimension Studio home">
+      <img src="assets/logo.webp" alt="Fourth Dimension Studio logo" />
+      <span>Fourth Dimension <b>Studio</b></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
+      <div class="languages" aria-label="Language selector">
+        <button data-lang="en" class="active">EN</button><button data-lang="fa">FA</button><button data-lang="ar">AR</button>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><i></i><i></i></button>
+    </div>
+  </header>
+
+  <nav class="menu-panel" id="menuPanel" aria-hidden="true">
+    <button class="close" id="menuClose" aria-label="Close">×</button>
+    <a href="#services" data-i18n="navServices">Services</a>
+    <a href="#portfolio" data-i18n="navWork">Selected Work</a>
+    <a href="#tools" data-i18n="navTools">Free Tools</a>
+    <a href="#journal" data-i18n="navJournal">Journal</a>
+    <a href="#shop" data-i18n="navShop">Shop</a>
+    <a href="#contact" data-i18n="navContact">Contact</a>
+  </nav>
+
+  <div class="search-panel" id="searchPanel" aria-hidden="true">
+    <button class="close" id="searchClose" aria-label="Close">×</button>
+    <label data-i18n="searchLabel">Search the studio</label>
+    <input id="siteSearch" type="search" placeholder="Architecture, AI, books…" autocomplete="off" />
+    <div id="searchResults"></div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <video id="heroVideo" playsinline preload="auto" poster="assets/hero-poster.jpg">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-shade"></div>
+      <div class="enter-layer" id="enterLayer">
+        <img src="assets/logo.webp" alt="Fourth Dimension Studio logo" />
+        <button id="enterBtn"><span class="play">▶</span><span data-i18n="enter">Enter the Fourth Dimension</span></button>
+        <small data-i18n="soundNotice">Experience begins with sound</small>
+      </div>
+      <div class="video-services" id="videoServices" aria-hidden="true">
+        <div class="film-meta online-meta"><i aria-hidden="true">◎</i><span data-i18n="internationalOnline">International / Online</span></div>
+        <div class="film-meta founder-meta"><span data-i18n="founderRole">Founder &amp; Creative Director</span><strong data-i18n="founderName">Zahra Khansari</strong><small data-i18n="internationalStudio">International Studio</small></div>
+        <div class="video-label upper left" data-group="upper" data-service="motion">Teasers & Motion</div>
+        <div class="video-label upper right" data-group="upper" data-service="web">Web & App Design</div>
+        <div class="video-label middle left" data-group="middle" data-service="architecture">Architecture</div>
+        <div class="video-label middle right" data-group="middle" data-service="ai">AI & Content Creation</div>
+        <div class="video-label lower left" data-group="lower" data-service="automation">Automation & Agents</div>
+        <div class="video-label lower right" data-group="lower" data-service="editorial">Articles & Books</div>
+      </div>
+      <div class="hero-copy">
+        <h1 data-i18n="heroTitle">Beyond the visible.</h1>
+        <p data-i18n="heroText">Spaces, identities and digital experiences designed as one connected world.</p>
+        <a class="primary" href="#services" data-i18n="explore">Explore the studio <span>↓</span></a>
+      </div>
+      <button class="sound" id="soundBtn" aria-label="Mute or unmute">Sound <span>ON</span></button>
+      <div class="scroll-mark"><span></span><em>SCROLL</em></div>
+    </section>
+
+    <section class="quick-search-section" aria-label="Site search">
+      <div class="quick-search-shell">
+        <span class="quick-search-icon" aria-hidden="true">⌕</span>
+        <input id="quickSearch" type="search" autocomplete="off" placeholder="Search services, architecture, AI, video, automation…" aria-label="Search services and content" aria-controls="quickSearchResults" aria-expanded="false" />
+        <button id="quickSearchClear" type="button" aria-label="Clear search">×</button>
+        <div class="quick-search-results" id="quickSearchResults" role="listbox" aria-label="Search suggestions"></div>
+      </div>
+    </section>
+
+    <div class="scroll-world">
+    <section class="services depth-section" id="services">
+      <div class="section-head">
+        <div><p class="section-no">01 / CAPABILITIES</p><h2 data-i18n="servicesTitle">One studio. Multiple dimensions.</h2></div>
+        <p data-i18n="servicesIntro">Choose a service to enter its world.</p>
+      </div>
+      <div class="service-stage">
+        <a class="glass-card" href="service.html?service=architecture" data-search="architecture bim revit interior exterior rendering معماری طراحی رندر"><span>01</span><div class="card-icon">⌂</div><h3 data-i18n="s1">Architecture & BIM</h3><p data-i18n="s1p">Concept, interior, exterior, Revit modeling and cinematic visualization.</p><b class="card-link" data-i18n="viewService">View service ↗</b></a>
+        <a class="glass-card" href="service.html?service=ai" data-search="artificial intelligence ai design visualization content هوش مصنوعی"><span>02</span><div class="card-icon">✦</div><h3 data-i18n="s2">AI & Content Creation</h3><p data-i18n="s2p">AI-assisted images, campaigns, content systems and visual experiments.</p><b class="card-link" data-i18n="viewService">View service ↗</b></a>
+        <a class="glass-card" href="service.html?service=motion" data-search="logo motion teaser advertising video لوگو موشن تیزر تبلیغات"><span>03</span><div class="card-icon">▶</div><h3 data-i18n="s3">Teasers & Motion</h3><p data-i18n="s3p">Logo motion, teasers and scroll-stopping cinematic advertising.</p><b class="card-link" data-i18n="viewService">View service ↗</b></a>
+        <a class="glass-card" href="service.html?service=web" data-search="website app wordpress سایت اپلیکیشن"><span>04</span><div class="card-icon">◇</div><h3 data-i18n="s4">Website & App Design</h3><p data-i18n="s4p">Immersive multilingual websites and application experiences.</p><b class="card-link" data-i18n="viewService">View service ↗</b></a>
+        <a class="glass-card" href="service.html?service=automation" data-search="automation ai agent make composio اتوماسیون ایجنت"><span>05</span><div class="card-icon">⌁</div><h3 data-i18n="s5">Automation & AI Agents</h3><p data-i18n="s5p">Connected intelligent workflows that automate repetitive business tasks.</p><b class="card-link" data-i18n="viewService">View service ↗</b></a>
+        <a class="glass-card" href="service.html?service=editorial" data-search="book article interactive pdf مقاله کتاب تعاملی"><span>06</span><div class="card-icon">▤</div><h3 data-i18n="s6">Articles & Books</h3><p data-i18n="s6p">Expert articles, digital books, interactive stories and editorial design.</p><b class="card-link" data-i18n="viewService">View service ↗</b></a>
+      </div>
+    </section>
+
+    <section class="free-tools-section depth-section" id="free-tools">
+      <div class="free-tools-head">
+        <div><p class="section-no">02 / FREE TOOLS</p><h2 data-i18n="freeToolsTitle">Useful tools.<br>Right in your browser.</h2></div>
+        <p data-i18n="freeToolsIntro">Fast, practical tools for documents, images, design and everyday creative work.</p>
+      </div>
+      <div class="free-tools-grid">
+        <a class="free-tool-card cyan" href="tools/?tool=pdf"><span class="tool-no">01</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v16H6zM14 2v5h5M9 13h6M9 17h4"/></svg><h3 data-i18n="ft1">PDF Toolkit</h3><p data-i18n="ft1p">Merge, split, organize and create PDFs locally.</p><b data-i18n="openTool">Open Tool →</b></a>
+        <a class="free-tool-card violet" href="tools/?tool=image"><span class="tool-no">02</span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m4 17 5-5 4 4 2-2 5 5"/></svg><h3 data-i18n="ft2">Image Toolkit</h3><p data-i18n="ft2p">Resize, crop, compress and convert images.</p><b data-i18n="openTool">Open Tool →</b></a>
+        <a class="free-tool-card emerald" href="tools/?tool=qr"><span class="tool-no">03</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM15 14h2v2h-2zM19 14h2v4h-2zM14 19h4v2h-4zM20 20h1v1h-1z"/></svg><h3 data-i18n="ft3">QR Code Studio</h3><p data-i18n="ft3p">Create scannable QR codes for links and contact details.</p><b data-i18n="openTool">Open Tool →</b></a>
+        <a class="free-tool-card coral" href="tools/?tool=social"><span class="tool-no">04</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3v13a2 2 0 0 0 2 2h11M3 8h13a2 2 0 0 1 2 2v11M5 3H3v2M21 19v2h-2"/></svg><h3 data-i18n="ft4">Social Media Size Maker</h3><p data-i18n="ft4p">Crop and export images in exact social sizes.</p><b data-i18n="openTool">Open Tool →</b></a>
+        <a class="free-tool-card amber" href="tools/?tool=palette"><span class="tool-no">05</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a1.5 1.5 0 0 0 0-3H12a2 2 0 0 1 0-4h4a5 5 0 0 0 5-5c0-3.3-4-6-9-6z"/><circle cx="7.5" cy="10" r="1"/><circle cx="10" cy="6.8" r="1"/><circle cx="15" cy="7" r="1"/></svg><h3 data-i18n="ft5">Color Palette Studio</h3><p data-i18n="ft5p">Extract and export the dominant colors of any image.</p><b data-i18n="openTool">Open Tool →</b></a>
+        <a class="free-tool-card blue" href="tools/?tool=units"><span class="tool-no">06</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 17 13-13 3 3L7 20H4zM13 8l3 3M10 11l2 2M7 14l3 3"/></svg><h3 data-i18n="ft6">Architecture Unit &amp; Scale Converter</h3><p data-i18n="ft6p">Convert units, areas, volumes and drawing scales.</p><b data-i18n="openTool">Open Tool →</b></a>
+      </div>
+      <a class="explore-tools" href="tools/" data-i18n="exploreTools">Explore All Tools →</a>
+    </section>
+
+    <section class="connected-studio depth-section" id="portfolio">
+      <div class="connected-head"><div><p class="section-no">03 / CONNECTED STUDIO</p><h2 data-i18n="connectedTitle">One studio.<br>Everything connected.</h2></div><p data-i18n="connectedIntro">A clear foundation for communication, commerce and quality-controlled publishing.</p></div>
+      <nav class="studio-links" aria-label="Studio information">
+        <a href="#services"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><span data-i18n="portfolioLink">Portfolio</span></a>
+        <a href="#studio-about"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20c.5-4 2.5-6 6-6s5.5 2 6 6"/></svg><span data-i18n="aboutLink">About Us</span></a>
+        <a href="#contact"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 7l8 6 8-6"/></svg><span data-i18n="contactLink">Contact Us</span></a>
+        <a href="#studio-faq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.7 9a2.5 2.5 0 1 1 3.3 2.4c-.7.3-1 1-1 1.8M12 17h.01"/></svg><span data-i18n="faqLink">FAQ</span></a>
+      </nav>
+
+      <div class="connect-layout">
+        <article class="connect-card social-connect"><div class="connect-card-head"><div><small data-i18n="channelsLabel">COMMUNICATION</small><h3 data-i18n="channelsTitle">Meet us everywhere.</h3></div><span class="ready-badge" data-i18n="readyConnect">Ready to connect</span></div><div class="social-icons">
+          <a href="#" data-connect="later" aria-label="WhatsApp"><b>WA</b><span>WhatsApp</span></a><a href="#" data-connect="later" aria-label="Telegram"><b>TG</b><span>Telegram</span></a><a href="https://www.instagram.com/zahra_khansari.co" target="_blank" rel="noopener" aria-label="Instagram"><b>IG</b><span>Instagram</span></a><a href="#" data-connect="later" aria-label="YouTube"><b>YT</b><span>YouTube</span></a><a href="#" data-connect="later" aria-label="LinkedIn"><b>IN</b><span>LinkedIn</span></a>
+        </div><p class="connect-note" data-i18n="channelsNote">The icons are prepared. Final links can be connected when the official addresses are supplied.</p></article>
+        <article class="connect-card commerce-connect"><div class="connect-card-head"><div><small data-i18n="commerceLabel">PAYMENTS &amp; COMMERCE</small><h3 data-i18n="commerceTitle">Built for international business.</h3></div><span class="ready-badge" data-i18n="foundationReady">Foundation ready</span></div><div class="feature-list"><div><i>PP</i><span><b>PayPal</b><small data-i18n="paypalText">International checkout connection</small></span></div><div><i>₿</i><span><b data-i18n="cryptoTitle">Crypto wallet</b><small data-i18n="cryptoText">Direct wallet payment</small></span></div><div><i>R</i><span><b>Revolut &amp; Banks</b><small data-i18n="bankText">Through compatible payment gateways</small></span></div><div><i>AD</i><span><b>Google AdSense</b><small data-i18n="adsText">Ad placement infrastructure</small></span></div></div><div class="commerce-modules"><span data-i18n="invoice">Invoice</span><span data-i18n="cart">Shopping Cart</span><span data-i18n="customer">Customer Account</span></div></article>
+      </div>
+
+      <article class="automation-card"><div class="automation-copy"><small data-i18n="automationLabel">WEBSITE CONTENT AUTOMATION</small><h3 data-i18n="automationTitle">Research → Create → Review → Approve → Publish</h3><p data-i18n="automationText">Automation for this website’s content—not sales automation. A professional daily publishing workflow with mandatory quality control.</p></div><div class="automation-map" aria-label="Website content automation workflow"><div class="brain-node"><b>Make + Composio</b><span data-i18n="centralBrain">Website content orchestrator</span></div><div class="automation-nodes"><span><b>ChatGPT + Gemini</b><small data-i18n="creationBrain">Drafting &amp; reasoning</small></span><span><b>NotebookLM</b><small data-i18n="researchSources">Source research</small></span><span><b>Google Drive</b><small data-i18n="contentStorage">Content storage</small></span><span><b>Obsidian</b><small data-i18n="knowledgeBase">Knowledge base</small></span><span><b>GitHub</b><small data-i18n="codeVersions">Code, apps &amp; versions</small></span><span class="approval-node"><b data-i18n="humanApproval">Human approval</b><small data-i18n="beforePublish">Required before publishing</small></span></div></div><div class="quality-line"><span>01 <b data-i18n="collectSources">Collect your sources</b></span><span>02 <b data-i18n="prepareArticle">Prepare professional article</b></span><span>03 <b data-i18n="qualityCheck">Quality check</b></span><span>04 <b data-i18n="approvePublish">Approve &amp; publish on the website</b></span></div><p class="activation-note" data-i18n="activationNote">Connection-ready design. Live website automation starts only after the required accounts, permissions and API credentials are securely connected.</p></article>
+
+      <div class="studio-info-row"><article id="studio-about"><small data-i18n="aboutLabel">ABOUT</small><h3>Fourth Dimension Studio</h3><p data-i18n="aboutText">Architecture, artificial intelligence and digital creativity shaped as one connected studio.</p></article><article id="studio-faq"><small data-i18n="faqLabel">FAQ</small><details><summary data-i18n="faqQuestion">Are the integrations active now?</summary><p data-i18n="faqAnswer">The structure is prepared. Each service becomes active after its official account and secure credentials are connected.</p></details></article></div>
+    </section>
+
+    <section class="tools depth-section" id="tools">
+      <div><p class="section-no">04 / OPEN LAB</p><h2 data-i18n="toolsTitle">Useful tools, free to use.</h2><p data-i18n="toolsText">Small intelligent tools built for creators, architects and growing brands.</p></div>
+      <div class="tool-grid">
+        <button><span>PDF</span><b data-i18n="pdfTool">Smart PDF Studio</b><em data-i18n="coming">Coming soon</em></button>
+        <button><span>AI</span><b data-i18n="promptTool">Architecture Prompt Builder</b><em data-i18n="coming">Coming soon</em></button>
+        <button><span>3D</span><b data-i18n="briefTool">Creative Brief Generator</b><em data-i18n="coming">Coming soon</em></button>
+      </div>
+    </section>
+
+    <section class="journal depth-section" id="journal">
+      <p class="section-no">05 / INTELLIGENCE</p>
+      <h2 data-i18n="journalTitle">Curated insight—not content noise.</h2>
+      <p data-i18n="journalText">Expert articles shaped from trusted sources, reviewed before publication and presented as immersive stories.</p>
+      <a href="#" data-i18n="readJournal">Enter the journal →</a>
+    </section>
+
+    <section class="shop depth-section" id="shop">
+      <div class="section-head"><div><p class="section-no">06 / DIGITAL SHOP</p><h2 data-i18n="shopTitle">Files, books and creative systems.</h2></div><a href="#" data-i18n="visitShop">Visit shop ↗</a></div>
+      <div class="shop-row"><div>3D ASSETS</div><div>BIM FILES</div><div>AI GUIDES</div><div>INTERACTIVE BOOKS</div></div>
+    </section>
+
+    <section class="contact depth-section" id="contact">
+      <p class="section-no">07 / CONTACT</p>
+      <h2 data-i18n="contactTitle">Have an idea worth building?</h2>
+      <a class="contact-cta" href="mailto:hello@fourthdimension.studio" data-i18n="startProject">Start a project <span>↗</span></a>
+      <div class="socials"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a><a href="#">WhatsApp</a><a href="#">Telegram</a></div>
+    </section>
+    </div>
+  </main>
+
+  <footer><div class="brand mini"><img src="assets/logo.webp" alt="" /><span>Fourth Dimension Studio</span></div><p>© 2026 — Architecture × Intelligence × Imagination</p></footer>
+  <button class="install-app" id="installApp" type="button" hidden><img src="assets/app-icon-192.png" alt=""><span data-i18n="installApp">Install App</span></button>
+  <script src="app.js"></script>
+</body>
+</html>
