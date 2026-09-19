@@ -1,0 +1,95 @@
+# فهرست مرکزی تغییرات سایت Fourth Dimension Studio
+
+## قانون قطعی انتقال
+از 13 سپتامبر 2026 به بعد:
+- هیچ تغییر جدیدی جداگانه روی WordPress/هاست اعمال نشود.
+- همه متن‌ها، تصاویر، ویدئوها و تغییرات طراحی/فنی ابتدا در نسخه آفلاین و همین فهرست مرکزی ثبت شوند.
+- فقط پس از تأیید نهایی، همه تغییرات یک‌جا به WordPress منتقل شوند.
+
+## موارد ثبت‌شده برای اعمال یکجا
+
+### صفحه اصلی
+- Search Bar کوچک/شیشه‌ای دقیقاً زیر Hero Video.
+- کاهش فضای خالی زیر Hero.
+- Search واقعی با Dropdown Suggestions.
+- عرض Search در دسکتاپ حدود 60–75٪ و موبایل حدود 90–94٪.
+- شش کارت شناور سه‌بعدی/Glass برای خدمات.
+- تکمیل بخش Free Tools.
+
+### Hero Video — قفل
+- Hero Video نهایی است و نباید تغییر کند.
+- فایل نهایی: fourth-dimension-hero-fullhd.mp4
+- در site/index.html از `assets/fourth-dimension-hero-fullhd.mp4?v=2` استفاده شود.
+- hero.mp4 به‌عنوان Backup حفظ شود.
+- Hero افقی 16:9 بماند.
+- هدر/ویدئو ظاهر سینمایی مشکی خود سایت را حفظ کند.
+
+### ظاهر بخش اسکرولی
+- فقط بخش Scroll زیر Hero به رنگ روشن، گرم، کرم/سنگی نزدیک به سایت مرجع تغییر کند.
+- کل سایت روشن نشود.
+- هویت بصری Fourth Dimension Studio حفظ شود.
+- کارت‌ها و منوها: Glass Black با Accent/خط طلایی.
+- ویدئو و Header مشکی و سینمایی باقی بمانند.
+
+### ساختارها و بخش‌های جدید
+- نوار بالایی آیکن‌دار خدمات
+- More Menu
+- Library
+- Magazine
+- Articles
+- Shop
+- Install App
+- Contact
+- Legal / Rules pages
+
+### خدمات اصلی
+1. Architecture & Interior/Exterior
+2. AI Design & Content
+3. Video / Teaser / Logo Motion
+4. Web & App Design
+5. Automation
+6. Articles & Books
+
+برای هر سرویس صفحه اختصاصی شامل Intro، Deliverables، Process و Order ساخته شود.
+
+### زبان‌ها
+- English پیش‌فرض
+- Persian
+- Arabic
+- صفحات اصلی و خدمات سه‌زبانه شوند.
+
+### عناصر برند
+- CTA: Explore the studio
+- پایین راست: Founder & Creative Director: Zahra Khansari / International Studio
+- پایین چپ: International & Online
+
+### محتوا و WordPress
+- مقاله‌ها فقط به‌صورت Draft ساخته شوند.
+- Featured Image افقی 16:9.
+- هر مقاله شامل Title، Article، Excerpt، SEO و Categories باشد.
+- انتشار نهایی فقط بعد از تأیید دستی.
+
+### اتوماسیون و Agent
+- Make
+- Gemini
+- ChatGPT
+- Google Drive
+- WordPress
+- Composio
+- GitHub
+- Obsidian
+
+### وضعیت فنی WordPress / InfinityFree
+- اتصال REST به‌طور کامل قطع نیست.
+- getPostStatuses و getPostFormats کار کرده‌اند.
+- endpointهای types و categories با چالش JavaScript/Anti-bot میزبان InfinityFree مواجه شده‌اند.
+- جریان فعلی Draft-only/انتقال دستی تا رفع مشکل هاست حفظ شود.
+
+## محل نسخه طراحی
+`htdocs/wp-content/themes/fourth-dimension-theme/site/`
+
+Media: `site/assets/`
+
+## یادآوری نهایی
+هیچ‌کدام از موارد این فهرست نباید جداگانه روی WordPress اعمال شوند. تغییرات جدید باید به همین Master List اضافه شوند تا در پایان همه با هم منتقل شوند.
+
