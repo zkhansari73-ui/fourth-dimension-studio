@@ -1,0 +1,24 @@
+# Fourth Dimension Studio
+
+Editable source backup for the Fourth Dimension Studio website.
+
+## Included
+
+- Current ChatGPT Sites source in `dist/`
+- Hero and scroll videos
+- Logo, poster, app icons, manifest and service worker
+- Master change log and previous change lists in `docs/`
+- Recovery notes in `docs/RECOVERY.md`
+
+## Important project rule
+
+Changes dated 13 September 2026 onward are collected in the master change log and prepared offline. They must be reviewed and transferred to WordPress together, rather than applied one by one.
+
+## WordPress backup status
+
+This repository does not yet contain the live InfinityFree WordPress database, uploads, plugins, or PHP theme files. Those require an export from the InfinityFree control panel. See `docs/RECOVERY.md`.
+
+## Local preview
+
+Serve the `dist` directory with any static web server. Opening `dist/index.html` directly may not register the service worker because browsers require HTTP/HTTPS for that feature.
+
