@@ -96,7 +96,7 @@ Media: `site/assets/`
 
 
 ## وضعیت اتصال شبکه‌های اجتماعی — 26 سپتامبر 2026
-- Instagram رسمی استودیو در نسخه GitHub متصل شد: `https://www.instagram.com/fourth.dimension.studio.ai/`
+- Instagram رسمی استودیو در نسخه GitHub متصل شد: `https://www.instagram.com/zahra_khansari.co/`
 - Pinterest رسمی استودیو در نسخه GitHub متصل شد: `https://www.pinterest.com/fourthdimensionstudioai/`
 - Telegram رسمی استودیو متصل شد: `https://t.me/FourthDimensionStudioAI` (فقط لینک عمومی؛ شماره تلفن در سایت یا مخزن ذخیره نشده است).\n- جایگاه Facebook با وضعیت `pending-public-url` باقی ماند؛ آدرس عمومی قطعی آن نباید حدس زده شود.
 - ورود مستقیم به داشبورد Composio برای استخراج آدرس‌ها در این نوبت با خطای سرور روبه‌رو شد: Google OAuth = 502 و GitHub OAuth = 500.
