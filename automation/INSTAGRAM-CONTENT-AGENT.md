@@ -154,3 +154,18 @@
 - هنوز پاسخ‌های هر پست، دریافت‌کنندهٔ همیشه‌روشن رویداد، اتصال رویداد به پاسخ بر اساس Media ID، و تست زنده تنظیم نشده‌اند؛ اتوماسیون **فعال نیست**.
 - گام اجرایی بعدی: ساخت/استقرار endpoint عمومی HTTPS امن برای دریافت رویداد کامنت، اتصال به Composio برای پاسخ، سپس تنظیم نقشهٔ `Media ID → پاسخ همان پست` و آزمایش روی یک پست.
 - متن پاسخ هر پست هنوز از کاربر دریافت نشده است. هیچ secret یا token در GitHub ذخیره نشود.
+
+
+## بررسی امکان اجرای فقط با Composio — 27 سپتامبر 2026
+- درخواست کاربر: ادامه از مسیر Composio؛ پاسخ عمومی مجزا برای هر پست بر اساس Media ID.
+- مستندات جاری Composio برای Instagram، ابزارهای عملیاتی از جمله `INSTAGRAM_ENABLE_WEBHOOK_SUBSCRIPTIONS` و `INSTAGRAM_POST_IG_COMMENT_REPLIES` را نشان می‌دهد؛ صفحهٔ toolkit در حال حاضر Trigger اینستاگرام برای کامنت تازه فهرست نمی‌کند.
+- جست‌وجوی Trigger در Playground نیز پیش‌تر اسلاگ رویداد کامنت پیدا نکرد. بنابراین فعال‌بودن `comments` اشتراک رویداد متا را تأیید می‌کند، اما وجود trigger قابل‌اجرا یا تحویل رویداد به عامل را نه.
+- مستندات Composio می‌گویند trigger باید از نوع پشتیبانی‌شده ساخته شود و سپس رویداد به Webhook URL پروژه فرستاده شود. بدون trigger نوع Instagram comment یا مسیر ورودی Meta، پاسخ خودکار از خود Toolkit به‌تنهایی کامل نمی‌شود.
+- دسترسی مستقیم Composio از محیط Codex این نشست وجود ندارد؛ هیچ API key یا OAuth token در چت یا مخزن وارد نشده است. به همین دلیل نمی‌توانم در این نشست از API پروژه فهرست trigger types را احراز کنم یا خودم Trigger/Callback را فعال کنم.
+- برای تکمیل مسیر Composio باید ابتدا یک callback عمومی HTTPS و اتصال مجاز برای دریافت رویدادهای متا فراهم شود، سپس handler امن از روی Comment ID و Media ID پاسخ همان پست را اجرا کند. تنظیمات و استقرار آن هنوز انجام نشده‌اند؛ پاسخ خودکار **غیرفعال** است.
+- هیچ پستی آزمایش یا پاسخی ارسال نشده است. برای هر پست لازم است پاسخ دقیق و Media ID ثبت شود؛ تکرار رویداد باید با Comment ID حذف شود.
+- منابع رسمی بررسی‌شده:
+  - https://docs.composio.dev/toolkits/instagram
+  - https://docs.composio.dev/reference/api-reference/triggers
+  - https://docs.composio.dev/docs/triggers
+  - https://developers.facebook.com/docs/graph-api/webhooks/getting-started/webhooks-for-instagram/
