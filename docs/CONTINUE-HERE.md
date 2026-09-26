@@ -9,7 +9,7 @@
 - راهنمای بازیابی: `docs/RECOVERY.md`
 
 ## شبکه‌های اجتماعی
-- Instagram متصل: https://www.instagram.com/fourth.dimension.studio.ai/
+- Instagram متصل: https://www.instagram.com/zahra_khansari.co/
 - Pinterest متصل: https://www.pinterest.com/fourthdimensionstudioai/
 - Telegram متصل: https://t.me/FourthDimensionStudioAI
 - Facebook: جایگاه رابط آماده است؛ آدرس عمومی قطعی لازم است.
