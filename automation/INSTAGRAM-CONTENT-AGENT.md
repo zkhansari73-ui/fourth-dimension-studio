@@ -131,3 +131,11 @@
 - https://docs.composio.dev/toolkits/instagram
 - https://docs.composio.dev/reference/api-reference/triggers
 - https://docs.composio.dev/docs/setting-up-triggers/subscribing-to-events
+
+## به‌روزرسانی اشتراک رویداد کامنت — 26 سپتامبر 2026، 23:57
+- در Composio Playground ابزار `INSTAGRAM_ENABLE_WEBHOOK_SUBSCRIPTIONS` با درخواست فعال‌کردن فقط فیلد `comments` برای حساب متصل `@fourth.dimension.studio.ai` اجرا شد.
+- نتیجهٔ نمایش‌داده‌شده در Playground: `success: true`. در همان درخواست هیچ فیلد دیگری انتخاب نشد.
+- این تأیید می‌کند اشتراک فیلد کامنت برای حساب فعال شده است؛ اما به‌تنهایی Trigger اجرایی Composio، مقصد عمومی HTTPS برای دریافت رویداد، پردازش کامنت یا پاسخ خودکار را ایجاد/تأیید نمی‌کند.
+- وضعیت فعلی: **اشتراک کامنت فعال؛ اتوماسیون پاسخ هنوز فعال نشده**. هیچ پاسخ آزمایشی در Instagram ارسال نشده است.
+- گام بعدی: فراهم‌کردن یک endpoint عمومی HTTPS برای دریافت و بررسی امن رویداد؛ سپس اتصال آن به روال دسته‌بندی کامنت و ابزار `INSTAGRAM_POST_IG_COMMENT_REPLIES` و آزمایش با کامنت کنترل‌شده.
+- هیچ رمز، API key، توکن OAuth یا secret در این فایل یا GitHub ثبت نشده است.
