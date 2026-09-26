@@ -109,3 +109,8 @@
 - https://docs.composio.dev/kb/guide/dashboard-navigation-overview
 - https://docs.composio.dev/toolkits/instagram
 - https://docs.composio.dev/docs/triggers
+
+- در ادامهٔ بررسی زنده، در Platform پیکربندی Auth برای Instagram با روش OAuth 2.0 و مدیریت‌شده توسط Composio ساخته شد. وضعیت فعال است و صفحهٔ پیکربندی یک اتصال را فهرست می‌کند.
+- اتصال در نمای کاربر پروژه نیز فعال دیده شد؛ صفحهٔ جزئیات نشان می‌دهد Toolkit = Instagram، وضعیت = فعال، و یک حساب متصل وجود دارد. شناسهٔ کاربر Composio با `pg-test-a758729a-4537-409d-81f5-999891ebd67a` آغاز می‌شود و شناسهٔ حساب متصل با `ca_zxLQN-6...` آغاز می‌شود. این شناسه‌ها نام پیج Instagram را آشکار نمی‌کنند.
+- **هویت پیج هنوز تأیید نشده**: داشبورد نام کاربری Instagram را نشان نداد. اقدام فقط‌خواندنی `INSTAGRAM_GET_USER_INFO` یا معادل آن باید اجرا شود تا اتصال با `fourth.dimension.studio.ai` تطبیق داده شود.
+- هنوز Trigger کامنت، Webhook اجرایی و پاسخ آزمایشی تنظیم یا تأیید نشده‌اند؛ بنابراین اتوماسیون پاسخ کامنت همچنان غیرفعال است.
