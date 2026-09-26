@@ -93,3 +93,12 @@ Media: `site/assets/`
 ## یادآوری نهایی
 هیچ‌کدام از موارد این فهرست نباید جداگانه روی WordPress اعمال شوند. تغییرات جدید باید به همین Master List اضافه شوند تا در پایان همه با هم منتقل شوند.
 
+
+
+## وضعیت اتصال شبکه‌های اجتماعی — 26 سپتامبر 2026
+- Instagram رسمی استودیو در نسخه GitHub متصل شد: `https://www.instagram.com/fourth.dimension.studio.ai/`
+- Pinterest رسمی استودیو در نسخه GitHub متصل شد: `https://www.pinterest.com/fourthdimensionstudioai/`
+- جایگاه‌های Telegram و Facebook در رابط سایت آماده و با وضعیت `pending-public-url` ثبت شدند؛ آدرس عمومی قطعی آن‌ها هنوز در فایل‌های سایت یا سوابق تأییدشده موجود نیست و نباید حدس زده شود.
+- ورود مستقیم به داشبورد Composio برای استخراج آدرس‌ها در این نوبت با خطای سرور روبه‌رو شد: Google OAuth = 502 و GitHub OAuth = 500.
+- فایل ویدئوی Hero و تنظیمات پخش آن در این تغییر دست‌نخورده باقی ماند.
+- نسخه قابل ادامه در مخزن خصوصی `zkhansari73-ui/fourth-dimension-studio` و شاخه `main` ذخیره شد.
