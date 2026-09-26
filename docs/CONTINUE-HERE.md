@@ -12,8 +12,8 @@
 - Instagram متصل: https://www.instagram.com/fourth.dimension.studio.ai/
 - Pinterest متصل: https://www.pinterest.com/fourthdimensionstudioai/
 - Telegram متصل: https://t.me/FourthDimensionStudioAI
-- Facebook: جایگاه رابط آماده است؛ آدرس عمومی قطعی لازم است.
-- شماره تلفن Telegram نباید در سایت یا مخزن ذخیره شود.\n- برای Facebook از حدس‌زدن username خودداری شود. پس از دریافت URL قطعی، فقط href دارای `data-connection-status="pending-public-url"` جایگزین شود.
+- Facebook متصل: https://www.facebook.com/share/1GeGWH7cPd/
+- شماره تلفن Telegram نباید در سایت یا مخزن ذخیره شود.\n- لینک Facebook از گزینهٔ رسمی Share خود صفحه دریافت و در رابط سایت ثبت شده است.
 
 ## Composio
 اتصال‌های قبلی حفظ شوند و دوباره ساخته نشوند. در آخرین بررسی، ورود داشبورد از مسیر Google OAuth با 502 و از مسیر GitHub OAuth با 500 متوقف شد. این خطا به معنی حذف اتصال‌های قبلی نیست.
