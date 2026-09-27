@@ -169,3 +169,17 @@
   - https://docs.composio.dev/reference/api-reference/triggers
   - https://docs.composio.dev/docs/triggers
   - https://developers.facebook.com/docs/graph-api/webhooks/getting-started/webhooks-for-instagram/
+
+
+## بررسی تکمیلی پس از اتمام محدودیت Playground — 27 سپتامبر 2026
+- مستندات رسمی فعلی Composio برای Instagram نسخهٔ `20260915_00` را نشان می‌دهد و ابزارهای فعال‌سازی اشتراک وبهوک، فهرست‌کردن کامنت‌ها و پاسخ به کامنت را در فهرست ۳۸ ابزار دارد.
+- در همان صفحهٔ رسمی، Trigger مشخصی برای «کامنت جدید Instagram» فهرست نشده است. جست‌وجوی قبلی در Playground هم اسلاگ Trigger کامنت را برنگرداند؛ پس Triggerی با نام حدسی ساخته یا فعال نمی‌کنیم.
+- مستندات رسمی Composio می‌گوید Webhook خروجی پروژه رویدادهای Triggerهای ساخته‌شده را به URL عمومی HTTPS می‌فرستد. فعال‌کردن فیلد `comments` در Instagram به‌تنهایی وجود Trigger، endpoint دریافت رویداد یا اجرای پاسخ را ثابت نمی‌کند.
+- نتیجهٔ فعلی همان است: حساب مقصد تأیید شده و اشتراک `comments` موفق بوده؛ اما دریافت رویداد و پاسخ خودکارِ جدا برای هر پست فعال نیست. برای تکمیل، باید مسیر ورودی رویداد Meta/Instagram تا endpoint عمومی امن فراهم شود؛ handler باید بر اساس `Media ID` متن همان پست را انتخاب و با `INSTAGRAM_POST_IG_COMMENT_REPLIES` پاسخ دهد، با جلوگیری از پاسخ تکراری بر اساس `Comment ID`.
+- این بررسی فقط مستندات عمومی را خواند؛ هیچ تغییری در حساب Instagram یا تنظیمات Composio ایجاد نکرد و هیچ پاسخی ارسال نشد.
+
+منابع رسمی بررسی‌شده:
+- https://docs.composio.dev/toolkits/instagram
+- https://docs.composio.dev/reference/api-reference/webhook-subscriptions
+- https://docs.composio.dev/reference/api-reference/webhook-endpoints
+- https://docs.composio.dev/docs/setting-up-triggers/subscribing-to-events
