@@ -98,7 +98,8 @@ Media: `site/assets/`
 ## وضعیت اتصال شبکه‌های اجتماعی — 26 سپتامبر 2026
 - Instagram رسمی استودیو در نسخه GitHub متصل شد: `https://www.instagram.com/fourth.dimension.studio.ai/`
 - Pinterest رسمی استودیو در نسخه GitHub متصل شد: `https://www.pinterest.com/fourthdimensionstudioai/`
-- Telegram رسمی استودیو متصل شد: `https://t.me/FourthDimensionStudioAI` (فقط لینک عمومی؛ شماره تلفن در سایت یا مخزن ذخیره نشده است).\n- Facebook رسمی استودیو متصل شد: `https://www.facebook.com/share/1GeGWH7cPd/`.
+- Telegram رسمی استودیو متصل شد: `https://t.me/FourthDimensionStudioAI` (فقط لینک عمومی؛ شماره تلفن در سایت یا مخزن ذخیره نشده است).
+- Facebook رسمی استودیو متصل شد: `https://www.facebook.com/share/1GeGWH7cPd/`.
 - ورود مستقیم به داشبورد Composio برای استخراج آدرس‌ها در این نوبت با خطای سرور روبه‌رو شد: Google OAuth = 502 و GitHub OAuth = 500.
 - فایل ویدئوی Hero و تنظیمات پخش آن در این تغییر دست‌نخورده باقی ماند.
 - نسخه قابل ادامه در مخزن خصوصی `zkhansari73-ui/fourth-dimension-studio` و شاخه `main` ذخیره شد.
@@ -111,3 +112,16 @@ Media: `site/assets/`
 - پاسخ خودکار فقط برای کامنت‌های عادی؛ قیمت، سفارش، پرداخت، شکایت و اطلاعات شخصی به صف تأیید زهرا منتقل شوند.
 - ابزارهای Instagram Composio برای انتشار، دریافت کامنت، پاسخ و Webhook در طرح ثبت شدند.
 - توکن‌ها و اطلاعات ورود در GitHub یا کد عمومی سایت ذخیره نشوند.
+
+## پیاده‌سازی پاسخ خودکار Instagram — 27 سپتامبر 2026
+- سرویس اجرایی در `automation/instagram-auto-reply-service/` اضافه شد.
+- اتصال Composio و حساب `fourth.dimension.studio.ai` تأیید شد.
+- سرویس در حالت امن `DRY_RUN=true` باقی می‌ماند تا پست و قوانین پاسخ توسط کاربر تأیید شوند.
+- فیلتر کامنت مخفی، کامنت خود حساب، جلوگیری از تکرار، توقف امن و قرنطینهٔ نتیجهٔ مبهم پیاده‌سازی شد.
+- 16 تست خودکار موفق اجرا شد.
+- `.env`، کلید API، توکن‌ها، صف محلی و `node_modules` نباید در GitHub یا Google Drive ذخیره شوند.
+
+## همگام‌سازی نسخه‌ها — 27 سپتامبر 2026
+- نسخهٔ مرجع GitHub دارای لینک‌های درست Instagram، Pinterest، Telegram و Facebook است.
+- نسخهٔ آنلاین WordPress هنوز قدیمی است و باید محتوای `dist/` به پوشهٔ `site/` منتقل شود.
+- پس از انتقال، کش W3 Total Cache و کش میزبان باید پاک و لینک‌ها از مرورگر ناشناس دوباره بررسی شوند.

@@ -1,0 +1,19 @@
+{
+  "name": "fourth-dimension-instagram-auto-reply",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Safe Meta webhook handler that routes Instagram comments to per-post replies through Composio.",
+  "engines": {
+    "node": ">=22.22.3"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "verify": "node --env-file-if-exists=.env src/verify-connection.js",
+    "test": "node --test",
+    "check": "node --check src/server.js && node --test"
+  },
+  "dependencies": {
+    "@composio/core": "0.21.0"
+  }
+}

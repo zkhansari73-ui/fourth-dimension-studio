@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "settings": {
+    "ignoreRepliesToComments": true
+  },
+  "posts": {
+    "REPLACE_WITH_INSTAGRAM_MEDIA_ID": {
+      "enabled": true,
+      "activatedAt": "2026-09-27T00:00:00.000Z",
+      "rules": [
+        {
+          "containsAny": ["قیمت", "هزینه"],
+          "reply": "سلام {username}، برای دریافت قیمت لطفاً کلمه «قیمت» را دایرکت کنید."
+        },
+        {
+          "containsAny": ["آموزش", "دوره"],
+          "reply": "سلام {username}، جزئیات آموزش به‌زودی در همین صفحه منتشر می‌شود."
+        }
+      ],
+      "fallback": "ممنون از همراهی شما {username} ✨"
+    }
+  }
+}

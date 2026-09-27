@@ -9,6 +9,8 @@ Editable source backup for the Fourth Dimension Studio website.
 - Logo, poster, app icons, manifest and service worker
 - Master change log and previous change lists in `docs/`
 - Recovery notes in `docs/RECOVERY.md`
+- Tested Instagram comment-reply service in `automation/instagram-auto-reply-service/`
+- A dated live WordPress media snapshot is kept in the matching Google Drive backup for disaster recovery
 
 ## Important project rule
 
@@ -17,6 +19,8 @@ Changes dated 13 September 2026 onward are collected in the master change log an
 ## WordPress backup status
 
 This repository does not yet contain the live InfinityFree WordPress database, uploads, plugins, or PHP theme files. Those require an export from the InfinityFree control panel. See `docs/RECOVERY.md`.
+
+The Drive snapshot contains only public assets observed on the homepage. It is not a substitute for the full theme, uploads and database export.
 
 ## Local preview
 

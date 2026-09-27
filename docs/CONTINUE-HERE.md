@@ -1,6 +1,6 @@
 # ادامه پروژه Fourth Dimension Studio
 
-آخرین به‌روزرسانی: 26 سپتامبر 2026
+آخرین به‌روزرسانی: 27 سپتامبر 2026
 
 ## نقطه شروع
 - شاخه اصلی: `main`
@@ -13,10 +13,17 @@
 - Pinterest متصل: https://www.pinterest.com/fourthdimensionstudioai/
 - Telegram متصل: https://t.me/FourthDimensionStudioAI
 - Facebook متصل: https://www.facebook.com/share/1GeGWH7cPd/
-- شماره تلفن Telegram نباید در سایت یا مخزن ذخیره شود.\n- لینک Facebook از گزینهٔ رسمی Share خود صفحه دریافت و در رابط سایت ثبت شده است.
+- شماره تلفن Telegram نباید در سایت یا مخزن ذخیره شود.
+- لینک Facebook از گزینهٔ رسمی Share خود صفحه دریافت و در رابط سایت ثبت شده است.
 
 ## Composio
-اتصال‌های قبلی حفظ شوند و دوباره ساخته نشوند. در آخرین بررسی، ورود داشبورد از مسیر Google OAuth با 502 و از مسیر GitHub OAuth با 500 متوقف شد. این خطا به معنی حذف اتصال‌های قبلی نیست.
+اتصال Instagram فعال و با شناسهٔ حساب `fourth.dimension.studio.ai` تأیید شده است. سرویس اجرایی پاسخ کامنت در `automation/instagram-auto-reply-service/` قرار دارد. این سرویس عمداً با `DRY_RUN=true` و فایل قوانین خالی نگه داشته شده تا پس از انتشار اولین پست و تأیید کاربر فعال شود. هیچ کلید یا توکن فعالی در مخزن ذخیره نمی‌شود.
+
+## وضعیت انتشار WordPress
+- نسخهٔ GitHub چهار لینک رسمی Instagram، Pinterest، Telegram و Facebook را دارد.
+- نسخهٔ آنلاین WordPress در بررسی 27 سپتامبر هنوز Instagram قدیمی را نمایش می‌داد و سه لینک دیگر را نداشت.
+- مسیر انتقال: `dist/` به `htdocs/wp-content/themes/fourth-dimension-theme/site/`
+- پس از انتقال باید کش W3 Total Cache و کش میزبان پاک شود.
 
 ## Hero Video
 - ویدئو، زمان‌بندی و محتوای آن بدون دستور صریح کاربر تغییر نکند.
