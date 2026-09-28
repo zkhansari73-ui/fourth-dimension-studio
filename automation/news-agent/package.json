@@ -1,0 +1,20 @@
+{
+  "name": "fourth-dimension-news-agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Approval-gated multilingual news pipeline powered by Gemini through Composio.",
+  "engines": {
+    "node": ">=22.22.3"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/run.js",
+    "dry-run": "node --env-file-if-exists=.env src/run.js --dry-run",
+    "test": "node --test",
+    "check": "node --check src/run.js && node --test"
+  },
+  "dependencies": {
+    "@composio/core": "0.21.0",
+    "fast-xml-parser": "5.2.5"
+  }
+}
