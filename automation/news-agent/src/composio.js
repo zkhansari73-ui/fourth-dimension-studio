@@ -38,11 +38,10 @@ export class NewsComposioClient {
 
   async geminiJson(prompt) {
     const data = await this.execute("GEMINI_GENERATE_CONTENT", {
+      prompt,
       model: this.config.geminiModel,
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
-      generation_config: { response_mime_type: "application/json", temperature: 0.2 },
     }, this.config.geminiConnectedAccountId);
-    const text = data?.text ?? data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    const text = data?.text ?? data?.response ?? data?.result ?? data?.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) throw new Error("Gemini returned no text");
     return JSON.parse(text.replace(/^```json\s*|\s*```$/g, ""));
   }
