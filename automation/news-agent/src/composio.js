@@ -4,10 +4,21 @@ export class NewsComposioClient {
   constructor(config) {
     this.config = config;
     this.client = new Composio({ apiKey: config.composioApiKey });
+    this.toolVersions = new Map();
   }
 
   async execute(slug, arguments_, connectedAccountId = "") {
-    const request = { userId: this.config.composioUserId, arguments: arguments_ };
+    let version = this.toolVersions.get(slug);
+    if (!version) {
+      const tool = await this.client.tools.getRawComposioToolBySlug(slug);
+      version = tool?.version;
+      if (!version || version === "latest") {
+        version = (tool?.availableVersions ?? []).find((item) => item && item !== "latest");
+      }
+      if (!version) throw new Error(`No pinned Composio version is available for ${slug}`);
+      this.toolVersions.set(slug, version);
+    }
+    const request = { userId: this.config.composioUserId, arguments: arguments_, version };
     if (connectedAccountId) request.connectedAccountId = connectedAccountId;
     const result = await this.client.tools.execute(slug, request);
     if (result?.error) throw new Error(result.error?.message ?? String(result.error));
