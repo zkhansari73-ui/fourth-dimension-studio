@@ -23,6 +23,7 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     minImportance: positiveInteger(env.NEWS_MIN_IMPORTANCE, 7),
     minRelevance: positiveInteger(env.NEWS_MIN_RELEVANCE, 7),
     dryRun: argv.includes("--dry-run") || boolean(env.NEWS_DRY_RUN, true),
+    generateNews: boolean(env.NEWS_GENERATE, true),
     timezone: env.NEWS_TIMEZONE?.trim() || "Asia/Tehran",
     wordpressUrl: env.WORDPRESS_URL?.trim().replace(/\/$/, "") || "",
     wordpressUsername: env.WORDPRESS_USERNAME?.trim() || "",

@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: "0 4 * * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Choose publish-approved to save Gemini usage"
+        required: true
+        default: publish-approved
+        type: choice
+        options:
+          - publish-approved
+          - full
 
 permissions:
   contents: read
@@ -33,6 +42,7 @@ jobs:
           NEWS_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
           NEWS_SHEET_NAME: News Pipeline
           NEWS_DRY_RUN: "false"
+          NEWS_GENERATE: ${{ github.event_name == 'schedule' || inputs.mode == 'full' }}
           WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
           WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
