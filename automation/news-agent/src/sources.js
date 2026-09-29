@@ -67,27 +67,30 @@ export function normalizeSitemap(parsed, source) {
   }).filter((item) => item.title && item.url && item.publishedAt && (!pattern || pattern.test(new URL(item.url).pathname)));
 }
 
-async function fetchXml(url, source, parser, fetchImpl) {
-  const response = await fetchImpl(url, { headers: { "user-agent": "FourthDimensionNewsAgent/1.0" } });
+async function fetchXml(url, source, parser, fetchImpl, timeoutMs) {
+  const response = await fetchImpl(url, {
+    headers: { "user-agent": "FourthDimensionNewsAgent/1.0" },
+    signal: AbortSignal.timeout(timeoutMs),
+  });
   if (!response.ok) throw new Error(`${source.name}: HTTP ${response.status}`);
   return parser.parse(await response.text());
 }
 
-async function fetchSitemapItems(source, parser, fetchImpl) {
-  const root = await fetchXml(source.url, source, parser, fetchImpl);
+async function fetchSitemapItems(source, parser, fetchImpl, timeoutMs) {
+  const root = await fetchXml(source.url, source, parser, fetchImpl, timeoutMs);
   const direct = normalizeSitemap(root, source);
   if (direct.length) return direct;
   const childUrls = asArray(root?.sitemapindex?.sitemap).map((entry) => firstText(entry?.loc)).filter(Boolean).slice(0, 8);
-  const children = await Promise.allSettled(childUrls.map((url) => fetchXml(url, source, parser, fetchImpl)));
+  const children = await Promise.allSettled(childUrls.map((url) => fetchXml(url, source, parser, fetchImpl, timeoutMs)));
   return children.flatMap((result) => result.status === "fulfilled" ? normalizeSitemap(result.value, source) : []);
 }
 
-export async function fetchSourceItems(sources = DEFAULT_SOURCES, fetchImpl = fetch) {
+export async function fetchSourceItems(sources = DEFAULT_SOURCES, fetchImpl = fetch, { timeoutMs = 20000 } = {}) {
   const { XMLParser } = await import("fast-xml-parser");
   const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "" });
   const results = await Promise.allSettled(sources.map(async (source) => {
-    if (source.kind === "sitemap") return fetchSitemapItems(source, parser, fetchImpl);
-    return normalizeFeed(await fetchXml(source.url, source, parser, fetchImpl), source);
+    if (source.kind === "sitemap") return fetchSitemapItems(source, parser, fetchImpl, timeoutMs);
+    return normalizeFeed(await fetchXml(source.url, source, parser, fetchImpl, timeoutMs), source);
   }));
 
   return {

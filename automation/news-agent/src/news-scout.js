@@ -27,7 +27,9 @@ export async function runNewsScout({ config, client, sourceResult, now = new Dat
     sourceErrors: sourceResult.errors,
   };
 
-  for (const item of filtered.selected) {
+  const candidates = filtered.selected.slice(0, config.maxReviewCandidates);
+  logger.info(`Reviewing up to ${candidates.length} recent, relevant candidates with Gemini.`);
+  for (const item of candidates) {
     if (report.queuedForApproval >= config.maxNewsItemsPerRun) break;
     const review = await client.geminiJson(reviewPrompt(item, date));
     if (!isGeminiSelection(review, config)) continue;

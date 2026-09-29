@@ -29,6 +29,8 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     maxAgeDays: positiveInteger(env.NEWS_MAX_AGE_DAYS, 7),
     maxArticlesPerRun: positiveInteger(env.NEWS_MAX_ARTICLES_PER_RUN, 2),
     maxNewsItemsPerRun: positiveInteger(env.NEWS_MAX_ITEMS_PER_RUN, 10),
+    maxReviewCandidates: positiveInteger(env.NEWS_MAX_REVIEW_CANDIDATES, 24),
+    sourceTimeoutMs: positiveInteger(env.NEWS_SOURCE_TIMEOUT_MS, 20000),
     minImportance: positiveInteger(env.NEWS_MIN_IMPORTANCE, 7),
     minRelevance: positiveInteger(env.NEWS_MIN_RELEVANCE, 7),
     dryRun: argv.includes("--dry-run") || boolean(env.NEWS_DRY_RUN, true),
