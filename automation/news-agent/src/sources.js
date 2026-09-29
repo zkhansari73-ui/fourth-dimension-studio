@@ -1,12 +1,13 @@
 export const DEFAULT_SOURCES = Object.freeze([
-  { name: "ArchDaily", category: "Architecture", url: "https://www.archdaily.com/rss" },
-  { name: "Dezeen", category: "Architecture", url: "https://www.dezeen.com/feed/" },
-  { name: "Designboom", category: "Design", url: "https://www.designboom.com/feed/" },
-  { name: "Architizer", category: "Architecture", url: "https://architizer.com/blog/feed/" },
-  { name: "The Architect's Newspaper", category: "Architecture", url: "https://www.archpaper.com/feed/" },
-  { name: "Autodesk AEC", category: "BIM / Revit", url: "https://www.autodesk.com/blogs/aec/feed/" },
-  { name: "OpenAI", category: "Artificial Intelligence", url: "https://openai.com/news/rss.xml" },
-  { name: "Google AI", category: "Artificial Intelligence", url: "https://blog.google/technology/ai/rss/" }
+  { name: "ArchDaily", category: "Architecture", tier: 2, url: "https://www.archdaily.com/rss" },
+  { name: "Dezeen", category: "Architecture", tier: 2, url: "https://www.dezeen.com/feed/" },
+  { name: "Designboom", category: "Design", tier: 2, url: "https://www.designboom.com/feed/" },
+  { name: "Architizer", category: "Architecture", tier: 2, url: "https://architizer.com/blog/feed/" },
+  { name: "The Architect's Newspaper", category: "Architecture", tier: 2, url: "https://www.archpaper.com/feed/" },
+  { name: "Autodesk AEC", category: "BIM / Revit", tier: 1, url: "https://www.autodesk.com/blogs/aec/feed/" },
+  { name: "OpenAI", category: "Artificial Intelligence", tier: 1, url: "https://openai.com/news/rss.xml" },
+  { name: "Google DeepMind", category: "Artificial Intelligence", tier: 1, url: "https://deepmind.google/blog/rss.xml" },
+  { name: "Google AI", category: "Artificial Intelligence", tier: 1, url: "https://blog.google/technology/ai/rss/" }
 ]);
 
 function asArray(value) {
@@ -25,6 +26,7 @@ export function normalizeFeed(parsed, source) {
   const atomItems = asArray(parsed?.feed?.entry);
   return [...rssItems, ...atomItems].map((item) => ({
     source: source.name,
+    sourceTierHint: source.tier,
     categoryHint: source.category,
     title: firstText(item.title),
     url: firstText(item.link) || firstText(item.guid),

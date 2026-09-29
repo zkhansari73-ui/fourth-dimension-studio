@@ -30,9 +30,23 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
-function paragraphs(value) {
-  return String(value ?? "").split(/\n{2,}/).filter(Boolean)
-    .map((part) => `<p>${escapeHtml(part).replaceAll("\n", "<br>")}</p>`).join("\n");
+function articleHtml(value) {
+  const blocks = String(value ?? "").split(/\n{2,}/).map((part) => part.trim()).filter(Boolean);
+  return blocks.map((part) => {
+    const heading = part.match(/^(#{2,3})\s+(.+)$/s);
+    if (heading) {
+      const level = heading[1].length;
+      return `<h${level}>${escapeHtml(heading[2].trim())}</h${level}>`;
+    }
+    const lines = part.split("\n");
+    if (lines.every((line) => /^[-*]\s+/.test(line))) {
+      return `<ul>${lines.map((line) => `<li>${escapeHtml(line.replace(/^[-*]\s+/, ""))}</li>`).join("")}</ul>`;
+    }
+    if (lines.every((line) => /^\d+\.\s+/.test(line))) {
+      return `<ol>${lines.map((line) => `<li>${escapeHtml(line.replace(/^\d+\.\s+/, ""))}</li>`).join("")}</ol>`;
+    }
+    return `<p>${escapeHtml(part).replaceAll("\n", "<br>")}</p>`;
+  }).join("\n");
 }
 
 export function eligibleApprovedRows(rows) {
@@ -45,9 +59,9 @@ export function wordpressDraft(row) {
   const sources = String(row[COL.sources] ?? "").trim();
   const sourceBlock = sources ? `<h2>Sources</h2><p>${escapeHtml(sources)}</p>` : "";
   const content = [
-    `<section lang="fa" dir="rtl"><h1>${escapeHtml(row[COL.titleFa])}</h1>${paragraphs(row[COL.articleFa])}</section>`,
-    `<hr><section lang="en" dir="ltr"><h2>${escapeHtml(row[COL.titleEn])}</h2>${paragraphs(row[COL.articleEn])}</section>`,
-    `<hr><section lang="ar" dir="rtl"><h2>${escapeHtml(row[COL.titleAr])}</h2>${paragraphs(row[COL.articleAr])}</section>`,
+    `<section lang="fa" dir="rtl"><h1>${escapeHtml(row[COL.titleFa])}</h1>${articleHtml(row[COL.articleFa])}</section>`,
+    `<hr><section lang="en" dir="ltr"><h2>${escapeHtml(row[COL.titleEn])}</h2>${articleHtml(row[COL.articleEn])}</section>`,
+    `<hr><section lang="ar" dir="rtl"><h2>${escapeHtml(row[COL.titleAr])}</h2>${articleHtml(row[COL.articleAr])}</section>`,
     sourceBlock,
   ].join("\n");
   return {

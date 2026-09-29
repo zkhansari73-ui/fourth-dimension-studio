@@ -21,6 +21,8 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     geminiImageModel: env.GEMINI_IMAGE_MODEL?.trim() || "gemini-2.5-flash-image",
     generateImages: boolean(env.NEWS_GENERATE_IMAGES, true),
     requireImage: boolean(env.NEWS_REQUIRE_IMAGE, true),
+    imagesPerArticle: positiveInteger(env.NEWS_IMAGES_PER_ARTICLE, 4),
+    minTotalScore: positiveInteger(env.NEWS_MIN_TOTAL_SCORE, 70),
     maxAgeDays: positiveInteger(env.NEWS_MAX_AGE_DAYS, 7),
     maxArticlesPerRun: positiveInteger(env.NEWS_MAX_ARTICLES_PER_RUN, 2),
     minImportance: positiveInteger(env.NEWS_MIN_IMPORTANCE, 7),

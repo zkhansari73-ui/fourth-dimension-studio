@@ -47,9 +47,18 @@ export function prefilter(items, existingUrls, { now = new Date(), maxAgeDays = 
 
 export function isGeminiSelection(review, config) {
   return review?.decision === "SELECT"
+    && (!Array.isArray(review.hard_rejection_reasons) || review.hard_rejection_reasons.length === 0)
+    && Number(review.total_score ?? 0) >= Number(config.minTotalScore ?? 70)
     && Number(review.importance_score_1_to_10) >= config.minImportance
     && Number(review.relevance_score_1_to_10) >= config.minRelevance
     && review.primary_source_verified === true
     && review.is_recent === true;
+}
+
+export function passesQualityGate(gate) {
+  return gate?.result === "PASS"
+    && gate?.human_review_required === true
+    && Array.isArray(gate.critical_failures)
+    && gate.critical_failures.length === 0;
 }
 

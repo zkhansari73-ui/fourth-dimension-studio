@@ -45,6 +45,8 @@ jobs:
           NEWS_GENERATE: ${{ github.event_name == 'schedule' || inputs.mode == 'full' }}
           NEWS_GENERATE_IMAGES: "true"
           NEWS_REQUIRE_IMAGE: "true"
+          NEWS_IMAGES_PER_ARTICLE: "4"
+          NEWS_MIN_TOTAL_SCORE: "70"
           GEMINI_IMAGE_MODEL: gemini-2.5-flash-image
           WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
