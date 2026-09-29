@@ -128,12 +128,12 @@ export class WordPressDraftClient {
 
 export async function createApprovedDrafts({ config, client, wordpress, logger = console }) {
   if (!config.wordpressEnabled) return { enabled: false, created: 0 };
-  const candidates = eligibleApprovedRows(await client.pipelineRows());
+  const candidates = eligibleApprovedRows(await client.articlePipelineRows());
   let created = 0;
   for (const { row, sheetRow } of candidates) {
     const draft = await wordpress.createDraft(row);
-    await client.updateCell(`K${sheetRow}`, "Ready for Publishing");
-    await client.updateCell(`AQ${sheetRow}`, draft.editUrl);
+    await client.updateArticleCell(`K${sheetRow}`, "Ready for Publishing");
+    await client.updateArticleCell(`AQ${sheetRow}`, draft.editUrl);
     logger.info("WordPress draft created", { itemId: row[COL.itemId], postId: draft.id });
     created += 1;
   }

@@ -1,7 +1,9 @@
 const RELEVANT_TERMS = [
   "architecture", "architect", "interior", "design", "revit", "bim", "parametric",
   "computational", "artificial intelligence", "generative ai", "ai agent", "automation",
-  "image generation", "video generation", "3d", "visualization", "autodesk",
+  "image generation", "video generation", "3d", "visualization", "autodesk", "render",
+  "rhino", "grasshopper", "archicad", "digital twin", "generative design", "construction technology",
+  "building design", "creative workflow", "spatial design", "architectural visualization",
 ];
 
 export function canonicalUrl(value) {

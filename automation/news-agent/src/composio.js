@@ -26,7 +26,7 @@ export class NewsComposioClient {
   }
 
   async existingUrls() {
-    const range = `'${this.config.sheetName}'!E2:E`;
+    const range = `'${this.config.newsInboxSheetName}'!E2:E`;
     const data = await this.execute("GOOGLESHEETS_VALUES_GET", {
       spreadsheet_id: this.config.spreadsheetId,
       range,
@@ -57,11 +57,32 @@ export class NewsComposioClient {
     return { url, raw: data };
   }
 
-  async appendRow(row) {
-    if (row.length !== 46) throw new Error(`News Pipeline row must have 46 columns; got ${row.length}`);
+  async searchConsoleQueries() {
+    const end = new Date();
+    const start = new Date(end.getTime() - 90 * 86_400_000);
+    const date = (value) => value.toISOString().slice(0, 10);
+    const data = await this.execute("GOOGLE_SEARCH_CONSOLE_SEARCH_ANALYTICS_QUERY", {
+      site_url: this.config.searchConsoleSiteUrl,
+      start_date: date(start),
+      end_date: date(end),
+      dimensions: ["query"],
+      row_limit: 100,
+    }, this.config.searchConsoleConnectedAccountId);
+    const rows = data?.rows ?? data?.response?.rows ?? data?.data?.rows ?? [];
+    return rows.map((row) => ({
+      query: row?.keys?.[0] ?? row?.query ?? "",
+      clicks: row?.clicks ?? 0,
+      impressions: row?.impressions ?? 0,
+      ctr: row?.ctr ?? 0,
+      position: row?.position ?? 0,
+    })).filter((row) => row.query);
+  }
+
+  async appendNewsRow(row) {
+    if (row.length !== 30) throw new Error(`News Inbox row must have 30 columns; got ${row.length}`);
     return this.execute("GOOGLESHEETS_SPREADSHEETS_VALUES_APPEND", {
       spreadsheet_id: this.config.spreadsheetId,
-      range: `'${this.config.sheetName}'!A:AT`,
+      range: `'${this.config.newsInboxSheetName}'!A:AD`,
       values: [row],
       major_dimension: "ROWS",
       value_input_option: "RAW",
@@ -69,20 +90,32 @@ export class NewsComposioClient {
     }, this.config.sheetsConnectedAccountId);
   }
 
-  async pipelineRows() {
+  async appendArticleRow(row) {
+    if (row.length !== 46) throw new Error(`Article Pipeline row must have 46 columns; got ${row.length}`);
+    return this.execute("GOOGLESHEETS_SPREADSHEETS_VALUES_APPEND", {
+      spreadsheet_id: this.config.spreadsheetId,
+      range: `'${this.config.articleSheetName}'!A:AT`,
+      values: [row],
+      major_dimension: "ROWS",
+      value_input_option: "RAW",
+      insert_data_option: "INSERT_ROWS",
+    }, this.config.sheetsConnectedAccountId);
+  }
+
+  async articlePipelineRows() {
     const data = await this.execute("GOOGLESHEETS_VALUES_GET", {
       spreadsheet_id: this.config.spreadsheetId,
-      range: `'${this.config.sheetName}'!A2:AT`,
+      range: `'${this.config.articleSheetName}'!A2:AT`,
       major_dimension: "ROWS",
       value_render_option: "FORMATTED_VALUE",
     }, this.config.sheetsConnectedAccountId);
     return data?.values ?? [];
   }
 
-  async updateCell(a1Range, value) {
+  async updateArticleCell(a1Range, value) {
     return this.execute("GOOGLESHEETS_SPREADSHEETS_VALUES_UPDATE", {
       spreadsheet_id: this.config.spreadsheetId,
-      range: `'${this.config.sheetName}'!${a1Range}`,
+      range: `'${this.config.articleSheetName}'!${a1Range}`,
       values: [[value]],
       major_dimension: "ROWS",
       value_input_option: "RAW",
