@@ -55,8 +55,8 @@ test("WordPress uploads the image and sets it as featured media", async () => {
 test("created drafts update status and edit URL in the sheet", async () => {
   const updates = [];
   const client = {
-    pipelineRows: async () => [row()],
-    updateCell: async (...args) => updates.push(args),
+    articlePipelineRows: async () => [row()],
+    updateArticleCell: async (...args) => updates.push(args),
   };
   const wordpress = { createDraft: async () => ({ id: 15, editUrl: "https://example.test/wp-admin/post.php?post=15&action=edit" }) };
   const result = await createApprovedDrafts({ config: { wordpressEnabled: true }, client, wordpress, logger: { info() {} } });

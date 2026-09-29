@@ -1,6 +1,22 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildWaitingApprovalRow } from "../src/row.js";
+import { buildNewsInboxRow, buildWaitingApprovalRow, NEWS_INBOX_HEADERS } from "../src/row.js";
+
+test("news inbox rows are separate approval records without article content", () => {
+  const review = {
+    original_title: "t", original_source: "s", original_url: "https://source.test/news",
+    original_publication_date: "2026-09-29", category: "AI in Architecture", source_tier: 1,
+    total_score: 88, importance_score_1_to_10: 8, relevance_score_1_to_10: 9,
+    primary_source_verified: true, is_recent: true, news_title_en: "EN", news_title_fa: "FA", news_title_ar: "AR",
+    summary_en: "EN summary", summary_fa: "FA summary", summary_ar: "AR summary", why_it_matters_fa: "important",
+    tags: ["AI", "Architecture"], verified_facts: [],
+  };
+  const row = buildNewsInboxRow({ newsId: "NEWS-1", discoveredAt: "2026-09-29", review, runId: "run" });
+  assert.equal(row.length, NEWS_INBOX_HEADERS.length);
+  assert.equal(row.length, 30);
+  assert.equal(row[26], "Waiting News Approval");
+  assert.equal(row[27], "Pending");
+});
 
 test("approval-gated row always has 46 columns and blank publishing fields", () => {
   const review = { original_title: "t", original_source: "s", original_url: "u", original_publication_date: "2026-09-27", category: "AI", importance_score_1_to_10: 8, relevance_score_1_to_10: 9 };
