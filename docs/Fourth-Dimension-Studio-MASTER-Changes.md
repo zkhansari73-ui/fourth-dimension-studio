@@ -125,3 +125,15 @@ Media: `site/assets/`
 - نسخهٔ مرجع GitHub دارای لینک‌های درست Instagram، Pinterest، Telegram و Facebook است.
 - نسخهٔ آنلاین WordPress هنوز قدیمی است و باید محتوای `dist/` به پوشهٔ `site/` منتقل شود.
 - پس از انتقال، کش W3 Total Cache و کش میزبان باید پاک و لینک‌ها از مرورگر ناشناس دوباره بررسی شوند.
+# 29 September 2026 — Trust, legal and SEO foundation
+
+- Added canonical, Open Graph, Twitter Card, ProfessionalService schema and language alternates.
+- Added privacy, terms, cookie, sales/refund and AI disclaimer pages.
+- Added robots.txt and sitemap.xml.
+- Preserved all placeholder links and future modules exactly as requested; no existing section or feature was removed.
+- Added Journal and Shop preparation pages for later connection; both remain noindex until real content or checkout is ready.
+- Added URL-persisted language selection using ?lang=en, ?lang=fa and ?lang=ar.
+- Updated service worker cache to version 2.
+- Expanded the existing FAQ additively from one to five translated questions; the original question remains in place.
+- Translated the added project-brief link while preserving the original email contact action.
+- Remaining hosting work: custom domain, WordPress rewrites for clean URLs, Search Console, production cookie consent (if non-essential tracking is enabled), and a complete WordPress database/uploads/plugins/theme backup.

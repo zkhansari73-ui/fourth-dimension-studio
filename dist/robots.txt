@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fourth-dimension-studio.infinityfreeapp.com/wp-content/themes/fourth-dimension-theme/site/sitemap.xml
