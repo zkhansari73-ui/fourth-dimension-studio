@@ -11,6 +11,7 @@ const COL = Object.freeze({
   excerptAr: 28,
   articleAr: 29,
   featuredImageUrl: 33,
+  altTextFa: 35,
   sources: 37,
   approval: 40,
   wordpressDraftUrl: 42,
@@ -65,14 +66,49 @@ export class WordPressDraftClient {
 
   async createDraft(row) {
     const auth = Buffer.from(`${this.config.wordpressUsername}:${this.config.wordpressAppPassword}`).toString("base64");
+    let featuredMediaId = 0;
+    const imageUrl = String(row[COL.featuredImageUrl] ?? "").trim();
+    if (imageUrl) featuredMediaId = await this.uploadFeaturedImage(imageUrl, row[COL.altTextFa], auth);
+    else if (this.config.requireImage) throw new Error("Approved article has no featured image URL");
+    const payload = wordpressDraft(row);
+    if (featuredMediaId) payload.featured_media = featuredMediaId;
     const response = await this.fetch(`${this.config.wordpressUrl}/wp-json/wp/v2/posts`, {
       method: "POST",
       headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
-      body: JSON.stringify(wordpressDraft(row)),
+      body: JSON.stringify(payload),
     });
     if (!response.ok) throw new Error(`WordPress draft creation failed (${response.status}): ${await response.text()}`);
     const post = await response.json();
     return { id: post.id, editUrl: `${this.config.wordpressUrl}/wp-admin/post.php?post=${post.id}&action=edit` };
+  }
+
+  async uploadFeaturedImage(imageUrl, altText, auth) {
+    const source = await this.fetch(imageUrl);
+    if (!source.ok) throw new Error(`Featured image download failed (${source.status})`);
+    const contentType = source.headers.get("content-type")?.split(";")[0] || "image/png";
+    const extension = contentType === "image/jpeg" ? "jpg" : contentType.split("/")[1] || "png";
+    const bytes = Buffer.from(await source.arrayBuffer());
+    const upload = await this.fetch(`${this.config.wordpressUrl}/wp-json/wp/v2/media`, {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${auth}`,
+        "Content-Type": contentType,
+        "Content-Disposition": `attachment; filename="fourth-dimension-news.${extension}"`,
+      },
+      body: bytes,
+    });
+    if (!upload.ok) throw new Error(`WordPress featured image upload failed (${upload.status}): ${await upload.text()}`);
+    const media = await upload.json();
+    if (!media?.id) throw new Error("WordPress media upload returned no media ID");
+    if (altText) {
+      const update = await this.fetch(`${this.config.wordpressUrl}/wp-json/wp/v2/media/${media.id}`, {
+        method: "POST",
+        headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ alt_text: String(altText) }),
+      });
+      if (!update.ok) throw new Error(`WordPress image alt-text update failed (${update.status}): ${await update.text()}`);
+    }
+    return media.id;
   }
 }
 

@@ -46,6 +46,17 @@ export class NewsComposioClient {
     return JSON.parse(text.replace(/^```json\s*|\s*```$/g, ""));
   }
 
+  async generateImage(prompt) {
+    const data = await this.execute("GEMINI_GENERATE_IMAGE", {
+      prompt,
+      model: this.config.geminiImageModel,
+      aspect_ratio: "16:9",
+    }, this.config.geminiConnectedAccountId);
+    const url = firstHttpUrl(data);
+    if (!url) throw new Error("Gemini generated an image but returned no usable image URL");
+    return { url, raw: data };
+  }
+
   async appendRow(row) {
     if (row.length !== 46) throw new Error(`News Pipeline row must have 46 columns; got ${row.length}`);
     return this.execute("GOOGLESHEETS_SPREADSHEETS_VALUES_APPEND", {
@@ -77,5 +88,33 @@ export class NewsComposioClient {
       value_input_option: "RAW",
     }, this.config.sheetsConnectedAccountId);
   }
+}
+
+function firstHttpUrl(value) {
+  if (typeof value === "string") {
+    const match = value.match(/https?:\/\/[^\s"'<>]+/i);
+    return match?.[0] || "";
+  }
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const found = firstHttpUrl(item);
+      if (found) return found;
+    }
+    return "";
+  }
+  if (value && typeof value === "object") {
+    const preferred = ["url", "image_url", "imageUrl", "download_url", "downloadUrl", "file_url", "fileUrl", "uri"];
+    for (const key of preferred) {
+      if (key in value) {
+        const found = firstHttpUrl(value[key]);
+        if (found) return found;
+      }
+    }
+    for (const nested of Object.values(value)) {
+      const found = firstHttpUrl(nested);
+      if (found) return found;
+    }
+  }
+  return "";
 }
 

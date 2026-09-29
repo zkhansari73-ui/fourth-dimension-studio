@@ -43,6 +43,9 @@ jobs:
           NEWS_SHEET_NAME: News Pipeline
           NEWS_DRY_RUN: "false"
           NEWS_GENERATE: ${{ github.event_name == 'schedule' || inputs.mode == 'full' }}
+          NEWS_GENERATE_IMAGES: "true"
+          NEWS_REQUIRE_IMAGE: "true"
+          GEMINI_IMAGE_MODEL: gemini-2.5-flash-image
           WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
           WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}

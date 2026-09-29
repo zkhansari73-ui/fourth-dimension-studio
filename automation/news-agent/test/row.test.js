@@ -14,11 +14,12 @@ test("approval-gated row always has 46 columns and blank publishing fields", () 
   article.tags = ["tag"];
   article.sources = [];
   article.fact_check_notes = [];
-  const row = buildWaitingApprovalRow({ itemId: "id", discoveredAt: "2026-09-28", review, article, runId: "run" });
+  const row = buildWaitingApprovalRow({ itemId: "id", discoveredAt: "2026-09-28", review, article, featuredImageUrl: "https://images.test/cover.png", runId: "run" });
   assert.equal(row.length, 46);
   assert.equal(row[10], "Waiting Approval");
   assert.equal(row[40], "Pending");
   assert.equal(row[41], "");
   assert.equal(row[42], "");
+  assert.equal(row[33], "https://images.test/cover.png");
 });
 

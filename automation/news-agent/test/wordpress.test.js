@@ -31,6 +31,27 @@ test("WordPress payload is always a draft and contains all three languages", () 
   assert.match(payload.content, /lang="ar"/);
 });
 
+test("WordPress uploads the image and sets it as featured media", async () => {
+  const requests = [];
+  const fetchImpl = async (url, options = {}) => {
+    requests.push({ url, options });
+    if (url === "https://images.test/cover.png") return new Response(new Uint8Array([1, 2, 3]), { status: 200, headers: { "content-type": "image/png" } });
+    if (url.endsWith("/wp-json/wp/v2/media")) return Response.json({ id: 91 });
+    if (url.endsWith("/wp-json/wp/v2/media/91")) return Response.json({ id: 91 });
+    return Response.json({ id: 17 });
+  };
+  const value = row({ 33: "https://images.test/cover.png", 35: "متن جایگزین" });
+  const wordpress = new (await import("../src/wordpress.js")).WordPressDraftClient({
+    wordpressUrl: "https://site.test", wordpressUsername: "u", wordpressAppPassword: "p", requireImage: true,
+  }, fetchImpl);
+  const result = await wordpress.createDraft(value);
+  assert.equal(result.id, 17);
+  const postPayload = JSON.parse(requests.at(-1).options.body);
+  assert.equal(postPayload.status, "draft");
+  assert.equal(postPayload.featured_media, 91);
+  assert.equal(JSON.parse(requests[2].options.body).alt_text, "متن جایگزین");
+});
+
 test("created drafts update status and edit URL in the sheet", async () => {
   const updates = [];
   const client = {
