@@ -36,6 +36,7 @@ jobs:
           NEWS_DRY_RUN: "false"
           NEWS_SCOUT_ENABLED: "true"
           NEWS_MIN_TOTAL_SCORE: "70"
-          NEWS_MAX_REVIEW_CANDIDATES: "24"
+          NEWS_MAX_REVIEW_CANDIDATES: "12"
+          NEWS_MAX_ITEMS_PER_RUN: "5"
           NEWS_SOURCE_TIMEOUT_MS: "20000"
 
