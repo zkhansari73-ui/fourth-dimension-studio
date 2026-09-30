@@ -36,7 +36,7 @@ jobs:
         run: npm start
         env:
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
-          COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
+          COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_CONNECTED_ACCOUNT_ID: ${{ secrets.GEMINI_CONNECTED_ACCOUNT_ID }}
           GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: ca_fEO9enPOPqOL
           GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID }}
