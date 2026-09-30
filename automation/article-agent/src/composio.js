@@ -24,7 +24,7 @@ export class ArticleComposioClient {
     if (!version) {
       const tool = await this.client.tools.getRawComposioToolBySlug(slug);
       version = tool?.version;
-      if (!version || version === "latest") version = (tool?.availableVersions || []).find((x) => x && x !== "latest");
+      if (!version || version === "latest") version = (tool?.availableVersions || []).filter((x) => x && x !== "latest").sort((a, b) => String(b).localeCompare(String(a)))[0];
       if (!version) throw new Error(`No pinned Composio version for ${slug}`);
       this.versions.set(slug, version);
     }
