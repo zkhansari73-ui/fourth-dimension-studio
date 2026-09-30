@@ -1,6 +1,21 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { normalizeSitemap } from "../src/sources.js";
+import { DEFAULT_SOURCES, normalizeSitemap } from "../src/sources.js";
+
+test("new international sources extend the existing list without duplicates", () => {
+  const names = DEFAULT_SOURCES.map((source) => source.name);
+  for (const expected of [
+    "Parametric Architecture",
+    "buildingSMART",
+    "Speckle",
+    "Unreal Engine",
+    "NVIDIA",
+    "Adobe",
+    "Runway",
+  ]) assert.ok(names.includes(expected), `${expected} must be configured`);
+  assert.equal(new Set(names).size, names.length);
+  assert.equal(DEFAULT_SOURCES.length, 23);
+});
 
 test("sitemap sources keep dated matching news URLs only", () => {
   const parsed = { urlset: { url: [
