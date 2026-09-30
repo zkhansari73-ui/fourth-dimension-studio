@@ -1,0 +1,56 @@
+name: Fourth Dimension Article Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Optional direction. Leave blank to select the strongest current trend."
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fourth-dimension-article-generation
+  cancel-in-progress: false
+
+jobs:
+  build-article-for-approval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: automation/article-agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: automation/article-agent/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - name: Research, write, illustrate and queue for approval
+        run: npm start
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
+          GEMINI_CONNECTED_ACCOUNT_ID: ${{ secrets.GEMINI_CONNECTED_ACCOUNT_ID }}
+          GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: ca_fEO9enPOPqOL
+          GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID }}
+          SEARCH_CONSOLE_SITE_URL: ${{ secrets.SEARCH_CONSOLE_SITE_URL }}
+          SITE_SITEMAP_URL: https://fourth-dimension-studio.infinityfreeapp.com/sitemap.xml
+          ARTICLE_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
+          ARTICLE_SHEET_NAME: Article Pipeline
+          ARTICLE_TOPIC: ${{ inputs.topic }}
+          ARTICLE_DRY_RUN: "false"
+          ARTICLE_GENERATE_IMAGES: "true"
+          ARTICLE_REQUIRE_IMAGES: "true"
+          ARTICLE_IMAGES_PER_ARTICLE: "4"
+          ARTICLE_MAX_TREND_CANDIDATES: "30"
+          ARTICLE_SOURCE_TIMEOUT_MS: "20000"
+          GEMINI_MODEL: models/gemini-2.5-flash
+          GEMINI_IMAGE_MODEL: gemini-2.5-flash-image
+
