@@ -5,7 +5,14 @@ function firstUrl(value) {
   if (Array.isArray(value)) { for (const x of value) { const found = firstUrl(x); if (found) return found; } return ""; }
   if (value && typeof value === "object") { for (const x of Object.values(value)) { const found = firstUrl(x); if (found) return found; } }
   return "";
+}// Escape non-ASCII code units because Composio's Gemini bridge serializes tool arguments through a latin-1 path.
+function asciiSafe(value) {
+  return String(value).replace(/[^\x00-\x7F]/g, (char) =>
+    `\\u${char.charCodeAt(0).toString(16).padStart(4, "0")}`
+  );
 }
+
+
 
 export class ArticleComposioClient {
   constructor(config) { this.config = config; this.client = new Composio({ apiKey: config.composioApiKey }); this.versions = new Map(); }
@@ -25,7 +32,7 @@ export class ArticleComposioClient {
     return result?.data ?? result;
   }
   async geminiJson(prompt) {
-    const data = await this.execute("GEMINI_GENERATE_CONTENT", { prompt, model: this.config.geminiModel }, this.config.geminiConnectedAccountId);
+    const data = await this.execute("GEMINI_GENERATE_CONTENT", { prompt: asciiSafe(prompt), model: this.config.geminiModel }, this.config.geminiConnectedAccountId);
     const text = data?.text ?? data?.response ?? data?.result ?? data?.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) throw new Error("Gemini returned no text");
     return JSON.parse(String(text).replace(/^```json\s*|\s*```$/g, ""));
