@@ -11,7 +11,8 @@ function positiveInt(value, fallback) {
 export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
   const config = {
     composioApiKey: env.COMPOSIO_API_KEY?.trim() || "",
-    composioUserId: env.COMPOSIO_USER_ID?.trim() || "",    geminiApiKey: env.GEMINI_API_KEY?.trim() || "",
+    composioUserId: env.COMPOSIO_USER_ID?.trim() || "",
+    geminiApiKey: env.GEMINI_API_KEY?.trim() || "",
     geminiConnectedAccountId: env.GEMINI_CONNECTED_ACCOUNT_ID?.trim() || "",
     sheetsConnectedAccountId: env.GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID?.trim() || "",
     driveConnectedAccountId: env.GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID?.trim() || "",
@@ -21,8 +22,8 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     spreadsheetId: env.ARTICLE_SPREADSHEET_ID?.trim() || "",
     articleSheetName: env.ARTICLE_SHEET_NAME?.trim() || "Article Pipeline",
     requestedTopic: env.ARTICLE_TOPIC?.trim() || "",
-    geminiModel: env.GEMINI_MODEL?.trim() || "models/gemini-3.8-flash",
-    geminiImageModel: env.GEMINI_IMAGE_MODEL?.trim() || "gemini-2.5-flash-image",
+    geminiModel: env.GEMINI_MODEL?.trim() || "models/gemini-3.7-flash",
+    geminiImageModel: env.GEMINI_IMAGE_MODEL?.trim() || "gemini-3.1-flash-image",
     generateImages: bool(env.ARTICLE_GENERATE_IMAGES, true),
     requireImages: bool(env.ARTICLE_REQUIRE_IMAGES, true),
     imagesPerArticle: positiveInt(env.ARTICLE_IMAGES_PER_ARTICLE, 4),
