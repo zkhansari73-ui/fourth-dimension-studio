@@ -1,5 +1,6 @@
 import { Composio } from "@composio/core";
 
+
 function firstUrl(value) {
   if (typeof value === "string") return value.match(/https?:\/\/[^\s\"'<>]+/i)?.[0] || "";
   if (Array.isArray(value)) { for (const x of value) { const found = firstUrl(x); if (found) return found; } return ""; }
@@ -11,6 +12,9 @@ function asciiSafe(value) {
     `\\u${char.charCodeAt(0).toString(16).padStart(4, "0")}`
   );
 }
+
+
+
 
 
 
@@ -32,7 +36,8 @@ export class ArticleComposioClient {
     return result?.data ?? result;
   }
   async geminiJson(prompt) {
-    const data = await this.execute("GEMINI_GENERATE_CONTENT", { prompt: asciiSafe(prompt), model: this.config.geminiModel }, this.config.geminiConnectedAccountId);
+    const transportPrompt = `${prompt}\nTRANSPORT REQUIREMENT: Return ASCII-only JSON. Encode every non-ASCII code unit in every JSON key and value as a \\uXXXX escape. Do not emit literal Persian, Arabic, typographic punctuation, emoji, or any other non-ASCII character. The caller will decode the JSON escapes after transport.`;
+    const data = await this.execute("GEMINI_GENERATE_CONTENT", { prompt: asciiSafe(transportPrompt), model: this.config.geminiModel }, this.config.geminiConnectedAccountId);
     const text = data?.text ?? data?.response ?? data?.result ?? data?.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) throw new Error("Gemini returned no text");
     return JSON.parse(String(text).replace(/^```json\s*|\s*```$/g, ""));
@@ -62,3 +67,4 @@ export class ArticleComposioClient {
     return (data?.rows ?? data?.response?.rows ?? data?.data?.rows ?? []).map((row) => ({ query: row?.keys?.[0] || row?.query || "", clicks: row?.clicks || 0, impressions: row?.impressions || 0, ctr: row?.ctr || 0, position: row?.position || 0 })).filter((x) => x.query);
   }
 }
+
