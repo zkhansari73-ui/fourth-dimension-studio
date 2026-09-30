@@ -35,7 +35,6 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
   };
   const missing = [
     ["composioApiKey", "COMPOSIO_API_KEY"], ["composioUserId", "COMPOSIO_USER_ID"],
-    ["geminiConnectedAccountId", "GEMINI_CONNECTED_ACCOUNT_ID"],
     ["sheetsConnectedAccountId", "GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID"],
     ["spreadsheetId", "ARTICLE_SPREADSHEET_ID"],
   ].filter(([key]) => !config[key]).map(([, label]) => label);
