@@ -19,7 +19,17 @@ const existingUrls = await client.existingArticleUrls();
 const candidates = recentCandidates(sourceResult.items, existingUrls, { now, maxAgeDays: 14, limit: config.maxTrendCandidates });
 if (!candidates.length) throw new Error("No recent non-duplicate candidates were available for article commissioning");
 
-const brief = await client.geminiJson(trendPrompt(candidates, config.requestedTopic, today));
+// Keep the Composio/Gemini request bounded: source pages can contain very large RSS excerpts.
+const compactCandidates = candidates.map((item) => ({
+  source: item.source,
+  sourceTierHint: item.sourceTierHint,
+  categoryHint: item.categoryHint,
+  title: String(item.title || "").slice(0, 240),
+  url: item.url,
+  publishedAt: item.publishedAt,
+  excerpt: String(item.excerpt || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 360),
+}));
+const brief = await client.geminiJson(trendPrompt(compactCandidates, config.requestedTopic, today));
 if (brief?.decision !== "SELECT" || brief?.primary_source_verified !== true) throw new Error(`No publishable article subject selected: ${brief?.rejection_reason || "selection rejected"}`);
 
 const keywordResearch = await collectKeywordResearch(brief, { client, config });

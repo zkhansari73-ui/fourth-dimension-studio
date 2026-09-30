@@ -27,7 +27,7 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     requireImages: bool(env.ARTICLE_REQUIRE_IMAGES, true),
     imagesPerArticle: positiveInt(env.ARTICLE_IMAGES_PER_ARTICLE, 4),
     sourceTimeoutMs: positiveInt(env.ARTICLE_SOURCE_TIMEOUT_MS, 20000),
-    maxTrendCandidates: positiveInt(env.ARTICLE_MAX_TREND_CANDIDATES, 30),
+    maxTrendCandidates: positiveInt(env.ARTICLE_MAX_TREND_CANDIDATES, 12),
     dryRun: argv.includes("--dry-run") || bool(env.ARTICLE_DRY_RUN, false),
     wordpressUrl: env.WORDPRESS_URL?.trim().replace(/\/$/, "") || "",
     wordpressUsername: env.WORDPRESS_USERNAME?.trim() || "",
