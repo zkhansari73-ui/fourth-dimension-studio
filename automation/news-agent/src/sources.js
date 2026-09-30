@@ -2,9 +2,11 @@ export const DEFAULT_SOURCES = Object.freeze([
   { name: "ArchDaily", category: "Architecture", tier: 2, kind: "rss", url: "https://www.archdaily.com/rss" },
   { name: "Dezeen", category: "Architecture", tier: 2, kind: "rss", url: "https://www.dezeen.com/feed/" },
   { name: "Designboom", category: "Design", tier: 2, kind: "rss", url: "https://www.designboom.com/feed/" },
+  { name: "Parametric Architecture", category: "Parametric Design / AI in Architecture", tier: 2, kind: "rss", url: "https://parametric-architecture.com/feed/" },
   { name: "Architizer", category: "Architecture", tier: 2, kind: "rss", url: "https://architizer.com/blog/feed/" },
   { name: "The Architect's Newspaper", category: "Architecture", tier: 2, kind: "rss", url: "https://www.archpaper.com/feed/" },
   { name: "Autodesk AEC", category: "BIM / Revit", tier: 1, kind: "rss", url: "https://www.autodesk.com/blogs/aec/feed/" },
+  { name: "buildingSMART", category: "BIM / openBIM Standards", tier: 1, kind: "rss", url: "https://news.google.com/rss/search?q=site%3Abuildingsmart.org%20openBIM&hl=en-US&gl=US&ceid=US%3Aen" },
   { name: "OpenAI", category: "Artificial Intelligence", tier: 1, kind: "rss", url: "https://openai.com/news/rss.xml" },
   { name: "Google DeepMind", category: "Artificial Intelligence", tier: 1, kind: "rss", url: "https://deepmind.google/blog/rss.xml" },
   { name: "Google AI", category: "Artificial Intelligence", tier: 1, kind: "rss", url: "https://blog.google/technology/ai/rss/" },
@@ -14,7 +16,12 @@ export const DEFAULT_SOURCES = Object.freeze([
   { name: "Archinect", category: "Architecture", tier: 3, kind: "sitemap", url: "https://archinect.com/sitemap.xml", itemPattern: "/news/" },
   { name: "McNeel Rhino", category: "Computational Design", tier: 1, kind: "rss", url: "https://blog.rhino3d.com/feeds/posts/default?alt=rss" },
   { name: "Graphisoft", category: "BIM", tier: 1, kind: "sitemap", url: "https://graphisoft.com/sitemap.xml", itemPattern: "/(insights|blog|news)/" },
-  { name: "Chaos", category: "Visualization / Rendering", tier: 1, kind: "sitemap", url: "https://www.chaos.com/sitemap.xml", itemPattern: "/(blog|enscape/latest-version)" }
+  { name: "Chaos", category: "Visualization / Rendering", tier: 1, kind: "sitemap", url: "https://www.chaos.com/sitemap.xml", itemPattern: "/(blog|enscape/latest-version)" },
+  { name: "Speckle", category: "AEC Data / BIM / Automation", tier: 1, kind: "sitemap", url: "https://speckle.systems/sitemap.xml", itemPattern: "/blog/" },
+  { name: "Unreal Engine", category: "Interactive Architecture / Real-time 3D", tier: 1, kind: "rss", url: "https://news.google.com/rss/search?q=site%3Aunrealengine.com%20architecture%20visualization&hl=en-US&gl=US&ceid=US%3Aen" },
+  { name: "NVIDIA", category: "Omniverse / Rendering / 3D AI", tier: 1, kind: "rss", url: "https://news.google.com/rss/search?q=site%3Ablogs.nvidia.com%20Omniverse%20rendering%203D%20AI&hl=en-US&gl=US&ceid=US%3Aen" },
+  { name: "Adobe", category: "Firefly / Creative AI", tier: 1, kind: "rss", url: "https://news.google.com/rss/search?q=site%3Ablog.adobe.com%20Firefly%20creative%20AI%203D%20video&hl=en-US&gl=US&ceid=US%3Aen" },
+  { name: "Runway", category: "AI Video / Creative AI", tier: 1, kind: "sitemap", url: "https://runway.com/sitemap.xml", itemPattern: "/news/" }
 ]);
 
 function asArray(value) {
