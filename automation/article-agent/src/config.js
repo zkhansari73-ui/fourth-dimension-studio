@@ -11,7 +11,7 @@ function positiveInt(value, fallback) {
 export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
   const config = {
     composioApiKey: env.COMPOSIO_API_KEY?.trim() || "",
-    composioUserId: env.COMPOSIO_USER_ID?.trim() || "",
+    composioUserId: env.COMPOSIO_USER_ID?.trim() || "",    geminiApiKey: env.GEMINI_API_KEY?.trim() || "",
     geminiConnectedAccountId: env.GEMINI_CONNECTED_ACCOUNT_ID?.trim() || "",
     sheetsConnectedAccountId: env.GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID?.trim() || "",
     driveConnectedAccountId: env.GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID?.trim() || "",
