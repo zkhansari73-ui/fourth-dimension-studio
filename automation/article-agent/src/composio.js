@@ -1,22 +1,21 @@
 import { Composio } from "@composio/core";
 
-
 function firstUrl(value) {
   if (typeof value === "string") return value.match(/https?:\/\/[^\s\"'<>]+/i)?.[0] || "";
   if (Array.isArray(value)) { for (const x of value) { const found = firstUrl(x); if (found) return found; } return ""; }
   if (value && typeof value === "object") { for (const x of Object.values(value)) { const found = firstUrl(x); if (found) return found; } }
   return "";
-}// Escape non-ASCII code units because Composio's Gemini bridge serializes tool arguments through a latin-1 path.
+}
+
+// Composio's Gemini bridge currently serializes tool arguments through a
+// latin-1 path. Escape non-ASCII code units so Persian/Arabic prompts reach
+// Gemini without the bridge rejecting them; JSON output is still decoded
+// normally after the tool returns it.
 function asciiSafe(value) {
   return String(value).replace(/[^\x00-\x7F]/g, (char) =>
     `\\u${char.charCodeAt(0).toString(16).padStart(4, "0")}`
   );
 }
-
-
-
-
-
 
 export class ArticleComposioClient {
   constructor(config) { this.config = config; this.client = new Composio({ apiKey: config.composioApiKey }); this.versions = new Map(); }
@@ -36,14 +35,16 @@ export class ArticleComposioClient {
     return result?.data ?? result;
   }
   async geminiJson(prompt) {
-    const transportPrompt = `${prompt}\nTRANSPORT REQUIREMENT: Return ASCII-only JSON. Encode every non-ASCII code unit in every JSON key and value as a \\uXXXX escape. Do not emit literal Persian, Arabic, typographic punctuation, emoji, or any other non-ASCII character. The caller will decode the JSON escapes after transport.`;
+    const transportPrompt = `${prompt}\nTRANSPORT REQUIREMENT: First create the requested JSON internally. Then UTF-8 encode that complete JSON and return ONLY its standard Base64 representation. The response must contain Base64 characters only (A-Z, a-z, 0-9, +, /, and optional = padding), with no markdown fence, prose, whitespace, or literal JSON. This is mandatory because the transport accepts ASCII only.`;
     const data = await this.execute("GEMINI_GENERATE_CONTENT", { prompt: asciiSafe(transportPrompt), model: this.config.geminiModel }, this.config.geminiConnectedAccountId);
     const text = data?.text ?? data?.response ?? data?.result ?? data?.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) throw new Error("Gemini returned no text");
-    return JSON.parse(String(text).replace(/^```json\s*|\s*```$/g, ""));
+    const encoded = String(text).replace(/^```(?:base64)?\s*|\s*```$/gi, "").replace(/\s+/g, "");
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded)) throw new Error("Gemini returned a non-Base64 transport payload");
+    return JSON.parse(Buffer.from(encoded, "base64").toString("utf8"));
   }
   async generateImage(prompt) {
-    const data = await this.execute("GEMINI_GENERATE_IMAGE", { prompt, model: this.config.geminiImageModel, aspect_ratio: "16:9" }, this.config.geminiConnectedAccountId);
+    const data = await this.execute("GEMINI_GENERATE_IMAGE", { prompt: asciiSafe(prompt), model: this.config.geminiImageModel, aspect_ratio: "16:9" }, this.config.geminiConnectedAccountId);
     const url = firstUrl(data); if (!url) throw new Error("Gemini returned no usable image URL"); return { url };
   }
   async existingArticleUrls() {
@@ -67,4 +68,3 @@ export class ArticleComposioClient {
     return (data?.rows ?? data?.response?.rows ?? data?.data?.rows ?? []).map((row) => ({ query: row?.keys?.[0] || row?.query || "", clicks: row?.clicks || 0, impressions: row?.impressions || 0, ctr: row?.ctr || 0, position: row?.position || 0 })).filter((x) => x.query);
   }
 }
-
