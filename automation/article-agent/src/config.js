@@ -21,7 +21,7 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     spreadsheetId: env.ARTICLE_SPREADSHEET_ID?.trim() || "",
     articleSheetName: env.ARTICLE_SHEET_NAME?.trim() || "Article Pipeline",
     requestedTopic: env.ARTICLE_TOPIC?.trim() || "",
-    geminiModel: env.GEMINI_MODEL?.trim() || "models/gemini-2.5-flash",
+    geminiModel: env.GEMINI_MODEL?.trim() || "models/gemini-3.8-flash",
     geminiImageModel: env.GEMINI_IMAGE_MODEL?.trim() || "gemini-2.5-flash-image",
     generateImages: bool(env.ARTICLE_GENERATE_IMAGES, true),
     requireImages: bool(env.ARTICLE_REQUIRE_IMAGES, true),
