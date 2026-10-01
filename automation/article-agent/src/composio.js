@@ -11,7 +11,20 @@ function firstUrl(value) {
 // latin-1 path. Escape non-ASCII code units so Persian/Arabic prompts reach
 // Gemini without the bridge rejecting them; JSON output is still decoded
 // normally after the tool returns it.
-async function fetchWithRetry(url, options) {  let response;  for (let attempt = 1; attempt <= 4; attempt += 1) {    response = await fetch(url, options);    if (![429, 503].includes(response.status) || attempt === 4) return response;    await new Promise((resolve) => setTimeout(resolve, attempt * 10_000));  }  return response;}function parseGeminiJson(value) {
+async function fetchWithRetry(url, options) {
+  let lastError;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      const response = await fetch(url, { ...options, signal: AbortSignal.timeout(45_000) });
+      if (![429, 500, 502, 503, 504].includes(response.status) || attempt === 2) return response;
+      lastError = new Error(`Gemini HTTP ${response.status}`);
+    } catch (error) {
+      lastError = error;
+    }
+    if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, attempt * 10_000));
+  }
+  throw lastError || new Error("Gemini request failed");
+}function parseGeminiJson(value) {
   const text = String(value).replace(/^```json\s*|\s*```$/g, "");
   try {
     return JSON.parse(text);
@@ -53,7 +66,13 @@ export class ArticleComposioClient {
       for (const model of models) {
         const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(this.config.geminiApiKey)}`;
         for (let attempt = 1; attempt <= 2; attempt += 1) {
-          const response = await fetch(endpoint, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", temperature: 0.25 } }) });
+          let response;
+          try {
+            response = await fetchWithRetry(endpoint, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", temperature: 0.25 } }) });
+          } catch (error) {
+            lastError = `${model}: ${error?.message || error}`;
+            break;
+          }
           const payload = await response.json().catch(() => ({}));
           if (response.ok) { const text = payload?.candidates?.[0]?.content?.parts?.map((part) => part?.text || "").join(""); if (!text) throw new Error("Gemini API returned no text"); return parseGeminiJson(text); }
           lastError = `${model} (${response.status}): ${payload?.error?.message || "unknown error"}`;
@@ -61,7 +80,7 @@ export class ArticleComposioClient {
           if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 10_000));
         }
       }
-      throw new Error(`Gemini API failed across fallback models: ${lastError}`);
+      console.warn(`Direct Gemini API unavailable; falling back to connected Composio Gemini: ${lastError}`);
     }
     const transportPrompt = `${prompt}\nTRANSPORT REQUIREMENT: First create the requested JSON internally. Then UTF-8 encode that complete JSON and return ONLY its standard Base64 representation. The response must contain Base64 characters only (A-Z, a-z, 0-9, +, /, and optional = padding), with no markdown fence, prose, whitespace, or literal JSON. This is mandatory because the transport accepts ASCII only.`;
     const data = await this.execute("GEMINI_GENERATE_CONTENT", { prompt: asciiSafe(transportPrompt), model: this.config.geminiModel }, this.config.geminiConnectedAccountId);
