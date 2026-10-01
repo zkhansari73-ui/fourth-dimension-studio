@@ -11,7 +11,18 @@ function firstUrl(value) {
 // latin-1 path. Escape non-ASCII code units so Persian/Arabic prompts reach
 // Gemini without the bridge rejecting them; JSON output is still decoded
 // normally after the tool returns it.
-async function fetchWithRetry(url, options) {  let response;  for (let attempt = 1; attempt <= 4; attempt += 1) {    response = await fetch(url, options);    if (![429, 503].includes(response.status) || attempt === 4) return response;    await new Promise((resolve) => setTimeout(resolve, attempt * 10_000));  }  return response;}function asciiSafe(value) {
+async function fetchWithRetry(url, options) {  let response;  for (let attempt = 1; attempt <= 4; attempt += 1) {    response = await fetch(url, options);    if (![429, 503].includes(response.status) || attempt === 4) return response;    await new Promise((resolve) => setTimeout(resolve, attempt * 10_000));  }  return response;}function parseGeminiJson(value) {
+  const text = String(value).replace(/^```json\s*|\s*```$/g, "");
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    const repaired = text.replace(/\\(?!["\\/bfnrtu])/g, "\\\\");
+    if (repaired === text) throw error;
+    return JSON.parse(repaired);
+  }
+}
+
+function asciiSafe(value) {
   return String(value).replace(/[^\x00-\x7F]/g, (char) =>
     `\\u${char.charCodeAt(0).toString(16).padStart(4, "0")}`
   );
@@ -44,7 +55,7 @@ export class ArticleComposioClient {
         for (let attempt = 1; attempt <= 2; attempt += 1) {
           const response = await fetch(endpoint, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", temperature: 0.25 } }) });
           const payload = await response.json().catch(() => ({}));
-          if (response.ok) { const text = payload?.candidates?.[0]?.content?.parts?.map((part) => part?.text || "").join(""); if (!text) throw new Error("Gemini API returned no text"); return JSON.parse(String(text).replace(/^```json\s*|\s*```$/g, "")); }
+          if (response.ok) { const text = payload?.candidates?.[0]?.content?.parts?.map((part) => part?.text || "").join(""); if (!text) throw new Error("Gemini API returned no text"); return parseGeminiJson(text); }
           lastError = `${model} (${response.status}): ${payload?.error?.message || "unknown error"}`;
           if (![429, 503].includes(response.status)) break;
           if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 10_000));
@@ -58,7 +69,7 @@ export class ArticleComposioClient {
     if (!text) throw new Error("Gemini returned no text");
     const encoded = String(text).replace(/^```(?:base64)?\s*|\s*```$/gi, "").replace(/\s+/g, "");
     if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded)) throw new Error("Gemini returned a non-Base64 transport payload");
-    return JSON.parse(Buffer.from(encoded, "base64").toString("utf8"));
+    return parseGeminiJson(Buffer.from(encoded, "base64").toString("utf8"));
   }
   async generateImage(prompt) {
     const data = await this.execute("GEMINI_GENERATE_IMAGE", { prompt: asciiSafe(prompt), model: this.config.geminiImageModel, aspect_ratio: "16:9" }, this.config.geminiConnectedAccountId);
