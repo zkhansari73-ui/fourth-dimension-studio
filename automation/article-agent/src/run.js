@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { loadConfig } from "./config.js";
 import { ArticleComposioClient } from "./composio.js";
 import { collectKeywordResearch } from "./keyword-research.js";
+import { ensureImagePackage } from "./images.js";
 import { articlePrompt, qualityGatePrompt, trendPrompt } from "./prompts.js";
 import { passesQualityGate, recentCandidates } from "./policy.js";
 import { articleRow } from "./row.js";
@@ -34,6 +35,7 @@ if (brief?.decision !== "SELECT" || brief?.primary_source_verified !== true) thr
 
 const keywordResearch = await collectKeywordResearch(brief, { client, config });
 const article = await client.geminiJson(articlePrompt(brief, keywordResearch, today));
+article.image_package = ensureImagePackage(article, config.imagesPerArticle);
 const qualityGate = await client.geminiJson(qualityGatePrompt(brief, article));
 if (!passesQualityGate(qualityGate)) throw new Error(`Article failed quality gate: ${JSON.stringify(qualityGate?.critical_failures || qualityGate?.revision_items || [])}`);
 
