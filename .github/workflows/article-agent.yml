@@ -53,4 +53,4 @@ jobs:
           ARTICLE_MAX_TREND_CANDIDATES: "12"
           ARTICLE_SOURCE_TIMEOUT_MS: "20000"
           GEMINI_MODEL: models/gemini-3.7-flash
-          GEMINI_IMAGE_MODEL: gemini-3.1-flash-image
+          GEMINI_IMAGE_MODEL: gemini-2.5-flash-image
