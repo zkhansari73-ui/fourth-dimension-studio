@@ -4,12 +4,14 @@ import { loadConfig } from "../src/config.js";
 import { passesQualityGate, recentCandidates } from "../src/policy.js";
 import { articleRow } from "../src/row.js";
 import { approvedRows, draftPayload } from "../src/wordpress.js";
+import { ensureImagePackage } from "../src/images.js";
 
 test("article config is independent and manual-topic aware", () => {
-  const config = loadConfig({ COMPOSIO_API_KEY: "c", COMPOSIO_USER_ID: "u", GEMINI_CONNECTED_ACCOUNT_ID: "g", GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: "s", ARTICLE_SPREADSHEET_ID: "id", ARTICLE_TOPIC: "BIM agents" }, []);
+  const config = loadConfig({ COMPOSIO_API_KEY: "c", COMPOSIO_USER_ID: "u", GEMINI_API_KEY: "direct", GEMINI_CONNECTED_ACCOUNT_ID: "g", GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: "s", ARTICLE_SPREADSHEET_ID: "id", ARTICLE_TOPIC: "BIM agents" }, []);
   assert.equal(config.articleSheetName, "Article Pipeline");
   assert.equal(config.requestedTopic, "BIM agents");
   assert.equal(config.generateImages, true);
+  assert.equal(config.geminiApiKey, "direct");
 });
 
 test("trend candidates exclude duplicate and stale article sources", () => {
@@ -25,6 +27,17 @@ test("trend candidates exclude duplicate and stale article sources", () => {
 test("quality gate always requires explicit human review", () => {
   assert.equal(passesQualityGate({ result: "PASS", human_review_required: true, critical_failures: [] }), true);
   assert.equal(passesQualityGate({ result: "PASS", human_review_required: false, critical_failures: [] }), false);
+});
+
+test("image package is completed to four production-ready specifications", () => {
+  const article = { article_title_en: "AI for BIM", article_title_fa: "هوش مصنوعی برای بیم", article_title_ar: "الذكاء الاصطناعي لنمذجة البناء", slug_en: "ai-for-bim", image_package: [{ role: "featured", prompt: "original hero" }] };
+  const result = ensureImagePackage(article, 4);
+  assert.equal(result.length, 4);
+  assert.equal(result[0].prompt, "original hero");
+  for (const item of result) {
+    assert.ok(item.prompt); assert.ok(item.filename.endsWith(".webp")); assert.ok(item.placement_hint);
+    assert.ok(item.caption); assert.ok(item.alt_text_en); assert.ok(item.alt_text_fa); assert.ok(item.alt_text_ar);
+  }
 });
 
 test("generated article row is waiting approval and has 46 columns", () => {
