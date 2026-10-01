@@ -1,4 +1,8 @@
 import { Composio } from "@composio/core";
+import { createHash } from "node:crypto";
+import { writeFile, unlink } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 function firstUrl(value) {
   if (typeof value === "string") return value.match(/https?:\/\/[^\s\"'<>]+/i)?.[0] || "";
@@ -7,24 +11,39 @@ function firstUrl(value) {
   return "";
 }
 
+function firstFileId(value) {
+  if (!value || typeof value !== "object") return "";
+  for (const key of ["id", "file_id", "fileId"]) {
+    if (typeof value[key] === "string" && value[key]) return value[key];
+  }
+  for (const nested of Object.values(value)) {
+    const found = firstFileId(nested);
+    if (found) return found;
+  }
+  return "";
+}
+
 // Composio's Gemini bridge currently serializes tool arguments through a
 // latin-1 path. Escape non-ASCII code units so Persian/Arabic prompts reach
 // Gemini without the bridge rejecting them; JSON output is still decoded
 // normally after the tool returns it.
 async function fetchWithRetry(url, options) {
+  const { timeoutMs = 45_000, attempts = 2, ...requestOptions } = options;
   let lastError;
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
-      const response = await fetch(url, { ...options, signal: AbortSignal.timeout(45_000) });
-      if (![429, 500, 502, 503, 504].includes(response.status) || attempt === 2) return response;
+      const response = await fetch(url, { ...requestOptions, signal: AbortSignal.timeout(timeoutMs) });
+      if (![429, 500, 502, 503, 504].includes(response.status) || attempt === attempts) return response;
       lastError = new Error(`Gemini HTTP ${response.status}`);
     } catch (error) {
       lastError = error;
     }
-    if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, attempt * 10_000));
+    if (attempt < attempts) await new Promise((resolve) => setTimeout(resolve, attempt * 10_000));
   }
   throw lastError || new Error("Gemini request failed");
-}function parseGeminiJson(value) {
+}
+
+function parseGeminiJson(value) {
   const text = String(value).replace(/^```json\s*|\s*```$/g, "");
   try {
     return JSON.parse(text);
@@ -91,7 +110,38 @@ export class ArticleComposioClient {
     return parseGeminiJson(Buffer.from(encoded, "base64").toString("utf8"));
   }
   async generateImage(prompt) {
-    const data = await this.execute("GEMINI_GENERATE_IMAGE", { prompt: `Decode this UTF-8 Base64 image brief, then create the requested image. Return the image only. Base64 brief: ${Buffer.from(String(prompt), "utf8").toString("base64")}`, model: this.config.geminiImageModel, aspect_ratio: "16:9" }, this.config.geminiConnectedAccountId);
+    if (this.config.geminiApiKey) {
+      const model = String(this.config.geminiImageModel).replace(/^models\//, "");
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(this.config.geminiApiKey)}`;
+      const response = await fetchWithRetry(endpoint, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseModalities: ["IMAGE"] } }),
+        timeoutMs: 180_000,
+        attempts: 1,
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(`Gemini image API failed (${response.status}): ${payload?.error?.message || "unknown error"}`);
+      const parts = payload?.candidates?.[0]?.content?.parts || [];
+      const imagePart = parts.find((part) => part?.inlineData?.data || part?.inline_data?.data);
+      const imageData = imagePart?.inlineData?.data || imagePart?.inline_data?.data;
+      const mimeType = imagePart?.inlineData?.mimeType || imagePart?.inline_data?.mime_type || "image/png";
+      if (!imageData) throw new Error("Gemini image API returned no image bytes");
+      const extension = mimeType.includes("jpeg") ? "jpg" : mimeType.includes("webp") ? "webp" : "png";
+      const digest = createHash("sha256").update(String(prompt)).digest("hex").slice(0, 16);
+      const filePath = join(tmpdir(), `fourth-dimension-${digest}.${extension}`);
+      await writeFile(filePath, Buffer.from(imageData, "base64"));
+      try {
+        const uploaded = await this.execute("GOOGLEDRIVE_UPLOAD_FILE", { file_to_upload: filePath }, process.env.GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID || "");
+        const fileId = firstFileId(uploaded);
+        const url = firstUrl(uploaded) || (fileId ? `https://drive.google.com/file/d/${fileId}/view` : "");
+        if (!url) throw new Error("Google Drive upload returned no usable image URL or file ID");
+        return { url };
+      } finally {
+        await unlink(filePath).catch(() => {});
+      }
+    }
+    const data = await this.execute("GEMINI_GENERATE_IMAGE", { prompt: asciiSafe(prompt), model: this.config.geminiImageModel, aspect_ratio: "16:9" }, this.config.geminiConnectedAccountId);
     const url = firstUrl(data); if (!url) throw new Error("Gemini returned no usable image URL"); return { url };
   }
   async existingArticleUrls() {
