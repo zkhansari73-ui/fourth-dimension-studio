@@ -72,7 +72,7 @@ export class ArticleComposioClient {
     return parseGeminiJson(Buffer.from(encoded, "base64").toString("utf8"));
   }
   async generateImage(prompt) {
-    const data = await this.execute("GEMINI_GENERATE_IMAGE", { prompt: asciiSafe(prompt), model: this.config.geminiImageModel, aspect_ratio: "16:9" }, this.config.geminiConnectedAccountId);
+    const data = await this.execute("GEMINI_GENERATE_IMAGE", { prompt: `Decode this UTF-8 Base64 image brief, then create the requested image. Return the image only. Base64 brief: ${Buffer.from(String(prompt), "utf8").toString("base64")}`, model: this.config.geminiImageModel, aspect_ratio: "16:9" }, this.config.geminiConnectedAccountId);
     const url = firstUrl(data); if (!url) throw new Error("Gemini returned no usable image URL"); return { url };
   }
   async existingArticleUrls() {
