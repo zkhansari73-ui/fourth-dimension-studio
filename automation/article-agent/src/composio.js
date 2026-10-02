@@ -150,7 +150,12 @@ export class ArticleComposioClient {
   }
   async appendArticle(row) {
     if (row.length !== 46) throw new Error(`Article Pipeline row must have 46 columns; got ${row.length}`);
-    return this.execute("GOOGLESHEETS_SPREADSHEETS_VALUES_APPEND", { spreadsheet_id: this.config.spreadsheetId, range: `'${this.config.articleSheetName}'!A:AT`, values: [row], major_dimension: "ROWS", value_input_option: "RAW", insert_data_option: "INSERT_ROWS" }, this.config.sheetsConnectedAccountId);
+    const normalizedRow = row.map((value) => {
+      if (value === null || value === undefined) return "";
+      if (["string", "number", "boolean"].includes(typeof value)) return value;
+      return JSON.stringify(value);
+    });
+    return this.execute("GOOGLESHEETS_SPREADSHEETS_VALUES_APPEND", { spreadsheet_id: this.config.spreadsheetId, range: `'${this.config.articleSheetName}'!A:AT`, values: [normalizedRow], major_dimension: "ROWS", value_input_option: "RAW", insert_data_option: "INSERT_ROWS" }, this.config.sheetsConnectedAccountId);
   }
   async articleRows() {
     const data = await this.execute("GOOGLESHEETS_VALUES_GET", { spreadsheet_id: this.config.spreadsheetId, range: `'${this.config.articleSheetName}'!A2:AT`, major_dimension: "ROWS", value_render_option: "FORMATTED_VALUE" }, this.config.sheetsConnectedAccountId);
