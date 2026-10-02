@@ -34,10 +34,20 @@ const brief = await client.geminiJson(trendPrompt(compactCandidates, config.requ
 if (brief?.decision !== "SELECT" || brief?.primary_source_verified !== true) throw new Error(`No publishable article subject selected: ${brief?.rejection_reason || "selection rejected"}`);
 
 const keywordResearch = await collectKeywordResearch(brief, { client, config });
-const article = await client.geminiJson(articlePrompt(brief, keywordResearch, today));
+let article = await client.geminiJson(articlePrompt(brief, keywordResearch, today));
 article.image_package = ensureImagePackage(article, config.imagesPerArticle);
-const qualityGate = await client.geminiJson(qualityGatePrompt(brief, article));
-if (!passesQualityGate(qualityGate)) throw new Error(`Article failed quality gate: ${JSON.stringify(qualityGate?.critical_failures || qualityGate?.revision_items || [])}`);
+let qualityGate = await client.geminiJson(qualityGatePrompt(brief, article));
+if (!passesQualityGate(qualityGate)) {
+  const issues = qualityGate?.critical_failures || qualityGate?.revision_items || [];
+  console.warn(`First draft failed quality gate; requesting one complete revision: ${JSON.stringify(issues)}`);
+  article = await client.geminiJson(`${articlePrompt(brief, keywordResearch, today)}
+MANDATORY REVISION: Produce a fully corrected replacement, not commentary. Fix every issue below while preserving verified facts, citations, language separation, and the exact JSON schema.
+QUALITY ISSUES: ${JSON.stringify(issues)}
+PREVIOUS DRAFT: ${JSON.stringify(article)}`);
+  article.image_package = ensureImagePackage(article, config.imagesPerArticle);
+  qualityGate = await client.geminiJson(qualityGatePrompt(brief, article));
+}
+if (!passesQualityGate(qualityGate)) throw new Error(`Article failed quality gate after revision: ${JSON.stringify(qualityGate?.critical_failures || qualityGate?.revision_items || [])}`);
 
 const specs = Array.isArray(article.image_package) ? article.image_package.slice(0, config.imagesPerArticle) : [];
 if (config.requireImages && specs.length !== config.imagesPerArticle) throw new Error(`Article requires ${config.imagesPerArticle} image specifications; received ${specs.length}`);
