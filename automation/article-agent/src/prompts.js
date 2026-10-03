@@ -4,12 +4,12 @@ export function trendPrompt(candidates, requestedTopic, today) {
   return `You are the commissioning editor of Fourth Dimension Studio. Today is ${today}. Select exactly one timely, internationally relevant subject for a standalone long-form article. Studio pillars: ${PILLARS}. A subject needs a strong fit with at least one pillar; it does not need to combine AI with architecture.
 ${requestedTopic ? `The owner requested this direction: ${requestedTopic}. Select the strongest evidence-backed angle within it.` : "No topic was supplied. Choose the strongest candidate from any one of the six pillars. Do not systematically favor architecture or AI; consider source quality, audience value, search intent and recent pillar coverage."}
 Prefer primary official sources, meaningful practical impact, strong search intent, durable value, and an angle that allows original expert analysis. Reject gossip, leaks, generic consumer technology, pure promotion, duplicate events, and subjects without verifiable primary evidence. The article is independent from the News Inbox; do not convert or consume any news approval record.
-Assign exactly one content_pillar from: architecture_bim, ai_content, motion_video, web_app, automation_agents, editorial_books. Return strict JSON only with: decision (SELECT or REJECT), content_pillar, original_title, original_source, original_url, original_publication_date, primary_source_url, category, source_tier, editorial_angle, why_now, audience_value, search_seed_en, search_seed_fa, search_seed_ar, importance_score_1_to_10, relevance_score_1_to_10, total_score, primary_source_verified (boolean), is_recent (boolean), cluster_id, verified_facts (array of objects with claim and url), claim_verification_notes (array), caveats (array), value_add_opportunity.
+Assign exactly one content_pillar from: architecture_bim, ai_content, motion_video, web_app, automation_agents, editorial_books. Return strict JSON only with: decision (SELECT or REJECT), content_pillar, original_title, original_source, original_url, original_publication_date, primary_source_url, category, source_tier, editorial_angle, why_now, audience_value, search_seed_en, search_seed_fa, search_sed_ar, importance_score_1_to_10, relevance_score_1_to_10, total_score, primary_source_verified (boolean), is_recent (boolean), cluster_id, verified_facts (array of objects with claim and url), claim_verification_notes (array), caveats (array), value_add_opportunity.
 Candidates: ${JSON.stringify(candidates)}`;
 }
 
 export function articlePrompt(brief, keywordResearch, today) {
-  return `Create one original, independent, professional long-form article package for Fourth Dimension Studio. Date: ${today}. This is not a news brief and must not copy or closely paraphrase any source.
+  return `Create one original, independent, professional long-form article package for Fourth Dimension Studio. Date: ${today}. This is not a news brief and must not copy or closely paraphhrase any source.
 
 RESEARCH AND EDITORIAL RULES:
 - Treat the supplied brief as a starting point, not as sufficient evidence. Use only its verified facts and URLs; clearly distinguish fact, interpretation, and Fourth Dimension Studio analysis.
@@ -28,7 +28,7 @@ SEO/GEO RULES:
 
 IMAGE RULES:
 - Return exactly four original AI image specifications: one featured image 1200x630 (about 1.91:1) and three contextual 16:9 images, all at least 1200px wide.
-- No text, logos, UI screenshots, copyrighted artwork, copied layouts, or watermarks. Each needs prompt, role, WebP filename, placement_hint, caption, and localized alt text (en/fa/ar).
+- No text, logos, UI screenshots, copyrighted artwork, copied layouts, or watermarks. Each needs prompt, role, WebP filename, placement_hint, caption, credit, source_name, source_url, reference_sources, localized keyword arrays (keywords_en, keywords_fa, keywords_ar), and localized alt text (en/fa/ar). Source attribution belongs in image metadata/caption, never rendered inside the image. Keywords must accurately describe that specific image and article context; never keyword-stuff.
 
 End every language version with its exact editorial note:
 EN: Editorial note: This article is based on publicly available primary sources and editorial analysis by Fourth Dimension Studio. Product availability, capabilities and regional access may change; consult the original source before making project decisions.
@@ -42,5 +42,5 @@ Keyword evidence: ${JSON.stringify(keywordResearch)}`;
 
 export function qualityGatePrompt(brief, article) {
   return `Act as a strict pre-publication editor. Return strict JSON only with: result (PASS, NEEDS_REVISION, FAIL), critical_failures (array), revision_items (array), passed_checks (array), human_review_required (must be true), originality_assessment, factuality_assessment, multilingual_assessment, seo_assessment, image_assessment, adsense_risk_notes (array).
-FAIL for missing primary evidence, copied/close-paraphrased language, unsupported important claims, invented URLs/facts/author, absent localized EN/FA/AR versions, absent editorial notes, invalid schema, or fewer than four complete original image specifications. The result can be PASS only when the package is useful, original, source-grounded, SEO-ready, image-ready, and still requires human approval. Brief: ${JSON.stringify(brief)} Article: ${JSON.stringify(article)}`;
+FAIL for missing primary evidence, copied/close-paraphrased language, unsupported important claims, invented URLs/facts/author, absent localized EN/FA/AR versions, absent editorial notes, invalid schema, fewer than four complete original image specifications, or any image missing credit, source_name, source_url/reference_sources, keywords_en, keywords_fa, keywords_ar, caption, or localized alt text. The result can be PASS only when the package is useful, original, source-grounded, SEO-ready, image-ready, and still requires human approval. Brief: ${JSON.stringify(brief)} Article: ${JSON.stringify(article)}`;
 }
