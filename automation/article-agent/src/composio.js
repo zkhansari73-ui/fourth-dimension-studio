@@ -61,7 +61,7 @@ function asciiSafe(value) {
 }
 
 export class ArticleComposioClient {
-  constructor(config) { this.config = config; this.client = new Composio({ apiKey: config.composioApiKey }); this.versions = new Map(); }
+  constructor(config) { this.config = config; this.client = new Composio({ apiKey: config.composioApiKey, dangerouslyAllowAutoUploadDownloadFiles: true, fileUploadDirs: [tmpdir()] }); this.versions = new Map(); }
   async execute(slug, args, account = "") {
     let version = this.versions.get(slug);
     if (!version) {
