@@ -24,6 +24,9 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     requestedTopic: env.ARTICLE_TOPIC?.trim() || "",
     geminiModel: env.GEMINI_MODEL?.trim() || "models/gemini-3.7-flash",
     geminiImageModel: env.GEMINI_IMAGE_MODEL?.trim() || "gemini-2.5-flash-image",
+    cloudflareApiToken: env.CLOUDFLARE_API_TOKEN?.trim() || "",
+    cloudflareAccountId: env.CLOUDFLARE_ACCOUNT_ID?.trim() || "",
+    cloudflareImageModel: env.CLOUDFLARE_IMAGE_MODEL?.trim() || "@cf/black-forest-labs/flux-1-schnell",
     generateImages: bool(env.ARTICLE_GENERATE_IMAGES, true),
     requireImages: bool(env.ARTICLE_REQUIRE_IMAGES, true),
     imagesPerArticle: positiveInt(env.ARTICLE_IMAGES_PER_ARTICLE, 4),
@@ -41,6 +44,7 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
   ].filter(([key]) => !config[key]).map(([, label]) => label);
   if (missing.length) throw new Error(`Missing required settings: ${missing.join(", ")}`);
   config.searchConsoleEnabled = Boolean(config.searchConsoleConnectedAccountId && config.searchConsoleSiteUrl);
+  config.cloudflareImagesEnabled = Boolean(config.cloudflareApiToken && config.cloudflareAccountId);
   config.wordpressEnabled = Boolean(config.wordpressUrl && config.wordpressUsername && config.wordpressAppPassword);
   return config;
 }
