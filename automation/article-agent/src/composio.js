@@ -109,38 +109,71 @@ export class ArticleComposioClient {
     if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded)) throw new Error("Gemini returned a non-Base64 transport payload");
     return parseGeminiJson(Buffer.from(encoded, "base64").toString("utf8"));
   }
+  async uploadImageBuffer(prompt, imageBuffer, extension = "jpg") {
+    const digest = createHash("sha256").update(String(prompt)).digest("hex").slice(0, 16);
+    const filePath = join(tmpdir(), `fourth-dimension-${digest}.${extension}`);
+    await writeFile(filePath, imageBuffer);
+    try {
+      const uploaded = await this.execute("GOOGLEDRIVE_UPLOAD_FILE", { file_to_upload: filePath }, this.config.driveConnectedAccountId || process.env.GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID || "");
+      const fileId = firstFileId(uploaded);
+      const url = firstUrl(uploaded) || (fileId ? `https://drive.google.com/file/d/${fileId}/view` : "");
+      if (!url) throw new Error("Google Drive upload returned no usable image URL or file ID");
+      return { url };
+    } finally {
+      await unlink(filePath).catch(() => {});
+    }
+  }
+  async generateCloudflareImage(prompt) {
+    if (!this.config.cloudflareImagesEnabled) throw new Error("Cloudflare image fallback is not configured");
+    const model = String(this.config.cloudflareImageModel).replace(/^\/+/, "");
+    const endpoint = `https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(this.config.cloudflareAccountId)}/ai/run/${model}`;
+    const response = await fetchWithRetry(endpoint, {
+      method: "POST",
+      headers: { authorization: `Bearer ${this.config.cloudflareApiToken}`, "content-type": "application/json" },
+      body: JSON.stringify({ prompt: String(prompt).slice(0, 2048), steps: 6 }),
+      timeoutMs: 180_000,
+      attempts: 2,
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || payload?.success === false) {
+      const message = payload?.errors?.[0]?.message || payload?.error?.message || "unknown error";
+      throw new Error(`Cloudflare image API failed (${response.status}): ${message}`);
+    }
+    const imageData = payload?.result?.image || payload?.image;
+    if (!imageData) throw new Error("Cloudflare image API returned no image bytes");
+    return this.uploadImageBuffer(prompt, Buffer.from(imageData, "base64"), "jpg");
+  }
   async generateImage(prompt) {
+    let geminiError;
     if (this.config.geminiApiKey) {
-      const model = String(this.config.geminiImageModel).replace(/^models\//, "");
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(this.config.geminiApiKey)}`;
-      const response = await fetchWithRetry(endpoint, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseModalities: ["IMAGE"] } }),
-        timeoutMs: 180_000,
-        attempts: 1,
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(`Gemini image API failed (${response.status}): ${payload?.error?.message || "unknown error"}`);
-      const parts = payload?.candidates?.[0]?.content?.parts || [];
-      const imagePart = parts.find((part) => part?.inlineData?.data || part?.inline_data?.data);
-      const imageData = imagePart?.inlineData?.data || imagePart?.inline_data?.data;
-      const mimeType = imagePart?.inlineData?.mimeType || imagePart?.inline_data?.mime_type || "image/png";
-      if (!imageData) throw new Error("Gemini image API returned no image bytes");
-      const extension = mimeType.includes("jpeg") ? "jpg" : mimeType.includes("webp") ? "webp" : "png";
-      const digest = createHash("sha256").update(String(prompt)).digest("hex").slice(0, 16);
-      const filePath = join(tmpdir(), `fourth-dimension-${digest}.${extension}`);
-      await writeFile(filePath, Buffer.from(imageData, "base64"));
       try {
-        const uploaded = await this.execute("GOOGLEDRIVE_UPLOAD_FILE", { file_to_upload: filePath }, process.env.GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID || "");
-        const fileId = firstFileId(uploaded);
-        const url = firstUrl(uploaded) || (fileId ? `https://drive.google.com/file/d/${fileId}/view` : "");
-        if (!url) throw new Error("Google Drive upload returned no usable image URL or file ID");
-        return { url };
-      } finally {
-        await unlink(filePath).catch(() => {});
+        const model = String(this.config.geminiImageModel).replace(/^models\//, "");
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(this.config.geminiApiKey)}`;
+        const response = await fetchWithRetry(endpoint, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseModalities: ["IMAGE"] } }),
+          timeoutMs: 180_000,
+          attempts: 1,
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(`Gemini image API failed (${response.status}): ${payload?.error?.message || "unknown error"}`);
+        const parts = payload?.candidates?.[0]?.content?.parts || [];
+        const imagePart = parts.find((part) => part?.inlineData?.data || part?.inline_data?.data);
+        const imageData = imagePart?.inlineData?.data || imagePart?.inline_data?.data;
+        const mimeType = imagePart?.inlineData?.mimeType || imagePart?.inline_data?.mime_type || "image/png";
+        if (!imageData) throw new Error("Gemini image API returned no image bytes");
+        const extension = mimeType.includes("jpeg") ? "jpg" : mimeType.includes("webp") ? "webp" : "png";
+        return this.uploadImageBuffer(prompt, Buffer.from(imageData, "base64"), extension);
+      } catch (error) {
+        geminiError = error;
       }
     }
+    if (this.config.cloudflareImagesEnabled) {
+      if (geminiError) console.warn(`${geminiError.message}; using Cloudflare Workers AI fallback.`);
+      return this.generateCloudflareImage(prompt);
+    }
+    if (geminiError) throw geminiError;
     const data = await this.execute("GEMINI_GENERATE_IMAGE", { prompt: asciiSafe(prompt), model: this.config.geminiImageModel, aspect_ratio: "16:9" }, this.config.geminiConnectedAccountId);
     const url = firstUrl(data); if (!url) throw new Error("Gemini returned no usable image URL"); return { url };
   }
