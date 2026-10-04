@@ -87,3 +87,28 @@ setVideoLabels(initialLanguage);
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){$$('.glass-card').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--tilt-y',`${((e.clientX-r.left)/r.width-.5)*7}deg`);card.style.setProperty('--tilt-x',`${(.5-(e.clientY-r.top)/r.height)*7}deg`);card.classList.add('tilting')});card.addEventListener('pointerleave',()=>{card.classList.remove('tilting');card.style.removeProperty('--tilt-x');card.style.removeProperty('--tilt-y')})})}
 $$('[data-connect="later"]').forEach(link=>link.addEventListener('click',e=>e.preventDefault()));
 let installPrompt;const installButton=$('#installApp');window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;installButton.hidden=false});installButton.addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true});window.addEventListener('appinstalled',()=>{installButton.hidden=true});if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));
+
+const seoCopy={
+  en:{title:'Fourth Dimension Studio | Architecture, AI & Digital Design',description:'Fourth Dimension Studio creates architecture, BIM, AI content, motion, websites, applications and intelligent automation for international clients.',locale:'en_US'},
+  fa:{title:'استودیو بُعد چهارم | معماری، هوش مصنوعی و طراحی دیجیتال',description:'استودیو بُعد چهارم در زمینه معماری، BIM، تولید محتوای هوش مصنوعی، موشن، سایت، اپلیکیشن و اتوماسیون هوشمند فعالیت می‌کند.',locale:'fa_IR'},
+  ar:{title:'استوديو البعد الرابع | العمارة والذكاء الاصطناعي والتصميم الرقمي',description:'استوديو دولي للعمارة وBIM وصناعة المحتوى بالذكاء الاصطناعي والموشن والمواقع والتطبيقات والأتمتة الذكية.',locale:'ar_AR'}
+};
+function applyLanguageSeo(lang){
+  const seo=seoCopy[lang]||seoCopy.en;
+  const base='https://fourth-dimension-studio.infinityfreeapp.com/';
+  const canonical=lang==='en'?`${base}?lang=en`:`${base}?lang=${lang}`;
+  document.title=seo.title;
+  document.querySelector('meta[name="description"]').content=seo.description;
+  document.querySelector('link[rel="canonical"]').href=canonical;
+  document.querySelector('meta[property="og:title"]').content=seo.title;
+  document.querySelector('meta[property="og:description"]').content=seo.description;
+  document.querySelector('meta[property="og:url"]').content=canonical;
+  let locale=document.querySelector('meta[property="og:locale"]');if(!locale){locale=document.createElement('meta');locale.setAttribute('property','og:locale');document.head.append(locale)}locale.content=seo.locale;
+  document.querySelector('meta[name="twitter:title"]').content=seo.title;
+  document.querySelector('meta[name="twitter:description"]').content=seo.description;
+  const url=new URL(location.href);url.searchParams.set('lang',lang);history.replaceState({},'',url);
+  localStorage.setItem('fd-language',lang);
+}
+$$('[data-lang]').forEach(button=>button.addEventListener('click',()=>applyLanguageSeo(button.dataset.lang)));
+const initialLang=new URLSearchParams(location.search).get('lang')||localStorage.getItem('fd-language')||'en';
+if(/^(en|fa|ar)$/.test(initialLang)){const initialButton=document.querySelector(`[data-lang="${initialLang}"]`);if(initialButton)initialButton.click();else applyLanguageSeo(initialLang)}

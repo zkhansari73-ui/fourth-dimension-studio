@@ -71,6 +71,14 @@ function schemaFor({ kind, title, excerpt, postUrl, imageUrl, published, modifie
   return schema;
 }
 
+function breadcrumbFor({ kind, title, postUrl }) {
+  return { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Fourth Dimension Studio", item: "https://fourth-dimension-studio.infinityfreeapp.com/" },
+    { "@type": "ListItem", position: 2, name: kind === "news" ? "News" : "Articles", item: `https://fourth-dimension-studio.infinityfreeapp.com/${kind === "news" ? "news" : "articles"}/` },
+    { "@type": "ListItem", position: 3, name: title, item: postUrl },
+  ] };
+}
+
 export function publicationHtml(data) {
   const { kind, postUrl, author, published, modified, category, tags, keywords, sources, originalSource, originalUrl, originalDate, images = [] } = data;
   const languageLinks = LANGS.map((lang) => `<a href="${escapeHtml(postUrl)}?lang=${lang}" hreflang="${lang}">${lang.toUpperCase()}</a>`).join("");
@@ -78,6 +86,7 @@ export function publicationHtml(data) {
     const copy = data.languages[lang];
     const rendered = markdownToHtml(copy.body);
     const schema = schemaFor({ kind, title: copy.title, excerpt: copy.excerpt, postUrl: `${postUrl}?lang=${lang}`, imageUrl: images[0]?.url, published, modified, author, keywords, originalSource, originalUrl });
+    const breadcrumb = breadcrumbFor({ kind, title: copy.title, postUrl: `${postUrl}?lang=${lang}` });
     const sourceTitle = { fa: "منابع", en: "Sources", ar: "المصادر" }[lang];
     const relatedTitle = { fa: "مطالب مرتبط", en: "Related content", ar: "محتوى مرتبط" }[lang];
     const shareTitle = { fa: "اشتراک‌گذاری", en: "Share", ar: "مشاركة" }[lang];
@@ -89,10 +98,11 @@ export function publicationHtml(data) {
       <section class="fd-related"><h2>${relatedTitle}</h2><a href="/wp-content/themes/fourth-dimension-theme/site/${kind === "news" ? "news" : "articles"}/?lang=${lang}">${relatedTitle}</a></section>
       <nav class="fd-share" aria-label="${shareTitle}"><strong>${shareTitle}</strong><a href="https://t.me/share/url?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(copy.title)}" target="_blank" rel="noopener">Telegram</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}" target="_blank" rel="noopener">LinkedIn</a></nav>
       <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>
+      <script type="application/ld+json">${JSON.stringify(breadcrumb).replace(/</g, "\\u003c")}</script>
     </article>`;
   }).join("\n");
   const alternates = LANGS.map((lang) => `<link rel="alternate" hreflang="${lang}" href="${escapeHtml(postUrl)}?lang=${lang}">`).join("") + `<link rel="alternate" hreflang="x-default" href="${escapeHtml(postUrl)}?lang=en">`;
-  const seo = Object.fromEntries(LANGS.map((lang) => [lang, { title: data.languages[lang].title, description: data.languages[lang].excerpt, canonical: `${postUrl}?lang=${lang}` }]));
+  const seo = Object.fromEntries(LANGS.map((lang) => [lang, { title: data.languages[lang].title, description: data.languages[lang].excerpt, canonical: `${postUrl}?lang=${lang}`, image: images[0]?.url || "" }]));
   const seoJson = JSON.stringify(seo).replace(/</g, "\\u003c");
-  return `<div class="fd-language-switcher">${languageLinks}</div>${alternates}${sections}<script>(function(){var l=new URLSearchParams(location.search).get('lang');if(!/^(fa|en|ar)$/.test(l))l='fa';var seo=${seoJson}[l];document.documentElement.lang=l;document.documentElement.dir=l==='en'?'ltr':'rtl';document.title=seo.title+' | Fourth Dimension Studio';var m=document.querySelector('meta[name="description"]');if(!m){m=document.createElement('meta');m.name='description';document.head.appendChild(m)}m.content=seo.description;var c=document.querySelector('link[rel="canonical"]');if(!c){c=document.createElement('link');c.rel='canonical';document.head.appendChild(c)}c.href=seo.canonical;document.querySelectorAll('.fd-publication').forEach(function(x){x.hidden=x.dataset.lang!==l});document.querySelectorAll('.fd-language-switcher a').forEach(function(a){a.setAttribute('aria-current',a.hreflang===l?'page':'false')});})();</script>`;
+  return `<div class="fd-language-switcher">${languageLinks}</div>${alternates}${sections}<script>(function(){var l=new URLSearchParams(location.search).get('lang');if(!/^(fa|en|ar)$/.test(l))l='fa';var seo=${seoJson}[l];document.documentElement.lang=l;document.documentElement.dir=l==='en'?'ltr':'rtl';document.title=seo.title+' | Fourth Dimension Studio';var m=document.querySelector('meta[name="description"]');if(!m){m=document.createElement('meta');m.name='description';document.head.appendChild(m)}m.content=seo.description;var c=document.querySelector('link[rel="canonical"]');if(!c){c=document.createElement('link');c.rel='canonical';document.head.appendChild(c)}c.href=seo.canonical;function og(p,v){var x=document.querySelector('meta[property="'+p+'"]');if(!x){x=document.createElement('meta');x.setAttribute('property',p);document.head.appendChild(x)}x.content=v}og('og:type','article');og('og:title',document.title);og('og:description',seo.description);og('og:url',seo.canonical);if(seo.image)og('og:image',seo.image);document.querySelectorAll('.fd-publication').forEach(function(x){x.hidden=x.dataset.lang!==l});document.querySelectorAll('.fd-language-switcher a').forEach(function(a){a.setAttribute('aria-current',a.hreflang===l?'page':'false')});})();</script>`;
 }

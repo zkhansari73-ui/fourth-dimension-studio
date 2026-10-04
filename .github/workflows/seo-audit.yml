@@ -1,0 +1,23 @@
+name: Technical SEO Audit
+
+on:
+  push:
+    paths:
+      - "dist/**"
+      - "automation/**/src/publication.js"
+      - "tests/seo.test.mjs"
+      - ".github/workflows/seo-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node --test tests/seo.test.mjs
