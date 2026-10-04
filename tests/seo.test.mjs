@@ -70,3 +70,18 @@ test("installable app uses the transparent 4D brand mark", () => {
     assert.ok(existsSync(join(root, icon.src)), `missing app icon ${icon.src}`);
   }
 });
+
+test("mobile experience is touch-safe and performance-aware", () => {
+  const home = readFileSync(join(root, "index.html"), "utf8");
+  const css = readFileSync(join(root, "styles.css"), "utf8");
+  const app = readFileSync(join(root, "app.js"), "utf8");
+  const worker = readFileSync(join(root, "sw.js"), "utf8");
+  assert.match(home, /preload="metadata"/);
+  assert.match(home, /aria-expanded="false"/);
+  assert.match(home, /<script src="app\.js" defer>/);
+  assert.match(css, /min-height:44px/);
+  assert.match(css, /safe-area-inset/);
+  assert.match(app, /event\.key!==['"]Escape['"]/);
+  assert.match(worker, /request\.mode===['"]navigate['"]/);
+  assert.match(worker, /caches\.match\(request\)/);
+});

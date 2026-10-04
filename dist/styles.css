@@ -156,3 +156,22 @@ html,body{background-color:#4b382e}
 .legal-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px 16px;font-size:.78rem}.legal-links a{color:#85878c;text-decoration:none}.legal-links a:hover{color:#fff}@media(max-width:900px){.legal-links{justify-content:center;margin-top:18px}}
 .brief-link{margin-top:18px;color:var(--gold);text-decoration:none;font-size:.9rem}.brief-link:hover{color:#fff}
 .faq-list{display:grid;gap:0;margin-top:16px}.faq-list details{border-top:1px solid var(--line);padding:15px 0}.faq-list details:last-child{border-bottom:1px solid var(--line)}.faq-list summary{cursor:pointer!important;margin-top:0!important;font-weight:600;line-height:1.5}.faq-list p{margin:11px 0 0!important;line-height:1.75!important}
+
+/* Mobile performance, touch and accessibility hardening. */
+body.panel-open{overflow:hidden;touch-action:none}
+button,a,input,select,summary{-webkit-tap-highlight-color:transparent}
+.icon-btn,.menu-btn,.close,.languages button,.install-app{touch-action:manipulation}
+.menu-panel{overflow-y:auto;overscroll-behavior:contain}
+.menu-panel a{display:flex;align-items:center;min-height:52px}
+@media(max-width:900px){
+  .topbar{position:fixed;padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right));background:linear-gradient(#050608e8,rgba(5,6,8,.35));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .top-actions{gap:8px}.brand,.icon-btn,.menu-btn,.languages button,.enter-layer button,.primary,.sound{min-height:44px}.icon-btn,.menu-btn{min-width:44px}.languages{display:flex}.languages button{min-width:44px;padding:6px}.enter-layer button{display:inline-flex;align-items:center}.primary{align-items:center}.sound{display:flex;align-items:center}
+  .menu-panel,.search-panel{padding:calc(78px + env(safe-area-inset-top)) max(22px,7vw) calc(28px + env(safe-area-inset-bottom));transition-duration:.38s}
+  .menu-panel a{font-size:clamp(27px,8vw,48px);line-height:1.12;padding:4px 0}
+  .close{top:max(15px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));min-width:48px;min-height:48px}
+  .glass-card,.free-tool-card,.studio-links a,.social-icons a{content-visibility:auto;contain-intrinsic-size:1px 280px}
+  .install-app{right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));min-height:52px}
+  [dir=rtl] .install-app{right:auto;left:max(12px,env(safe-area-inset-left))}
+}
+@media(max-width:430px){.brand img{width:42px;height:42px}.languages button{min-width:40px;font-size:10px}.icon-btn{display:none}.hero{margin-top:64px}}
+@media(prefers-reduced-data:reduce){.noise,.scroll-art-layer{display:none}.hero video{display:none}.hero{background:#050608 url('assets/hero-poster.jpg') center/cover no-repeat}}
