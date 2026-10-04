@@ -56,3 +56,17 @@ test("technical SEO infrastructure and schemas exist", () => {
   assert.match(articlePublisher, /Breadcrumb/);
   assert.match(newsPublisher, /Breadcrumb/);
 });
+
+test("installable app uses the transparent 4D brand mark", () => {
+  const manifest = JSON.parse(readFileSync(join(root, "manifest.webmanifest"), "utf8"));
+  assert.equal(manifest.display, "standalone");
+  assert.deepEqual(
+    manifest.icons.map((icon) => icon.purpose),
+    ["any", "any"],
+    "transparent artwork must not be declared as a maskable tile",
+  );
+  for (const icon of manifest.icons) {
+    assert.match(icon.src, /-transparent\.png$/);
+    assert.ok(existsSync(join(root, icon.src)), `missing app icon ${icon.src}`);
+  }
+});
