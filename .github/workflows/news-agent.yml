@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: "0 4 * * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Choose publish-approved to save Gemini usage"
+        required: true
+        default: publish-approved
+        type: choice
+        options:
+          - publish-approved
+          - full
 
 permissions:
   contents: read
@@ -11,7 +20,6 @@ permissions:
 jobs:
   news-agent:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     defaults:
       run:
         working-directory: automation/news-agent
@@ -30,13 +38,18 @@ jobs:
           COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
           GEMINI_CONNECTED_ACCOUNT_ID: ${{ secrets.GEMINI_CONNECTED_ACCOUNT_ID }}
           GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: ca_fEO9enPOPqOL
-          SITE_SITEMAP_URL: https://fourth-dimension-studio.infinityfreeapp.com/sitemap.xml
+          GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID: ca_cRddrVMnbMXp
           NEWS_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
-          NEWS_INBOX_SHEET_NAME: News Inbox
+          NEWS_SHEET_NAME: News Pipeline
           NEWS_DRY_RUN: "false"
-          NEWS_SCOUT_ENABLED: "true"
+          NEWS_GENERATE: ${{ github.event_name == 'schedule' || inputs.mode == 'full' }}
+          NEWS_GENERATE_IMAGES: "true"
+          NEWS_REQUIRE_IMAGE: "true"
+          NEWS_IMAGES_PER_ARTICLE: "4"
           NEWS_MIN_TOTAL_SCORE: "70"
-          NEWS_MAX_REVIEW_CANDIDATES: "12"
-          NEWS_MAX_ITEMS_PER_RUN: "5"
-          NEWS_SOURCE_TIMEOUT_MS: "20000"
+          GEMINI_IMAGE_MODEL: gemini-2.5-flash-image
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
+          EDITORIAL_AUTHOR: Fourth Dimension Studio Editorial Team
 

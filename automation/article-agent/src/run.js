@@ -3,7 +3,7 @@ import { loadConfig } from "./config.js";
 import { ArticleComposioClient } from "./composio.js";
 import { collectKeywordResearch } from "./keyword-research.js";
 import { ensureImagePackage } from "./images.js";
-import { articlePrompt, qualityGatePrompt, trendPrompt } from "./prompts.js";
+import { articlePrompt, qualityGatePrompt, topicSuggestionsPrompt, trendPrompt } from "./prompts.js";
 import { passesQualityGate, recentCandidates } from "./policy.js";
 import { articleRow } from "./row.js";
 import { fetchSourceItems } from "./sources.js";
@@ -30,45 +30,41 @@ const compactCandidates = candidates.map((item) => ({
   publishedAt: item.publishedAt,
   excerpt: String(item.excerpt || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 360),
 }));
+
+if (config.mode === "suggest_topics") {
+  const suggestions = await client.geminiJson(topicSuggestionsPrompt(compactCandidates, today));
+  const proposals = Array.isArray(suggestions?.proposals) ? suggestions.proposals : [];
+  if (suggestions?.decision !== "PROPOSE" || proposals.length !== 5 || proposals.some((item) => item?.primary_source_verified !== true)) {
+    throw new Error("Gemini did not return five verified article topic proposals");
+  }
+  console.log("ARTICLE_TOPIC_PROPOSALS");
+  console.log(JSON.stringify({ status: "Awaiting Topic Selection", generatedAt: today, proposals, nextStep: "Run again with mode=generate_selected_article and paste the selected title or direction into topic." }, null, 2));
+  process.exit(0);
+}
+
+if (config.mode !== "generate_selected_article") throw new Error(`Unsupported ARTICLE_MODE: ${config.mode}`);
+if (!config.requestedTopic) throw new Error("ARTICLE_TOPIC is required when ARTICLE_MODE=generate_selected_article. First run suggest_topics and choose one proposal.");
 const brief = await client.geminiJson(trendPrompt(compactCandidates, config.requestedTopic, today));
 if (brief?.decision !== "SELECT" || brief?.primary_source_verified !== true) throw new Error(`No publishable article subject selected: ${brief?.rejection_reason || "selection rejected"}`);
 
 const keywordResearch = await collectKeywordResearch(brief, { client, config });
-let article = await client.geminiJson(articlePrompt(brief, keywordResearch, today));
+const article = await client.geminiJson(articlePrompt(brief, keywordResearch, today));
 article.image_package = ensureImagePackage(article, config.imagesPerArticle);
-let qualityGate = await client.geminiJson(qualityGatePrompt(brief, article));
-if (!passesQualityGate(qualityGate)) {
-  const issues = qualityGate?.critical_failures || qualityGate?.revision_items || [];
-  console.warn(`First draft failed quality gate; requesting one complete revision: ${JSON.stringify(issues)}`);
-  article = await client.geminiJson(`${articlePrompt(brief, keywordResearch, today)}
-MANDATORY REVISION: Produce a fully corrected replacement, not commentary. Fix every issue below while preserving verified facts, citations, language separation, and the exact JSON schema.
-QUALITY ISSUES: ${JSON.stringify(issues)}
-PREVIOUS DRAFT: ${JSON.stringify(article)}`);
-  article.image_package = ensureImagePackage(article, config.imagesPerArticle);
-  qualityGate = await client.geminiJson(qualityGatePrompt(brief, article));
-}
-if (!passesQualityGate(qualityGate)) throw new Error(`Article failed quality gate after revision: ${JSON.stringify(qualityGate?.critical_failures || qualityGate?.revision_items || [])}`);
+const qualityGate = await client.geminiJson(qualityGatePrompt(brief, article));
+if (!passesQualityGate(qualityGate)) throw new Error(`Article failed quality gate: ${JSON.stringify(qualityGate?.critical_failures || qualityGate?.revision_items || [])}`);
 
 const specs = Array.isArray(article.image_package) ? article.image_package.slice(0, config.imagesPerArticle) : [];
 if (config.requireImages && specs.length !== config.imagesPerArticle) throw new Error(`Article requires ${config.imagesPerArticle} image specifications; received ${specs.length}`);
 const imageAssets = [];
 if (config.generateImages) {
   for (const spec of specs) {
-    try {
-      const generated = await client.generateImage(spec.prompt);
-      imageAssets.push({ ...spec, url: generated.url, ai_generated: true, generation_status: "Generated" });
-    } catch (error) {
-      const message = String(error?.message || error);
-      const quotaLimited = /(?:429|quota|rate.?limit|retry in)/i.test(message);
-      if (!quotaLimited) throw error;
-      console.warn(`Image deferred because Gemini image quota is unavailable: ${message}`);
-      imageAssets.push({ ...spec, url: "", ai_generated: false, generation_status: "Pending Image Quota", generation_error: message.slice(0, 500) });
-    }
+    const generated = await client.generateImage(spec.prompt);
+    imageAssets.push({ ...spec, url: generated.url, ai_generated: true });
   }
 } else if (config.requireImages) throw new Error("Images are required but ARTICLE_GENERATE_IMAGES=false");
 
 const articleId = `ARTICLE-${today.replaceAll("-", "")}-${createHash("sha256").update(brief.original_url || brief.original_title).digest("hex").slice(0, 10).toUpperCase()}`;
-const row = articleRow({ articleId, createdAt: today, brief, article, featuredImageUrl: imageAssets.find((image) => image.url)?.url || "", imageAssets, keywordResearch, qualityGate, runId });
+const row = articleRow({ articleId, createdAt: today, brief, article, featuredImageUrl: imageAssets[0]?.url || "", imageAssets, keywordResearch, qualityGate, runId });
 if (config.dryRun) console.log("DRY_RUN: article validated but not written", { articleId, title: article.article_title_fa });
 else await client.appendArticle(row);
-console.log(JSON.stringify({ articleId, status: "Waiting Approval", topicMode: config.requestedTopic ? "requested-direction" : "automatic-trend", titleFa: article.article_title_fa, sourceErrors: sourceResult.errors, imagesGenerated: imageAssets.filter((image) => image.url).length, imagesPending: imageAssets.filter((image) => !image.url).length, wroteToSheet: !config.dryRun, published: false }, null, 2));
+console.log(JSON.stringify({ articleId, status: "Waiting Approval", topicMode: config.requestedTopic ? "requested-direction" : "automatic-trend", titleFa: article.article_title_fa, sourceErrors: sourceResult.errors, imagesGenerated: imageAssets.length, wroteToSheet: !config.dryRun, published: false }, null, 2));

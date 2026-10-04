@@ -45,7 +45,7 @@ export function buildWaitingApprovalRow({ itemId, discoveredAt, review, article,
     value_add_notes: article.value_add_notes || review.value_add_opportunity || "",
     keyword_research: keywordResearch,
     canonical_hreflang_plan: article.canonical_hreflang_plan ?? {},
-    json_ld: { article: article.json_ld_article, breadcrumb: article.json_ld_breadcrumb, faq: article.json_ld_faq },
+    json_ld: { newsArticle: article.json_ld_news_article, breadcrumb: article.json_ld_breadcrumb },
   };
   return [
     itemId, discoveredAt, review.original_title, review.original_source, review.original_url,

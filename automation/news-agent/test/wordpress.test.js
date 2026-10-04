@@ -35,8 +35,8 @@ test("WordPress uploads the image and sets it as featured media", async () => {
   const requests = [];
   const fetchImpl = async (url, options = {}) => {
     requests.push({ url, options });
-    if (url === "https://images.test/cover.png") return new Response(new Uint8Array([1, 2, 3]), { status: 200, headers: { "content-type": "image/png" } });
-    if (url.endsWith("/wp-json/wp/v2/media")) return Response.json({ id: 91 });
+    if (url === "https://images.test/cover.png") return new Response(Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=", "base64"), { status: 200, headers: { "content-type": "image/png" } });
+    if (url.endsWith("/wp-json/wp/v2/media")) return Response.json({ id: 91, source_url: "https://site.test/media/cover.webp" });
     if (url.endsWith("/wp-json/wp/v2/media/91")) return Response.json({ id: 91 });
     return Response.json({ id: 17 });
   };
@@ -50,13 +50,26 @@ test("WordPress uploads the image and sets it as featured media", async () => {
   assert.equal(postPayload.status, "draft");
   assert.equal(postPayload.featured_media, 91);
   assert.equal(JSON.parse(requests[2].options.body).alt_text, "متن جایگزین");
+  assert.equal(requests[1].options.headers["Content-Type"], "image/webp");
+  assert.match(postPayload.content, /NewsArticle/);
+});
+
+test("news output is independent, searchable and standards-complete", () => {
+  const payload = wordpressDraft(row({ 3: "Official Source", 4: "https://source.test/news", 5: "2026-10-04", 7: "AI", 17: "## Verified facts\n\nNews body", 30: "AI | agents", 31: "News | Automation", 37: JSON.stringify([{ name: "Official Source", url: "https://source.test/news" }]), 38: JSON.stringify({ primary_source_url: "https://source.test/news" }) }), { postUrl: "https://site.test/news-item", images: [{ url: "https://site.test/cover.webp", role: "featured" }, { url: "https://site.test/context.webp", caption: "Context", credit: "Fourth Dimension Studio", ai_generated: true, alt_text_fa: "تصویر خبری" }] });
+  assert.match(payload.content, /NewsArticle/);
+  assert.match(payload.content, /Original source/);
+  assert.match(payload.content, /fd-toc/);
+  assert.match(payload.content, /loading="lazy"/);
+  assert.match(payload.content, /AI-generated/);
+  assert.match(payload.content, /hreflang="fa"/);
+  assert.match(payload.content, /fd-share/);
 });
 
 test("created drafts update status and edit URL in the sheet", async () => {
   const updates = [];
   const client = {
-    articlePipelineRows: async () => [row()],
-    updateArticleCell: async (...args) => updates.push(args),
+    pipelineRows: async () => [row()],
+    updateCell: async (...args) => updates.push(args),
   };
   const wordpress = { createDraft: async () => ({ id: 15, editUrl: "https://example.test/wp-admin/post.php?post=15&action=edit" }) };
   const result = await createApprovedDrafts({ config: { wordpressEnabled: true }, client, wordpress, logger: { info() {} } });

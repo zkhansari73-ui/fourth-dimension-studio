@@ -1,141 +1,61 @@
-const COL = Object.freeze({
-  itemId: 0,
-  workflowStatus: 10,
-  titleEn: 12,
-  excerptEn: 16,
-  articleEn: 17,
-  titleFa: 18,
-  excerptFa: 22,
-  articleFa: 23,
-  titleAr: 24,
-  excerptAr: 28,
-  articleAr: 29,
-  featuredImageUrl: 33,
-  altTextFa: 35,
-  sources: 37,
-  approval: 40,
-  wordpressDraftUrl: 42,
-});
+import sharp from "sharp";
+import { publicationHtml, safeJson } from "./publication.js";
 
-function approved(value) {
-  return ["approved", "approve", "yes", "true", "تایید", "تأیید", "تایید شده", "تأیید شده"]
-    .includes(String(value ?? "").trim().toLowerCase());
-}
+const COL = Object.freeze({ itemId: 0, created: 1, originalSource: 3, originalUrl: 4, originalDate: 5, category: 7, titleEn: 12, slugEn: 14, excerptEn: 16, bodyEn: 17, titleFa: 18, slugFa: 20, excerptFa: 22, bodyFa: 23, titleAr: 24, slugAr: 26, excerptAr: 28, bodyAr: 29, keywords: 30, tags: 31, featuredImageUrl: 33, altEn: 34, altFa: 35, altAr: 36, sources: 37, audit: 38, approval: 40, wordpressDraftUrl: 42, updated: 43 });
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
+function approved(value) { return ["approved", "approve", "yes", "true", "تایید", "تأیید", "تایید شده", "تأیید شده"].includes(String(value ?? "").trim().toLowerCase()); }
+function list(value) { return String(value || "").split(/\s*\|\s*|\s*,\s*/).filter(Boolean); }
+function firstSlug(row) { return row[COL.slugFa] || row[COL.slugEn] || row[COL.slugAr] || row[COL.itemId]; }
 
-function articleHtml(value) {
-  const blocks = String(value ?? "").split(/\n{2,}/).map((part) => part.trim()).filter(Boolean);
-  return blocks.map((part) => {
-    const heading = part.match(/^(#{2,3})\s+(.+)$/s);
-    if (heading) {
-      const level = heading[1].length;
-      return `<h${level}>${escapeHtml(heading[2].trim())}</h${level}>`;
-    }
-    const lines = part.split("\n");
-    if (lines.every((line) => /^[-*]\s+/.test(line))) {
-      return `<ul>${lines.map((line) => `<li>${escapeHtml(line.replace(/^[-*]\s+/, ""))}</li>`).join("")}</ul>`;
-    }
-    if (lines.every((line) => /^\d+\.\s+/.test(line))) {
-      return `<ol>${lines.map((line) => `<li>${escapeHtml(line.replace(/^\d+\.\s+/, ""))}</li>`).join("")}</ol>`;
-    }
-    return `<p>${escapeHtml(part).replaceAll("\n", "<br>")}</p>`;
-  }).join("\n");
-}
+export function eligibleApprovedRows(rows) { return rows.map((row, index) => ({ row, sheetRow: index + 2 })).filter(({ row }) => approved(row[COL.approval]) && !String(row[COL.wordpressDraftUrl] ?? "").trim()); }
 
-export function eligibleApprovedRows(rows) {
-  return rows.map((row, index) => ({ row, sheetRow: index + 2 })).filter(({ row }) =>
-    approved(row[COL.approval]) && !String(row[COL.wordpressDraftUrl] ?? "").trim()
-  );
-}
-
-export function wordpressDraft(row) {
-  const sources = String(row[COL.sources] ?? "").trim();
-  const sourceBlock = sources ? `<h2>Sources</h2><p>${escapeHtml(sources)}</p>` : "";
-  const content = [
-    `<section lang="fa" dir="rtl"><h1>${escapeHtml(row[COL.titleFa])}</h1>${articleHtml(row[COL.articleFa])}</section>`,
-    `<hr><section lang="en" dir="ltr"><h2>${escapeHtml(row[COL.titleEn])}</h2>${articleHtml(row[COL.articleEn])}</section>`,
-    `<hr><section lang="ar" dir="rtl"><h2>${escapeHtml(row[COL.titleAr])}</h2>${articleHtml(row[COL.articleAr])}</section>`,
-    sourceBlock,
-  ].join("\n");
-  return {
-    title: row[COL.titleFa] || row[COL.titleEn] || row[COL.titleAr] || row[COL.itemId],
-    content,
-    excerpt: row[COL.excerptFa] || row[COL.excerptEn] || row[COL.excerptAr] || "",
-    status: "draft",
-  };
+export function wordpressDraft(row, { postUrl = "https://example.invalid/pending", images = [], author = "Fourth Dimension Studio Editorial Team" } = {}) {
+  const audit = safeJson(row[COL.audit], {});
+  const content = publicationHtml({
+    kind: "news", postUrl, author, published: row[COL.originalDate] || row[COL.created], modified: row[COL.updated] || row[COL.created], category: row[COL.category] || "News",
+    tags: list(row[COL.tags]), keywords: list(row[COL.keywords]), sources: safeJson(row[COL.sources], []), originalSource: row[COL.originalSource], originalUrl: audit.primary_source_url || row[COL.originalUrl], originalDate: row[COL.originalDate], images,
+    languages: { en: { title: row[COL.titleEn], excerpt: row[COL.excerptEn], body: row[COL.bodyEn] }, fa: { title: row[COL.titleFa], excerpt: row[COL.excerptFa], body: row[COL.bodyFa] }, ar: { title: row[COL.titleAr], excerpt: row[COL.excerptAr], body: row[COL.bodyAr] } },
+  });
+  return { title: row[COL.titleFa] || row[COL.titleEn] || row[COL.titleAr] || row[COL.itemId], slug: firstSlug(row), content, excerpt: row[COL.excerptFa] || row[COL.excerptEn] || row[COL.excerptAr] || "", status: "draft" };
 }
 
 export class WordPressDraftClient {
-  constructor(config, fetchImpl = fetch) {
-    this.config = config;
-    this.fetch = fetchImpl;
-  }
-
+  constructor(config, fetchImpl = fetch) { this.config = config; this.fetch = fetchImpl; }
+  auth() { return Buffer.from(`${this.config.wordpressUsername}:${this.config.wordpressAppPassword}`).toString("base64"); }
   async createDraft(row) {
-    const auth = Buffer.from(`${this.config.wordpressUsername}:${this.config.wordpressAppPassword}`).toString("base64");
-    let featuredMediaId = 0;
-    const imageUrl = String(row[COL.featuredImageUrl] ?? "").trim();
-    if (imageUrl) featuredMediaId = await this.uploadFeaturedImage(imageUrl, row[COL.altTextFa], auth);
-    else if (this.config.requireImage) throw new Error("Approved article has no featured image URL");
-    const payload = wordpressDraft(row);
-    if (featuredMediaId) payload.featured_media = featuredMediaId;
-    const response = await this.fetch(`${this.config.wordpressUrl}/wp-json/wp/v2/posts`, {
-      method: "POST",
-      headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    if (!response.ok) throw new Error(`WordPress draft creation failed (${response.status}): ${await response.text()}`);
-    const post = await response.json();
-    return { id: post.id, editUrl: `${this.config.wordpressUrl}/wp-admin/post.php?post=${post.id}&action=edit` };
+    const auth = this.auth();
+    const audit = safeJson(row[COL.audit], {});
+    const specs = Array.isArray(audit.image_assets) ? [...audit.image_assets] : [];
+    if (!specs.length && row[COL.featuredImageUrl]) specs.push({ url: row[COL.featuredImageUrl], role: "featured", alt_text_en: row[COL.altEn], alt_text_fa: row[COL.altFa], alt_text_ar: row[COL.altAr], caption: row[COL.titleFa], ai_generated: true });
+    if (this.config.requireImage && !specs.length) throw new Error("Approved news item has no image package");
+    const uploaded = [];
+    for (let i = 0; i < specs.length; i += 1) uploaded.push(await this.uploadWebp(specs[i], auth, `${firstSlug(row)}-${specs[i].role || i}.webp`));
+    const provisional = wordpressDraft(row, { images: uploaded, author: this.config.editorialAuthor || "Fourth Dimension Studio Editorial Team" });
+    if (uploaded[0]?.id) provisional.featured_media = uploaded[0].id;
+    const created = await this.requestJson(`${this.config.wordpressUrl}/wp-json/wp/v2/posts`, { method: "POST", headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" }, body: JSON.stringify(provisional) }, "WordPress draft creation");
+    const postUrl = created.link || `${this.config.wordpressUrl}/?p=${created.id}`;
+    const finalPayload = wordpressDraft(row, { postUrl, images: uploaded, author: this.config.editorialAuthor || "Fourth Dimension Studio Editorial Team" });
+    if (uploaded[0]?.id) finalPayload.featured_media = uploaded[0].id;
+    await this.requestJson(`${this.config.wordpressUrl}/wp-json/wp/v2/posts/${created.id}`, { method: "POST", headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" }, body: JSON.stringify(finalPayload) }, "WordPress final metadata update");
+    return { id: created.id, editUrl: `${this.config.wordpressUrl}/wp-admin/post.php?post=${created.id}&action=edit`, previewUrl: postUrl };
   }
-
-  async uploadFeaturedImage(imageUrl, altText, auth) {
-    const source = await this.fetch(imageUrl);
-    if (!source.ok) throw new Error(`Featured image download failed (${source.status})`);
-    const contentType = source.headers.get("content-type")?.split(";")[0] || "image/png";
-    const extension = contentType === "image/jpeg" ? "jpg" : contentType.split("/")[1] || "png";
-    const bytes = Buffer.from(await source.arrayBuffer());
-    const upload = await this.fetch(`${this.config.wordpressUrl}/wp-json/wp/v2/media`, {
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${auth}`,
-        "Content-Type": contentType,
-        "Content-Disposition": `attachment; filename="fourth-dimension-news.${extension}"`,
-      },
-      body: bytes,
-    });
-    if (!upload.ok) throw new Error(`WordPress featured image upload failed (${upload.status}): ${await upload.text()}`);
-    const media = await upload.json();
-    if (!media?.id) throw new Error("WordPress media upload returned no media ID");
-    if (altText) {
-      const update = await this.fetch(`${this.config.wordpressUrl}/wp-json/wp/v2/media/${media.id}`, {
-        method: "POST",
-        headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ alt_text: String(altText) }),
-      });
-      if (!update.ok) throw new Error(`WordPress image alt-text update failed (${update.status}): ${await update.text()}`);
-    }
-    return media.id;
+  async uploadWebp(spec, auth, filename) {
+    const source = await this.fetch(spec.url);
+    if (!source.ok) throw new Error(`Image download failed (${source.status})`);
+    const webp = await sharp(Buffer.from(await source.arrayBuffer())).rotate().resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 82, effort: 4 }).toBuffer();
+    const media = await this.requestJson(`${this.config.wordpressUrl}/wp-json/wp/v2/media`, { method: "POST", headers: { Authorization: `Basic ${auth}`, "Content-Type": "image/webp", "Content-Disposition": `attachment; filename="${filename.replace(/[^a-z0-9._-]/gi, "-")}"` }, body: webp }, "WordPress image upload");
+    const alt = spec.alt_text_fa || spec.alt_text_en || spec.alt_text_ar || "";
+    const caption = [typeof spec.caption === "string" ? spec.caption : "", spec.credit, spec.source_name, spec.ai_generated ? "AI-generated" : spec.ai_assisted ? "AI-assisted" : ""].filter(Boolean).join(" · ");
+    await this.requestJson(`${this.config.wordpressUrl}/wp-json/wp/v2/media/${media.id}`, { method: "POST", headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" }, body: JSON.stringify({ alt_text: alt, caption, description: JSON.stringify({ source_name: spec.source_name || "", source_url: spec.source_url || "", licence: spec.licence || spec.license || "studio-generated", ai_generated: Boolean(spec.ai_generated), ai_assisted: Boolean(spec.ai_assisted), keywords_en: spec.keywords_en || [], keywords_fa: spec.keywords_fa || [], keywords_ar: spec.keywords_ar || [] }) }) }, "WordPress image metadata update");
+    return { ...spec, id: media.id, url: media.source_url || media.guid?.rendered || spec.url, alt };
   }
+  async requestJson(url, options, label) { const response = await this.fetch(url, options); if (!response.ok) throw new Error(`${label} failed (${response.status}): ${await response.text()}`); return response.json(); }
 }
 
 export async function createApprovedDrafts({ config, client, wordpress, logger = console }) {
   if (!config.wordpressEnabled) return { enabled: false, created: 0 };
-  const candidates = eligibleApprovedRows(await client.articlePipelineRows());
+  const candidates = eligibleApprovedRows(await client.pipelineRows());
   let created = 0;
-  for (const { row, sheetRow } of candidates) {
-    const draft = await wordpress.createDraft(row);
-    await client.updateArticleCell(`K${sheetRow}`, "Ready for Publishing");
-    await client.updateArticleCell(`AQ${sheetRow}`, draft.editUrl);
-    logger.info("WordPress draft created", { itemId: row[COL.itemId], postId: draft.id });
-    created += 1;
-  }
+  for (const { row, sheetRow } of candidates) { const draft = await wordpress.createDraft(row); await client.updateCell(`K${sheetRow}`, "Ready for Publishing"); await client.updateCell(`AQ${sheetRow}`, draft.editUrl); logger.info("WordPress NewsArticle draft created", { itemId: row[COL.itemId], postId: draft.id }); created += 1; }
   return { enabled: true, created };
 }

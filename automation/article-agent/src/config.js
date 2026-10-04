@@ -21,12 +21,10 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     siteSitemapUrl: env.SITE_SITEMAP_URL?.trim() || "",
     spreadsheetId: env.ARTICLE_SPREADSHEET_ID?.trim() || "",
     articleSheetName: env.ARTICLE_SHEET_NAME?.trim() || "Article Pipeline",
+    mode: env.ARTICLE_MODE?.trim() || "suggest_topics",
     requestedTopic: env.ARTICLE_TOPIC?.trim() || "",
     geminiModel: env.GEMINI_MODEL?.trim() || "models/gemini-3.7-flash",
     geminiImageModel: env.GEMINI_IMAGE_MODEL?.trim() || "gemini-2.5-flash-image",
-    cloudflareApiToken: env.CLOUDFLARE_API_TOKEN?.trim() || "",
-    cloudflareAccountId: env.CLOUDFLARE_ACCOUNT_ID?.trim() || "",
-    cloudflareImageModel: env.CLOUDFLARE_IMAGE_MODEL?.trim() || "@cf/black-forest-labs/flux-1-schnell",
     generateImages: bool(env.ARTICLE_GENERATE_IMAGES, true),
     requireImages: bool(env.ARTICLE_REQUIRE_IMAGES, true),
     imagesPerArticle: positiveInt(env.ARTICLE_IMAGES_PER_ARTICLE, 4),
@@ -34,6 +32,7 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     maxTrendCandidates: positiveInt(env.ARTICLE_MAX_TREND_CANDIDATES, 12),
     dryRun: argv.includes("--dry-run") || bool(env.ARTICLE_DRY_RUN, false),
     wordpressUrl: env.WORDPRESS_URL?.trim().replace(/\/$/, "") || "",
+    editorialAuthor: env.EDITORIAL_AUTHOR?.trim() || "Fourth Dimension Studio Editorial Team",
     wordpressUsername: env.WORDPRESS_USERNAME?.trim() || "",
     wordpressAppPassword: env.WORDPRESS_APP_PASSWORD?.replace(/\s+/g, "") || "",
   };
@@ -44,7 +43,6 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
   ].filter(([key]) => !config[key]).map(([, label]) => label);
   if (missing.length) throw new Error(`Missing required settings: ${missing.join(", ")}`);
   config.searchConsoleEnabled = Boolean(config.searchConsoleConnectedAccountId && config.searchConsoleSiteUrl);
-  config.cloudflareImagesEnabled = Boolean(config.cloudflareApiToken && config.cloudflareAccountId);
   config.wordpressEnabled = Boolean(config.wordpressUrl && config.wordpressUsername && config.wordpressAppPassword);
   return config;
 }

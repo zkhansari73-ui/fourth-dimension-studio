@@ -15,11 +15,8 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     geminiConnectedAccountId: env.GEMINI_CONNECTED_ACCOUNT_ID?.trim() || "",
     sheetsConnectedAccountId: env.GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID?.trim() || "",
     driveConnectedAccountId: env.GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID?.trim() || "",
-    searchConsoleConnectedAccountId: env.GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID?.trim() || "",
-    searchConsoleSiteUrl: env.SEARCH_CONSOLE_SITE_URL?.trim() || "",
-    siteSitemapUrl: env.SITE_SITEMAP_URL?.trim() || "",
     spreadsheetId: env.NEWS_SPREADSHEET_ID?.trim() || "",
-    newsInboxSheetName: env.NEWS_INBOX_SHEET_NAME?.trim() || "News Inbox",
+    sheetName: env.NEWS_SHEET_NAME?.trim() || "News Pipeline",
     geminiModel: env.GEMINI_MODEL?.trim() || "models/gemini-2.5-flash",
     geminiImageModel: env.GEMINI_IMAGE_MODEL?.trim() || "gemini-2.5-flash-image",
     generateImages: boolean(env.NEWS_GENERATE_IMAGES, true),
@@ -28,15 +25,13 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     minTotalScore: positiveInteger(env.NEWS_MIN_TOTAL_SCORE, 70),
     maxAgeDays: positiveInteger(env.NEWS_MAX_AGE_DAYS, 7),
     maxArticlesPerRun: positiveInteger(env.NEWS_MAX_ARTICLES_PER_RUN, 2),
-    maxNewsItemsPerRun: positiveInteger(env.NEWS_MAX_ITEMS_PER_RUN, 5),
-    maxReviewCandidates: positiveInteger(env.NEWS_MAX_REVIEW_CANDIDATES, 12),
-    sourceTimeoutMs: positiveInteger(env.NEWS_SOURCE_TIMEOUT_MS, 20000),
     minImportance: positiveInteger(env.NEWS_MIN_IMPORTANCE, 7),
     minRelevance: positiveInteger(env.NEWS_MIN_RELEVANCE, 7),
     dryRun: argv.includes("--dry-run") || boolean(env.NEWS_DRY_RUN, true),
-    newsScoutEnabled: boolean(env.NEWS_SCOUT_ENABLED, boolean(env.NEWS_GENERATE, true)),
+    generateNews: boolean(env.NEWS_GENERATE, true),
     timezone: env.NEWS_TIMEZONE?.trim() || "Asia/Tehran",
     wordpressUrl: env.WORDPRESS_URL?.trim().replace(/\/$/, "") || "",
+    editorialAuthor: env.EDITORIAL_AUTHOR?.trim() || "Fourth Dimension Studio Editorial Team",
     wordpressUsername: env.WORDPRESS_USERNAME?.trim() || "",
     wordpressAppPassword: env.WORDPRESS_APP_PASSWORD?.replace(/\s+/g, "") || "",
   };
@@ -50,8 +45,7 @@ export function loadConfig(env = process.env, argv = process.argv.slice(2)) {
     if (!config[key]) missing.push(label);
   }
   if (missing.length) throw new Error(`Missing required settings: ${missing.join(", ")}`);
-  if (!config.siteSitemapUrl && config.wordpressUrl) config.siteSitemapUrl = `${config.wordpressUrl}/sitemap.xml`;
-  config.searchConsoleEnabled = Boolean(config.searchConsoleConnectedAccountId && config.searchConsoleSiteUrl);
+  config.wordpressEnabled = Boolean(config.wordpressUrl && config.wordpressUsername && config.wordpressAppPassword);
   return config;
 }
 

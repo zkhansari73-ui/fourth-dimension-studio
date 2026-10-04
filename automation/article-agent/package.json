@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Independent, approval-gated multilingual article automation for Fourth Dimension Studio.",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "start": "node --env-file-if-exists=.env src/run.js",
     "publish-approved": "node --env-file-if-exists=.env src/publish-approved.js",
@@ -13,6 +15,7 @@
   },
   "dependencies": {
     "@composio/core": "0.21.0",
-    "fast-xml-parser": "5.2.5"
+    "fast-xml-parser": "5.2.5",
+    "sharp": "^0.34.5"
   }
 }
