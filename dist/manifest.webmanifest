@@ -1,15 +1,23 @@
 {
+  "id": "/",
   "name": "Fourth Dimension Studio",
   "short_name": "4D Studio",
   "description": "Architecture, AI, motion, free tools and connected creative services.",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
-  "orientation": "any",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
   "background_color": "#050608",
   "theme_color": "#4b382e",
   "icons": [
-    {"src":"assets/app-icon-192-transparent.png","sizes":"192x192","type":"image/png","purpose":"any"},
-    {"src":"assets/app-icon-512-transparent.png","sizes":"512x512","type":"image/png","purpose":"any"}
+    {"src":"/assets/app-icon-192-transparent.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/assets/app-icon-512-transparent.png","sizes":"512x512","type":"image/png","purpose":"any"}
+  ],
+  "shortcuts": [
+    {"name":"Articles","short_name":"Articles","url":"/articles/","icons":[{"src":"/assets/app-icon-192-transparent.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"News","short_name":"News","url":"/news/","icons":[{"src":"/assets/app-icon-192-transparent.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"Projects","short_name":"Projects","url":"/projects/","icons":[{"src":"/assets/app-icon-192-transparent.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"Tutorials","short_name":"Tutorials","url":"/tutorials/","icons":[{"src":"/assets/app-icon-192-transparent.png","sizes":"192x192","type":"image/png"}]}
   ]
 }
