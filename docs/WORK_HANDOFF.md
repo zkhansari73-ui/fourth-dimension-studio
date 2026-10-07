@@ -1,0 +1,47 @@
+# Fourth Dimension Studio — Work Handoff
+
+## Purpose
+This file is the current-state handoff for future Codex/Work sessions. Read it before changing automation or site deployment.
+
+## Repository
+- Repository: `zkhansari73-ui/fourth-dimension-studio`
+- Primary branch: `main`
+- Website: `https://fourth-dimension-studio.infinityfreeapp.com/`
+- Website is WordPress-hosted; repository also contains automation and site assets.
+
+## Current automation
+- Workflow: `.github/workflows/news-agent.yml`
+- Agent code: `automation/news-agent/`
+- Schedule: `0 4 * * *` (07:30 Asia/Tehran). GitHub schedules can start later than the exact minute.
+- Manual dispatch modes: `full` generates a new candidate; `publish-approved` handles only previously approved items.
+- `NEWS_SCOUT_ENABLED: "true"` is required and was saved in commit `6d224c6` on 2026-10-07.
+- `NEWS_GENERATE_IMAGES: "true"`, `NEWS_IMAGES_PER_ARTICLE: "4"`, `NEWS_MIN_TOTAL_SCORE: "70"`.
+
+## Required behavior
+1. Find one strong, relevant news candidate per daily run.
+2. Score and verify it before using Gemini.
+3. Generate SEO-focused article copy, keywords, and four images only for the selected candidate.
+4. Add the result to Google Sheet `News Pipeline` for human approval.
+5. Do NOT publish publicly until the owner approves it. The approved-article workflow must create a WordPress draft, not a public post.
+
+## Cost-control policy
+- Generate only one candidate/article per daily run.
+- Do not generate images for rejected/low-score sources.
+- Keep the threshold at 70 unless the owner asks otherwise.
+- Reuse linked Composio accounts and configured GitHub secrets; never expose, replace, or commit secrets.
+
+## Known history
+- Workflow run #17 on 2026-10-07 completed in 15 seconds but did not generate content because logs showed `NEWS_SCOUT_ENABLED=false`.
+- The workflow was corrected in commit `6d224c6` to pass `NEWS_SCOUT_ENABLED: "true"`.
+- Next safe verification: manually dispatch `full`, inspect its logs, and confirm that an item with four images is added to `News Pipeline`. Do not publish it.
+
+## PWA/site note
+- The PWA install manifest and icon changes are managed separately in the WordPress site. Android launchers may impose a white adaptive-icon plate even when the source PNG is transparent.
+- Do not replace the approved gold 3D 4D logo without owner approval.
+
+## Prompt for a future Work session
+> Read `docs/WORK_HANDOFF.md`, inspect the latest GitHub Actions run, then continue the daily news automation. Verify the full run creates one approval-gated item in `News Pipeline` with SEO copy and four images. Do not publish publicly.
+
+## Backup
+- Repository contains `Fourth-Dimension-Studio-PWA-final-backup-2026-10-07.zip`.
+- Important changes must be committed to `main` so they are available on mobile and in future Work sessions.
