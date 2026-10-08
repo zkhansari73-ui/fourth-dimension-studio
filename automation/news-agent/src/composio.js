@@ -18,8 +18,8 @@ export class NewsComposioClient {
       if (!version) throw new Error(`No pinned Composio version is available for ${slug}`);
       this.toolVersions.set(slug, version);
     }
-    const request = { userId: latin1SafePrompt(this.config.composioUserId), arguments: latin1SafeValue(arguments_), version };
-    if (connectedAccountId) request.connectedAccountId = latin1SafePrompt(connectedAccountId);
+    const request = { userId: this.config.composioUserId, arguments: arguments_, version };
+    if (connectedAccountId) request.connectedAccountId = connectedAccountId;
     const result = await this.client.tools.execute(slug, request);
     if (result?.error) throw new Error(result.error?.message ?? String(result.error));
     return result?.data ?? result;
@@ -37,17 +37,22 @@ export class NewsComposioClient {
   }
 
   async geminiJson(prompt) {
-    const encodedPrompt = Buffer.from(String(prompt), "utf8").toString("base64");
-    const transportPrompt = `Decode this UTF-8 Base64 request, prepare the required JSON internally, then UTF-8 encode the complete JSON and return ONLY its standard Base64 representation. Return Base64 characters only with no markdown, prose, whitespace, or literal JSON. Base64 request: ${encodedPrompt}`;
-    const data = await this.execute("GEMINI_GENERATE_CONTENT", {
-      prompt: transportPrompt,
-      model: this.config.geminiModel,
-    }, this.config.geminiConnectedAccountId);
-    const text = data?.text ?? data?.response ?? data?.result ?? data?.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!text) throw new Error("Gemini returned no text");
-    const encoded = String(text).replace(/^```(?:base64)?\s*|\s*```$/gi, "").replace(/\s+/g, "");
-    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded)) throw new Error("Gemini returned a non-Base64 transport payload");
-    return JSON.parse(Buffer.from(encoded, "base64").toString("utf8"));
+    if (!this.config.geminiApiKey) throw new Error("GEMINI_API_KEY is required for the news agent");
+    const configuredModel = String(this.config.geminiModel).replace(/^models\//, "");
+    const models = [...new Set([configuredModel, "gemini-2.5-flash", "gemini-2.0-flash"])];
+    let lastError = "unknown error";
+    for (const model of models) {
+      const endpoint = "https://generativelanguage.googleapis.com/v1beta/models/" + encodeURIComponent(model) + ":generateContent?key=" + encodeURIComponent(this.config.geminiApiKey);
+      const response = await fetch(endpoint, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", temperature: 0.25 } }) });
+      const payload = await response.json().catch(() => ({}));
+      if (response.ok) {
+        const text = payload?.candidates?.[0]?.content?.parts?.map((part) => part?.text || "").join("");
+        if (!text) throw new Error("Gemini API returned no text");
+        return JSON.parse(text);
+      }
+      lastError = model + " (" + response.status + "): " + (payload?.error?.message || "unknown error");
+    }
+    throw new Error("Gemini API failed across fallback models: " + lastError);
   }
 
   async generateImage(prompt) {
