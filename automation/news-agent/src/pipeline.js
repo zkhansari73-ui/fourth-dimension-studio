@@ -13,19 +13,48 @@ function itemId(review) {
   return `NEWS-${isoDate().replaceAll("-", "")}-${slug}-${suffix}`;
 }
 
+async function retry(operation, attempts) {
+  let lastError;
+  for (let count = 0; count < attempts; count += 1) {
+    try {
+      return await operation();
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError;
+}
+
 export async function runPipeline({ config, client, sourceResult, now = new Date(), logger = console }) {
   const existingUrls = await client.existingUrls();
   const filtered = prefilter(sourceResult.items, existingUrls, { now, maxAgeDays: config.maxAgeDays });
-  const report = { discovered: sourceResult.items.length, prefiltered: filtered.selected.length, rejected: filtered.rejected.length, generated: 0, qualityGateFailures: 0, imagesGenerated: 0, imageFailures: 0, dryRun: config.dryRun, sourceErrors: sourceResult.errors };
+  const candidates = filtered.selected.slice(0, config.maxReviewCandidates);
+  const report = { discovered: sourceResult.items.length, prefiltered: filtered.selected.length, reviewed: 0, rejected: filtered.rejected.length, generated: 0, reviewFailures: 0, generationFailures: 0, qualityGateFailures: 0, imagesGenerated: 0, imageFailures: 0, dryRun: config.dryRun, sourceErrors: sourceResult.errors };
   const date = isoDate(now);
   const runId = `RUN-${now.toISOString()}`;
 
-  for (const item of filtered.selected) {
+  for (const item of candidates) {
     if (report.generated >= config.maxArticlesPerRun) break;
-    const review = await client.geminiJson(reviewPrompt(item, date));
+    let review;
+    try {
+      review = await retry(() => client.geminiJson(reviewPrompt(item, date)), config.geminiRetries ?? 1);
+      report.reviewed += 1;
+    } catch (error) {
+      report.reviewFailures += 1;
+      logger.error("News review failed; continuing with the next candidate", { title: item.title, error: error.message });
+      continue;
+    }
     if (!isGeminiSelection(review, config)) continue;
-    const article = await client.geminiJson(articlePrompt(review));
-    const qualityGate = await client.geminiJson(qualityGatePrompt(review, article));
+    let article;
+    let qualityGate;
+    try {
+      article = await retry(() => client.geminiJson(articlePrompt(review)), config.geminiRetries ?? 1);
+      qualityGate = await retry(() => client.geminiJson(qualityGatePrompt(review, article)), config.geminiRetries ?? 1);
+    } catch (error) {
+      report.generationFailures += 1;
+      logger.error("News package generation failed; continuing with the next candidate", { title: review.original_title, error: error.message });
+      continue;
+    }
     if (!passesQualityGate(qualityGate)) {
       report.qualityGateFailures += 1;
       logger.error("Article failed quality gate", { title: review.original_title, result: qualityGate?.result, criticalFailures: qualityGate?.critical_failures });
