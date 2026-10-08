@@ -37,13 +37,17 @@ export class NewsComposioClient {
   }
 
   async geminiJson(prompt) {
+    const encodedPrompt = Buffer.from(String(prompt), "utf8").toString("base64");
+    const transportPrompt = `Decode this UTF-8 Base64 request, prepare the required JSON internally, then UTF-8 encode the complete JSON and return ONLY its standard Base64 representation. Return Base64 characters only with no markdown, prose, whitespace, or literal JSON. Base64 request: ${encodedPrompt}`;
     const data = await this.execute("GEMINI_GENERATE_CONTENT", {
-      prompt: latin1SafePrompt(prompt),
+      prompt: transportPrompt,
       model: this.config.geminiModel,
     }, this.config.geminiConnectedAccountId);
     const text = data?.text ?? data?.response ?? data?.result ?? data?.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) throw new Error("Gemini returned no text");
-    return JSON.parse(text.replace(/^```json\s*|\s*```$/g, ""));
+    const encoded = String(text).replace(/^```(?:base64)?\s*|\s*```$/gi, "").replace(/\s+/g, "");
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded)) throw new Error("Gemini returned a non-Base64 transport payload");
+    return JSON.parse(Buffer.from(encoded, "base64").toString("utf8"));
   }
 
   async generateImage(prompt) {
