@@ -1,19 +1,15 @@
 name: Fourth Dimension News Agent
 
 on:
-  schedule:
-    - cron: "0 4 * * *"
-
   workflow_dispatch:
     inputs:
       mode:
-        description: "Choose publish-approved to save Gemini usage"
+        description: "Create private WordPress drafts only for items already approved by the editor"
         required: true
         default: publish-approved
         type: choice
         options:
           - publish-approved
-          - full
 
 permissions:
   contents: read
@@ -37,23 +33,16 @@ jobs:
         env:
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
           COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
-          GEMINI_CONNECTED_ACCOUNT_ID: ${{ secrets.GEMINI_CONNECTED_ACCOUNT_ID }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: ca_fEO9enPOPqOL
           GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID: ca_cRddrVMnbMXp
           NEWS_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
           NEWS_SHEET_NAME: News Pipeline
           NEWS_DRY_RUN: "false"
-          NEWS_SCOUT_ENABLED: "true"
-          NEWS_GENERATE: ${{ github.event_name == 'schedule' || inputs.mode == 'full' }}
-          NEWS_GENERATE_IMAGES: "true"
-          NEWS_REQUIRE_IMAGE: "true"
-          NEWS_IMAGES_PER_ARTICLE: "4"
-          NEWS_MIN_TOTAL_SCORE: "70"
-          NEWS_MAX_REVIEW_CANDIDATES: "12"
-          NEWS_MAX_NEWS_ITEMS_PER_RUN: "1"
-          GEMINI_IMAGE_MODEL: gemini-2.5-flash-image
+          # Daily research, writing, image selection and preview are handled by
+          # the Codex editorial automation. This workflow only drafts approved items.
+          NEWS_GENERATE: "false"
           WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
           WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
           EDITORIAL_AUTHOR: Fourth Dimension Studio Editorial Team
+
