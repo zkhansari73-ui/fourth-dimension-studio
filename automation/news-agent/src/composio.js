@@ -18,7 +18,7 @@ export class NewsComposioClient {
       if (!version) throw new Error(`No pinned Composio version is available for ${slug}`);
       this.toolVersions.set(slug, version);
     }
-    const request = { userId: this.config.composioUserId, arguments: arguments_, version };
+    const request = { userId: latin1SafePrompt(this.config.composioUserId), arguments: latin1SafeValue(arguments_), version };
     if (connectedAccountId) request.connectedAccountId = connectedAccountId;
     const result = await this.client.tools.execute(slug, request);
     if (result?.error) throw new Error(result.error?.message ?? String(result.error));
@@ -153,4 +153,12 @@ function firstHttpUrl(value) {
 
 function latin1SafePrompt(value) {
   return String(value ?? "").replace(/[^\x00-\x7F]/g, " ");
+}
+function latin1SafeValue(value) {
+  if (typeof value === "string") return latin1SafePrompt(value);
+  if (Array.isArray(value)) return value.map(latin1SafeValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [latin1SafePrompt(key), latin1SafeValue(item)]));
+  }
+  return value;
 }
