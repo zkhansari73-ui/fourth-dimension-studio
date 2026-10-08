@@ -19,7 +19,7 @@ export class NewsComposioClient {
       this.toolVersions.set(slug, version);
     }
     const request = { userId: latin1SafePrompt(this.config.composioUserId), arguments: latin1SafeValue(arguments_), version };
-    if (connectedAccountId) request.connectedAccountId = connectedAccountId;
+    if (connectedAccountId) request.connectedAccountId = latin1SafePrompt(connectedAccountId);
     const result = await this.client.tools.execute(slug, request);
     if (result?.error) throw new Error(result.error?.message ?? String(result.error));
     return result?.data ?? result;
