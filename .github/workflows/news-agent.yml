@@ -38,6 +38,7 @@ jobs:
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
           COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
           GEMINI_CONNECTED_ACCOUNT_ID: ${{ secrets.GEMINI_CONNECTED_ACCOUNT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: ca_fEO9enPOPqOL
           GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID: ca_cRddrVMnbMXp
           NEWS_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
@@ -49,6 +50,8 @@ jobs:
           NEWS_REQUIRE_IMAGE: "true"
           NEWS_IMAGES_PER_ARTICLE: "4"
           NEWS_MIN_TOTAL_SCORE: "70"
+          NEWS_MAX_REVIEW_CANDIDATES: "12"
+          NEWS_MAX_NEWS_ITEMS_PER_RUN: "1"
           GEMINI_IMAGE_MODEL: gemini-2.5-flash-image
           WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
