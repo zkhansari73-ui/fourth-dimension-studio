@@ -38,7 +38,7 @@ export class NewsComposioClient {
 
   async geminiJson(prompt) {
     const data = await this.execute("GEMINI_GENERATE_CONTENT", {
-      prompt,
+      prompt: latin1SafePrompt(prompt),
       model: this.config.geminiModel,
     }, this.config.geminiConnectedAccountId);
     const text = data?.text ?? data?.response ?? data?.result ?? data?.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -48,7 +48,7 @@ export class NewsComposioClient {
 
   async generateImage(prompt) {
     const data = await this.execute("GEMINI_GENERATE_IMAGE", {
-      prompt,
+      prompt: latin1SafePrompt(prompt),
       model: this.config.geminiImageModel,
       aspect_ratio: "16:9",
     }, this.config.geminiConnectedAccountId);
@@ -151,3 +151,6 @@ function firstHttpUrl(value) {
   return "";
 }
 
+function latin1SafePrompt(value) {
+  return String(value ?? "").replace(/[^\x00-\x7F]/g, " ");
+}
