@@ -1,6 +1,9 @@
 name: Fourth Dimension News Agent
 
 on:
+  schedule:
+    # 04:00 UTC = 07:30 Asia/Tehran
+    - cron: "0 4 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -28,8 +31,6 @@ jobs:
           cache: npm
           cache-dependency-path: automation/news-agent/package-lock.json
       - run: npm ci
-      # The full test suite is validated in the maintained local source.
-      # This repository still contains one legacy test that belongs to an earlier pipeline.
       - run: node --check src/run.js
       - run: npm start
         env:
@@ -40,9 +41,6 @@ jobs:
           NEWS_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
           NEWS_SHEET_NAME: News Pipeline
           NEWS_DRY_RUN: "false"
-          # Daily research, writing, image selection and preview are handled by
-          # the Codex editorial automation. This workflow only drafts approved items.
-          NEWS_GENERATE: "false"
           WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
           WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}

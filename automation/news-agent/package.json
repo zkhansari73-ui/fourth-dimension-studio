@@ -1,9 +1,9 @@
 {
   "name": "fourth-dimension-news-agent",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "description": "Approval-gated multilingual news pipeline powered by Gemini through Composio.",
+  "description": "Approval-gated multilingual news draft publisher for Fourth Dimension Studio.",
   "engines": {
     "node": ">=22.22.3"
   },
