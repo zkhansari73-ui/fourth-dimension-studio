@@ -79,6 +79,41 @@ function breadcrumbFor({ kind, title, postUrl }) {
   ] };
 }
 
+function languageUrlMap(postUrls, fallbackUrl) {
+  return Object.fromEntries(LANGS.map((lang) => [lang, postUrls?.[lang] || fallbackUrl]));
+}
+
+/**
+ * Renders one server-visible language version. Crawlers receive the real
+ * EN/FA/AR document directly; this is deliberately not a JavaScript switcher.
+ */
+export function publicationHtmlForLanguage(data, lang, postUrls = {}) {
+  const { kind, author, published, modified, category, tags, keywords, sources, originalSource, originalUrl, originalDate, images = [] } = data;
+  const copy = data.languages[lang];
+  if (!copy) throw new Error(`Missing ${lang} article copy`);
+  const urls = languageUrlMap(postUrls, data.postUrl || "https://example.invalid/pending");
+  const postUrl = urls[lang];
+  const rendered = markdownToHtml(copy.body);
+  const schema = schemaFor({ kind, title: copy.title, excerpt: copy.excerpt, postUrl, imageUrl: images[0]?.url, published, modified, author, keywords, originalSource, originalUrl });
+  const breadcrumb = breadcrumbFor({ kind, title: copy.title, postUrl });
+  const sourceTitle = { fa: "منابع", en: "Sources", ar: "المصادر" }[lang];
+  const relatedTitle = { fa: "مطالب مرتبط", en: "Related content", ar: "محتوى مرتبط" }[lang];
+  const shareTitle = { fa: "اشتراک‌گذاری", en: "Share", ar: "مشاركة" }[lang];
+  const languageLinks = LANGS.map((code) => `<a href="${escapeHtml(urls[code])}" hreflang="${code}"${code === lang ? ' aria-current="page"' : ""}>${code.toUpperCase()}</a>`).join("");
+  const alternates = LANGS.map((code) => `<link rel="alternate" hreflang="${code}" href="${escapeHtml(urls[code])}">`).join("") + `<link rel="alternate" hreflang="x-default" href="${escapeHtml(urls.en)}"><link rel="canonical" href="${escapeHtml(postUrl)}">`;
+  const metadata = kind === "news" ? `<div class="fd-original-source"><strong>${escapeHtml(originalSource)}</strong> · <time>${escapeHtml(originalDate)}</time> · <a href="${escapeHtml(originalUrl)}" rel="nofollow noopener" target="_blank">${lang === "en" ? "Original source" : lang === "ar" ? "المصدر الأصلی" : "منبع اصلی"}</a></div>` : "";
+  return `${alternates}<article class="fd-publication fd-lang-${lang}" lang="${lang}" dir="${lang === "en" ? "ltr" : "rtl"}">
+    <header><p class="fd-kind">${kind === "news" ? "NEWS" : "ARTICLE"} · ${escapeHtml(category)}</p><h1>${escapeHtml(copy.title)}</h1><p class="fd-excerpt">${escapeHtml(copy.excerpt)}</p><div class="fd-byline"><span>${escapeHtml(author)}</span><time datetime="${escapeHtml(published)}">${escapeHtml(published)}</time><span>${readingMinutes(copy.body)} min</span></div>${metadata}<div class="fd-taxonomy">${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div></header>
+    <nav class="fd-language-switcher" aria-label="Language versions">${languageLinks}</nav>
+    ${tocHtml(rendered.toc, lang)}<div class="fd-body">${rendered.html}</div>${figures(images.slice(1), lang)}
+    <section class="fd-sources"><h2>${sourceTitle}</h2><ol>${sourceList(sources)}</ol></section>
+    <section class="fd-related"><h2>${relatedTitle}</h2><a href="/wp-content/themes/fourth-dimension-theme/site/articles/?lang=${lang}">${relatedTitle}</a></section>
+    <nav class="fd-share" aria-label="${shareTitle}"><strong>${shareTitle}</strong><a href="https://t.me/share/url?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(copy.title)}" target="_blank" rel="noopener">Telegram</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}" target="_blank" rel="noopener">LinkedIn</a></nav>
+    <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>
+    <script type="application/ld+json">${JSON.stringify(breadcrumb).replace(/</g, "\\u003c")}</script>
+  </article>`;
+}
+
 export function publicationHtml(data) {
   const { kind, postUrl, author, published, modified, category, tags, keywords, sources, originalSource, originalUrl, originalDate, images = [] } = data;
   const languageLinks = LANGS.map((lang) => `<a href="${escapeHtml(postUrl)}?lang=${lang}" hreflang="${lang}">${lang.toUpperCase()}</a>`).join("");
