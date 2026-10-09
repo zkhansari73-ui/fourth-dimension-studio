@@ -4,14 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Suggest five topics, generate the selected article, or prepare approved drafts"
+        description: "Suggest topics, create an article, prepare previews, publish approved previews, or audit published SEO"
         required: true
         default: suggest_topics
         type: choice
         options:
           - suggest_topics
           - generate_selected_article
+          - prepare-preview
           - publish-approved
+          - audit-published
       topic:
         description: "Selected topic/direction; required only for generate_selected_article"
         required: false
@@ -36,7 +38,7 @@ jobs:
       - run: npm ci
       - run: npm run check
       - name: Suggest or generate article
-        if: inputs.mode != 'publish-approved'
+        if: inputs.mode == 'suggest_topics' || inputs.mode == 'generate_selected_article'
         run: npm start
         env:
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
@@ -47,6 +49,7 @@ jobs:
           GOOGLE_DRIVE_CONNECTED_ACCOUNT_ID: ca_cRddrVMnbMXp
           GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID }}
           SEARCH_CONSOLE_SITE_URL: ${{ secrets.SEARCH_CONSOLE_SITE_URL }}
+          SITE_SITEMAP_URL: https://fourth-dimension-studio.infinityfreeapp.com/wp-sitemap.xml
           ARTICLE_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
           ARTICLE_SHEET_NAME: Article Pipeline
           ARTICLE_MODE: ${{ inputs.mode }}
@@ -56,7 +59,21 @@ jobs:
           ARTICLE_REQUIRE_IMAGES: "true"
           ARTICLE_IMAGES_PER_ARTICLE: "4"
           GEMINI_IMAGE_MODEL: gemini-2.5-flash-image
-      - name: Create WordPress drafts for approved articles
+      - name: Create three language WordPress preview drafts
+        if: inputs.mode == 'prepare-preview'
+        run: npm run prepare-preview
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
+          GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: ca_fEO9enPOPqOL
+          ARTICLE_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
+          ARTICLE_SHEET_NAME: Article Pipeline
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
+          EDITORIAL_AUTHOR: Fourth Dimension Studio Editorial Team
+          ARTICLE_REQUIRE_IMAGES: "true"
+      - name: Publish explicitly approved language bundles
         if: inputs.mode == 'publish-approved'
         run: npm run publish-approved
         env:
@@ -70,3 +87,15 @@ jobs:
           WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
           EDITORIAL_AUTHOR: Fourth Dimension Studio Editorial Team
           ARTICLE_REQUIRE_IMAGES: "true"
+      - name: Audit published multilingual articles
+        if: inputs.mode == 'audit-published'
+        run: npm run audit-published
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
+          GOOGLE_SHEETS_CONNECTED_ACCOUNT_ID: ca_fEO9enPOPqOL
+          GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CONNECTED_ACCOUNT_ID }}
+          SEARCH_CONSOLE_SITE_URL: ${{ secrets.SEARCH_CONSOLE_SITE_URL }}
+          SITE_SITEMAP_URL: https://fourth-dimension-studio.infinityfreeapp.com/wp-sitemap.xml
+          ARTICLE_SPREADSHEET_ID: 1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44
+          ARTICLE_SHEET_NAME: Article Pipeline
