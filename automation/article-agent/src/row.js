@@ -18,6 +18,12 @@ export function articleRow({ articleId, createdAt, brief, article, featuredImage
     keyword_research: keywordResearch, quality_gate: qualityGate, image_assets: imageAssets,
     canonical_hreflang_plan: article.canonical_hreflang_plan || {},
     json_ld: { article: article.json_ld_article, breadcrumb: article.json_ld_breadcrumb, faq: article.json_ld_faq },
+    indexing_plan: {
+      language_versions: ["en", "fa", "ar"],
+      sitemap_url: "https://fourth-dimension-studio.infinityfreeapp.com/wp-sitemap.xml",
+      required_checks: ["public HTTP 200", "self canonical", "reciprocal hreflang", "Article and BreadcrumbList validation", "sitemap inclusion", "Search Console URL inspection after publication"],
+      note: "Google does not provide a generic API to force-index ordinary articles. Sitemap discovery and Search Console monitoring are used instead.",
+    },
   };
   return [
     articleId, createdAt, brief.original_title, brief.original_source, brief.original_url, brief.original_publication_date, createdAt, brief.category,
