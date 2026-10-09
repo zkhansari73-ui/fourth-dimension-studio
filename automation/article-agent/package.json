@@ -9,9 +9,11 @@
   },
   "scripts": {
     "start": "node --env-file-if-exists=.env src/run.js",
+    "prepare-preview": "node --env-file-if-exists=.env src/prepare-preview.js",
     "publish-approved": "node --env-file-if-exists=.env src/publish-approved.js",
+    "audit-published": "node --env-file-if-exists=.env src/audit-published.js",
     "test": "node --test",
-    "check": "node --check src/run.js && node --check src/publish-approved.js && node --test"
+    "check": "node --check src/run.js && node --check src/prepare-preview.js && node --check src/publish-approved.js && node --check src/audit-published.js && node --test"
   },
   "dependencies": {
     "@composio/core": "0.21.0",
