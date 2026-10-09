@@ -1,0 +1,44 @@
+name: Publish Approved WordPress Draft
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: "ID of an already approved private WordPress draft"
+        required: true
+        default: "16"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish-approved-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish the explicitly selected approved draft
+        env:
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
+          POST_ID: ${{ inputs.post_id }}
+        run: |
+          node <<'NODE'
+          const url = process.env.WORDPRESS_URL;
+          const username = process.env.WORDPRESS_USERNAME;
+          const password = process.env.WORDPRESS_APP_PASSWORD;
+          const id = String(process.env.POST_ID || "").trim();
+          if (!url || !username || !password || !/^\d+$/.test(id)) {
+            throw new Error("Missing WordPress credentials or invalid post ID");
+          }
+          const auth = Buffer.from(`${username}:${password}`).toString("base64");
+          const response = await fetch(`${url.replace(/\/$/, "")}/wp-json/wp/v2/posts/${id}`, {
+            method: "POST",
+            headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
+            body: JSON.stringify({ status: "publish" }),
+          });
+          const body = await response.json();
+          if (!response.ok) throw new Error(`WordPress publish failed (${response.status}): ${JSON.stringify(body)}`);
+          if (body.status !== "publish") throw new Error(`Unexpected resulting status: ${body.status}`);
+          console.log(JSON.stringify({ id: body.id, status: body.status, link: body.link }));
+          NODE
