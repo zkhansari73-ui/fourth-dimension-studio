@@ -17,21 +17,53 @@
   const staticItems=Array.isArray(window.FD_CONTENT)?window.FD_CONTENT:[];
   let items=staticItems.filter(x=>x.type===section);
   const stripHtml=value=>String(value||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
-  const wpPostToNews=post=>({
-    type:'news',
-    date:String(post.date||'').slice(0,10),
-    topic:'architecture',
-    software:'AI',
-    field:'technology',
-    title:{fa:stripHtml(post.title?.rendered),en:stripHtml(post.title?.rendered),ar:stripHtml(post.title?.rendered)},
-    excerpt:{fa:stripHtml(post.excerpt?.rendered),en:stripHtml(post.excerpt?.rendered),ar:stripHtml(post.excerpt?.rendered)},
-    tags:['News','WordPress'],
-    url:post.link
-  });
+  const escapeHtml=value=>String(value||'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const translationFallback={
+    fa:{title:'مطلب ترجمه‌نشده',excerpt:'ترجمهٔ این خبر به فارسی هنوز آماده نیست.'},
+    en:{title:'Translation unavailable',excerpt:'An English translation of this news item is not available yet.'},
+    ar:{title:'الترجمة غير متاحة',excerpt:'ترجمة هذا الخبر إلى العربية غير متاحة بعد.'}
+  };
+  function localizedPostText(post,language){
+    const doc=new DOMParser().parseFromString(post.content?.rendered||'','text/html');
+    const section=doc.querySelector('section[lang="'+language+'"]')||doc.querySelector('section[lang="en"]');
+    if(section){
+      const heading=section.querySelector('h1,h2');
+      const paragraph=section.querySelector('p');
+      return {title:stripHtml(heading?.innerHTML)||stripHtml(post.title?.rendered),excerpt:stripHtml(paragraph?.innerHTML)||stripHtml(post.excerpt?.rendered)};
+    }
+    const hasLanguageSections=Boolean(doc.querySelector('section[lang]'));
+    if(!hasLanguageSections){
+      const rawTitle=stripHtml(post.title?.rendered),rawExcerpt=stripHtml(post.excerpt?.rendered);
+      const text=rawTitle+' '+rawExcerpt;
+      const hasArabicScript=/[\u0600-\u06ff]/.test(text);
+      const hasPersianLetters=/[پچژگک‌ی]/.test(text);
+      if(language==='en'&&!hasArabicScript)return {title:rawTitle,excerpt:rawExcerpt};
+      if(language==='fa'&&hasArabicScript)return {title:rawTitle,excerpt:rawExcerpt};
+      if(language==='ar'&&hasArabicScript&&!hasPersianLetters)return {title:rawTitle,excerpt:rawExcerpt};
+    }
+    return translationFallback[language];
+  }
+  const wpPostToNews=post=>{
+    const localized=Object.fromEntries(['fa','en','ar'].map(language=>[language,localizedPostText(post,language)]));
+    const url=new URL(post.link||location.href,location.href);
+    if(url.protocol==='http:'||url.protocol==='https:')url.searchParams.set('lang',lang);
+    const safeUrl=url.protocol==='http:'||url.protocol==='https:'?url.href:location.origin+'/';
+    return {
+      type:'news',
+      date:String(post.date||'').slice(0,10),
+      topic:'architecture',
+      software:'AI',
+      field:'technology',
+      title:Object.fromEntries(['fa','en','ar'].map(language=>[language,localized[language].title])),
+      excerpt:Object.fromEntries(['fa','en','ar'].map(language=>[language,localized[language].excerpt])),
+      tags:['News','WordPress'],
+      url:safeUrl
+    };
+  };
   const options=(key)=>[...new Set(items.map(x=>x[key]).filter(Boolean))].sort();
   function fill(id,values,label){const el=$(id);el.innerHTML=`<option value="">${label}</option>`+values.map(v=>`<option value="${v}">${v}</option>`).join('')}
   function setLanguage(next){lang=next;localStorage.setItem('fd-language',lang);document.documentElement.lang=lang;document.body.dir=lang==='en'?'ltr':'rtl';$$('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));$$('.content-nav a').forEach(a=>a.textContent=copy[lang][a.dataset.section]);$('#title').textContent=copy[lang][section];$('#intro').textContent=copy[lang].intro;$('#search').placeholder=copy[lang].search;fill('#topic',options('topic'),copy[lang].allTopic);fill('#software',options('software'),copy[lang].allSoftware);fill('#field',options('field'),copy[lang].allField);fill('#date',[...new Set(items.map(x=>x.date.slice(0,4)))],copy[lang].allDate);$('#sort').innerHTML=`<option value="new">${copy[lang].newest}</option><option value="old">${copy[lang].oldest}</option>`;const canonical=`https://fourth-dimension-studio.infinityfreeapp.com/${section}/?lang=${lang}`;document.title=`${copy[lang][section]} | Fourth Dimension Studio`;document.querySelector('meta[name="description"]').content=descriptions[lang][section];document.querySelector('link[rel="canonical"]').href=canonical;document.querySelector('meta[property="og:title"]').content=document.title;document.querySelector('meta[property="og:description"]').content=descriptions[lang][section];document.querySelector('meta[property="og:url"]').content=canonical;const url=new URL(location.href);url.searchParams.set('lang',lang);history.replaceState({},'',url);render()}
-  function render(){const q=$('#search').value.trim().toLocaleLowerCase();let rows=items.filter(x=>{const hay=[x.title[lang],x.excerpt[lang],...(x.tags||[])].join(' ').toLocaleLowerCase();return(!q||hay.includes(q))&&(!$('#topic').value||x.topic===$('#topic').value)&&(!$('#software').value||x.software===$('#software').value)&&(!$('#field').value||x.field===$('#field').value)&&(!$('#date').value||x.date.startsWith($('#date').value))});rows.sort((a,b)=>$('#sort').value==='old'?a.date.localeCompare(b.date):b.date.localeCompare(a.date));$('#count').textContent=`${rows.length} ${copy[lang].result}`;$('#grid').innerHTML=rows.length?rows.map(x=>`<article class="content-card"><small>${x.date} · ${x.software}</small><h2>${x.title[lang]}</h2><p>${x.excerpt[lang]}</p><div class="tags">${x.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${x.url}">${copy[lang].open}</a></article>`).join(''):`<div class="empty">${copy[lang].empty}</div>`}
+  function render(){const q=$('#search').value.trim().toLocaleLowerCase();let rows=items.filter(x=>{const hay=[x.title[lang],x.excerpt[lang],...(x.tags||[])].join(' ').toLocaleLowerCase();return(!q||hay.includes(q))&&(!$('#topic').value||x.topic===$('#topic').value)&&(!$('#software').value||x.software===$('#software').value)&&(!$('#field').value||x.field===$('#field').value)&&(!$('#date').value||x.date.startsWith($('#date').value))});rows.sort((a,b)=>$('#sort').value==='old'?a.date.localeCompare(b.date):b.date.localeCompare(a.date));$('#count').textContent=`${rows.length} ${copy[lang].result}`;$('#grid').innerHTML=rows.length?rows.map(x=>`<article class="content-card"><small>${escapeHtml(x.date)} · ${escapeHtml(x.software)}</small><h2>${escapeHtml(x.title[lang])}</h2><p>${escapeHtml(x.excerpt[lang])}</p><div class="tags">${x.tags.map(tag=>`<span>${escapeHtml(tag)}</span>`).join('')}</div><a href="${escapeHtml(x.url)}">${copy[lang].open}</a></article>`).join(''):`<div class="empty">${copy[lang].empty}</div>`}
   async function loadPublishedNews(){
     if(section!=='news') return;
     try{
