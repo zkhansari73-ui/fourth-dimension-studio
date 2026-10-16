@@ -33,7 +33,8 @@ Object.assign(copy.en,{installApp:'Install App'});Object.assign(copy.fa,{install
 const supportedLanguages=['en','fa','ar'];
 function applyLanguage(lang,{updateUrl=false}={}){
   if(!supportedLanguages.includes(lang))lang='en';
-  document.documentElement.lang=lang;document.documentElement.dir=lang==='en'?'ltr':'rtl';\n  $$('.service-stage a.glass-card').forEach(a=>{const target=new URL(a.href,location.href);target.searchParams.set('lang',lang);a.href=target.href});
+  document.documentElement.lang=lang;document.documentElement.dir=lang==='en'?'ltr':'rtl';
+  $$('.service-stage a.glass-card').forEach(a=>{const target=new URL(a.href,location.href);target.searchParams.set('lang',lang);a.href=target.href});
   $$('[data-lang]').forEach(x=>x.classList.toggle('active',x.dataset.lang===lang));
   $$('[data-i18n]').forEach(el=>{const v=copy[lang][el.dataset.i18n];if(v)el.textContent=v});
   document.querySelector('meta[name="description"]').content={en:'Fourth Dimension Studio — architecture, AI, motion, web and digital products.',fa:'استودیو بعد چهارم؛ معماری، هوش مصنوعی، موشن، وب و محصولات دیجیتال.',ar:'استوديو البعد الرابع للعمارة والذكاء الاصطناعي والموشن والويب والمنتجات الرقمية.'}[lang];
