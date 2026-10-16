@@ -137,3 +137,9 @@ Media: `site/assets/`
 - Expanded the existing FAQ additively from one to five translated questions; the original question remains in place.
 - Translated the added project-brief link while preserving the original email contact action.
 - Remaining hosting work: custom domain, WordPress rewrites for clean URLs, Search Console, production cookie consent (if non-essential tracking is enabled), and a complete WordPress database/uploads/plugins/theme backup.
+
+## اصلاحات زبان و متن خدمات — 16 اکتبر 2026
+- لینک کارت‌های خدمات و نتایج جست‌وجوی سریع، زبان انتخاب‌شده را به صفحهٔ خدمت منتقل می‌کنند.
+- توضیح هر کارت تخصصی در صفحهٔ خدمت، به زبان انتخاب‌شده و بر پایهٔ عنوان همان تخصص نمایش داده می‌شود؛ متن یکسان عمومی برای همهٔ کارت‌ها حذف شد.
+- تغییرات در شاخهٔ اصلی مخزن GitHub ثبت شدند.
+- انتقال این فایل‌ها به پوستهٔ زندهٔ WordPress هنوز تکمیل نشده است؛ نسخهٔ WordPress باید در نشست امن مدیریت هاست به‌روزرسانی شود.

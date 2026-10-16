@@ -34,6 +34,7 @@ const supportedLanguages=['en','fa','ar'];
 function applyLanguage(lang,{updateUrl=false}={}){
   if(!supportedLanguages.includes(lang))lang='en';
   document.documentElement.lang=lang;document.documentElement.dir=lang==='en'?'ltr':'rtl';
+  $$('.service-stage a.glass-card').forEach(a=>{const target=new URL(a.href,location.href);target.searchParams.set('lang',lang);a.href=target.href});
   $$('[data-lang]').forEach(x=>x.classList.toggle('active',x.dataset.lang===lang));
   $$('[data-i18n]').forEach(el=>{const v=copy[lang][el.dataset.i18n];if(v)el.textContent=v});
   document.querySelector('meta[name="description"]').content={en:'Fourth Dimension Studio — architecture, AI, motion, web and digital products.',fa:'استودیو بعد چهارم؛ معماری، هوش مصنوعی، موشن، وب و محصولات دیجیتال.',ar:'استوديو البعد الرابع للعمارة والذكاء الاصطناعي والموشن والويب والمنتجات الرقمية.'}[lang];
@@ -78,7 +79,7 @@ function renderQuickSearch(){
   if(!q){quickResults.classList.remove('open');quickInput.setAttribute('aria-expanded','false');return}
   const found=quickItems.filter(item=>(item.terms+' '+copy[activeLanguage][item.key]).toLocaleLowerCase().includes(q));
   if(!found.length){const empty=document.createElement('div');empty.className='quick-search-empty';empty.textContent=copy[activeLanguage].noResults;quickResults.append(empty)}
-  found.forEach(item=>{const link=document.createElement('a');link.className='quick-search-result';link.href=item.url;link.setAttribute('role','option');const name=document.createElement('span');name.textContent=copy[activeLanguage][item.key];const type=document.createElement('small');type.textContent=copy[activeLanguage].searchType;link.append(name,type);quickResults.append(link)});
+  found.forEach(item=>{const link=document.createElement('a');link.className='quick-search-result';const target=new URL(item.url,location.href);target.searchParams.set('lang',activeLanguage);link.href=target.href;link.setAttribute('role','option');const name=document.createElement('span');name.textContent=copy[activeLanguage][item.key];const type=document.createElement('small');type.textContent=copy[activeLanguage].searchType;link.append(name,type);quickResults.append(link)});
   quickResults.classList.add('open');quickInput.setAttribute('aria-expanded','true');
 }
 quickInput.addEventListener('input',renderQuickSearch);quickInput.addEventListener('focus',()=>{if(quickInput.value.trim())renderQuickSearch()});
