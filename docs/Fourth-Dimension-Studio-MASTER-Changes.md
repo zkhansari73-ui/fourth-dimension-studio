@@ -136,4 +136,7 @@ Media: `site/assets/`
 - Updated service worker cache to version 2.
 - Expanded the existing FAQ additively from one to five translated questions; the original question remains in place.
 - Translated the added project-brief link while preserving the original email contact action.
-- Remaining hosting work: custom domain, WordPress rewrites for clean URLs, Search Console, production cookie consent (if non-essential tracking is enabled), and a complete WordPress database/uploads/plugins/theme backup.
+- Remaining hosting work: custom domain, WordPress rewrites for clean URLs, Search Console, production cookie consent (if non-essential tracking is enabled), and a complete WordPress database/uploads/plugins/theme backup.\n\n## اصلاحات زبان و متن خدمات — 16 اکتبر 2026
+- لینک کارت‌های خدمات و نتایج جست‌وجوی سریع، زبان انتخاب‌شده را به صفحهٔ خدمت منتقل می‌کنند.
+- توضیح هر کارت تخصصی در صفحهٔ خدمت، به زبان انتخاب‌شده و بر پایهٔ عنوان همان تخصص نمایش داده می‌شود؛ متن یکسان عمومی برای همهٔ کارت‌ها حذف شد.
+- این اصلاحات فقط در شاخهٔ آماده‌سازی GitHub ثبت شده‌اند و هنوز به WordPress/هاست منتقل نشده‌اند؛ انتقال طبق قانون این فهرست پس از تأیید نهایی و یکجا انجام می‌شود.

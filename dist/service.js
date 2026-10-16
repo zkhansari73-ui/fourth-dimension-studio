@@ -17,7 +17,13 @@ function renderSpecialties(lang,d){
     const card=document.createElement('article');card.className='specialty-card';
     const number=document.createElement('span');number.textContent=String(index+1).padStart(2,'0');
     const heading=document.createElement('h3');heading.textContent=title;
-    const text=document.createElement('p');text.textContent=d[1];
+    const text=document.createElement('p');
+    const descriptions={
+      en:title=>title+' is tailored to your brief, priorities and project constraints.',
+      fa:title=>'برای «'+title+'»، اولویت‌ها و محدودیت‌های پروژه شما در نظر گرفته می‌شود.',
+      ar:title=>'تُراعى أهداف مشروعك وأولوياته عند تنفيذ «'+title+'».'
+    };
+    text.textContent=descriptions[lang](title);
     const link=document.createElement('a');link.textContent=ui[lang].viewArea;link.href='mailto:hello@fourthdimension.studio?subject='+encodeURIComponent(d[0]+' — '+title);
     card.append(number,heading,text,link);specialties.append(card);
   });
