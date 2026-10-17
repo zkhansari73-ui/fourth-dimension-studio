@@ -45,3 +45,12 @@ This file is the current-state handoff for future Codex/Work sessions. Read it b
 ## Backup
 - Repository contains `Fourth-Dimension-Studio-PWA-final-backup-2026-10-07.zip`.
 - Important changes must be committed to `main` so they are available on mobile and in future Work sessions.
+
+
+## Prepared WordPress theme language fix — 2026-10-17
+- Latest user-provided theme ZIP was used as the base; the older 2026-10-07 backup was not used.
+- Corrected ZIP is stored in Google Drive: [Fourth-Dimension-WordPress-Theme-Language-Fix-2026-10-17.zip](https://drive.google.com/file/d/179I1Em7PXmZDoFuoYxo3hYNl9Iq93l1G/view?usp=drivesdk).
+- The package changes four files: `site/index.html`, `site/journal/index.html`, `site/archive.js`, and `site/legal/privacy.html`.
+- Checks completed: ZIP integrity and JavaScript syntax.
+- Hosting status: this package has not been installed. Preserve any newer host-side work; review file differences before copying. Do not extract over the whole live theme. The file manager's extract destination must be inside the site's `htdocs` tree.
+- Continue by reviewing this prepared change and the master log. Apply the approved site changes together, then verify each language on the live site.
