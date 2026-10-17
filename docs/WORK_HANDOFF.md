@@ -55,4 +55,11 @@ This file is the current-state handoff for future Codex/Work sessions. Read it b
 - Hosting status: this package has not been installed. Preserve any newer host-side work; review file differences before copying. Do not extract over the whole live theme. The file manager's extract destination must be inside the site's `htdocs` tree.
 - Continue by reviewing this prepared change and the master log. Apply the approved site changes together, then verify each language on the live site.
 
-- Reviewable copies of the four changed source files are under `staged/wordpress-language-fix-2026-10-17/site/` in this branch. The complete ZIP is in the linked Drive backup.
+- Reviewable copies of the four changed source files are under `staged/wordpress-language-fix-2026-10-17/site/` on `main`. PR #3 was merged at commit `a68d48b74d22342bd6cff321eac028bc5ac6ef0b`.
+
+
+## Cross-device project state and full backup
+- Start every new session with [docs/PROJECT-STATE-AND-BACKUP-MANIFEST-2026-10-17.md](PROJECT-STATE-AND-BACKUP-MANIFEST-2026-10-17.md).
+- The theme language fix is staged in GitHub main and the full corrected ZIP is in Drive; it is not deployed to WordPress.
+- A full live WordPress backup is still missing the latest uploads directory, full live theme snapshot, plugin/settings exports, and database export. See the manifest and `docs/RECOVERY.md`.
+- Preserve host-side changes; compare before replacing files. Never put credentials or secrets in chat, GitHub, or Drive.
