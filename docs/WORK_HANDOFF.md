@@ -54,3 +54,5 @@ This file is the current-state handoff for future Codex/Work sessions. Read it b
 - Checks completed: ZIP integrity and JavaScript syntax.
 - Hosting status: this package has not been installed. Preserve any newer host-side work; review file differences before copying. Do not extract over the whole live theme. The file manager's extract destination must be inside the site's `htdocs` tree.
 - Continue by reviewing this prepared change and the master log. Apply the approved site changes together, then verify each language on the live site.
+
+- Reviewable copies of the four changed source files are under `staged/wordpress-language-fix-2026-10-17/site/` in this branch. The complete ZIP is in the linked Drive backup.
