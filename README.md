@@ -26,3 +26,7 @@ The Drive snapshot contains only public assets observed on the homepage. It is n
 
 Serve the `dist` directory with any static web server. Opening `dist/index.html` directly may not register the service worker because browsers require HTTP/HTTPS for that feature.
 
+
+
+## Continue from another computer
+Start with [`docs/CONTINUE-HERE.md`](docs/CONTINUE-HERE.md), then read [the project state and backup manifest](docs/PROJECT-STATE-AND-BACKUP-MANIFEST-2026-10-17.md). The corrected WordPress theme ZIP is in the private Google Drive backup folder, linked from those files. The manifest lists what is backed up and what must still be exported from the live WordPress host.
