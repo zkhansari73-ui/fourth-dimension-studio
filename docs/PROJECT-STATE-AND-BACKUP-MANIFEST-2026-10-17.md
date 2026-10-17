@@ -70,3 +70,21 @@ The Drive’s 2026-10-07 PWA archive and any snapshot of public homepage media d
 3. Upload the exports into a dated private Drive backup and add safe, non-secret source/configuration notes to GitHub.
 4. Update this manifest with exact filenames, dates, and verification results. Do not claim a complete backup until the database, uploads, plugins/settings, and current live theme have been verified.
 
+
+## Article completion — 2026-10-17
+
+Two reviewed, trilingual (EN/FA/AR) articles were published in WordPress on 2026-10-17:
+
+- Shenzhen Natural History Museum, WordPress post 92: https://fourth-dimension-studio.infinityfreeapp.com/2026/10/17/%d9%85%d9%88%d8%b2%d9%87%d9%94-%d8%aa%d8%a7%d8%b1%db%8c%d8%ae-%d8%b7%d8%a8%db%8c%d8%b9%db%8c-%d8%b4%d9%86%da%98%d9%86%d8%9b-%d9%be%d9%86%d8%ac-%d8%ad%d8%ac%d9%85-%d8%af%d8%b1-%d8%af%d9%84-%db%8c%da%a9/
+- Claude Frontier Academy, WordPress post 94: https://fourth-dimension-studio.infinityfreeapp.com/2026/10/17/%d8%a2%da%a9%d8%a7%d8%af%d9%85%db%8c-claude-frontier%d8%9b-%d8%af%d8%b1%d8%b3%d9%87%d8%a7%db%8c%db%8c-%d8%a8%d8%b1%d8%a7%db%8c-%d8%a7%d8%b3%d8%aa%d9%88%d8%af%db%8c%d9%88%d9%87%d8%a7%db%8c/
+
+- Each article contains separate EN, FA, and AR sections, image alt text/captions, sources, and AI-image disclosures. Eight 16:9 WebP images are in the WordPress Media Library.
+- The Shenzhen draft was corrected to remove unsupported claims about BIM, Grasshopper, Revit, Rhino, and undocumented delivery methods. It relies on 3XN and Shenzhen municipal sources.
+- The Claude article now explains that Anthropic's Academy trains enterprise software engineers, not architects or BIM teams; AEC relevance is marked as editorial guidance.
+- The content tracker “Fourth Dimension Content Automation”, tab “Article Pipeline”, rows 9–10 records status Published and the verified WordPress/Drive URLs: https://docs.google.com/spreadsheets/d/1heSkaWrqIRfKxJnHvWP-kYdK9YbZEak07lSPuVyjO44/edit
+- Google Drive article copies: Shenzhen https://drive.google.com/file/d/1Zdf2uRxmyiaRer3C34JJ8NrqjwriO6AT/view?usp=drivesdk ; Claude https://drive.google.com/file/d/13OIHfPb5nJ1P_9-a9TRQP-5tm6JbWEQJ/view?usp=drivesdk
+- GitHub copies: `docs/published-articles/2026-10-17-shenzhen-natural-history-museum.en-fa-ar.html` and `docs/published-articles/2026-10-17-claude-frontier-academy.en-fa-ar.html`.
+
+### Remaining live multilingual title issue
+
+The live WordPress single-article shell still replaces the outer H1 with the “An Infinite Library” title on other article permalinks. The body language sections render, but the outer title is wrong. The Theme Editor rejected saving both PHP and HTML changes, so this fix is **not live**. A corrected, reviewable source file is now staged in GitHub at `staged/wordpress-language-fix-2026-10-17/site/index.html`; it scopes the old title override to `fd=article4` and uses each article's selected language heading for the outer title. To apply after keeping a copy of the live file, transfer that file to `htdocs/wp-content/themes/fourth-dimension-theme/site/index.html` using the hosting file manager, then verify `?lang=en`, `?lang=fa`, and `?lang=ar` on both new articles.
