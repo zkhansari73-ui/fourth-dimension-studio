@@ -88,3 +88,12 @@ Two reviewed, trilingual (EN/FA/AR) articles were published in WordPress on 2026
 ### Remaining live multilingual title issue
 
 The live WordPress single-article shell still replaces the outer H1 with the “An Infinite Library” title on other article permalinks. The body language sections render, but the outer title is wrong. The Theme Editor rejected saving both PHP and HTML changes, so this fix is **not live**. A corrected, reviewable source file is now staged in GitHub at `staged/wordpress-language-fix-2026-10-17/site/index.html`; it scopes the old title override to `fd=article4` and uses each article's selected language heading for the outer title. To apply after keeping a copy of the live file, transfer that file to `htdocs/wp-content/themes/fourth-dimension-theme/site/index.html` using the hosting file manager, then verify `?lang=en`, `?lang=fa`, and `?lang=ar` on both new articles.
+
+
+## Article language correction — 2026-10-17
+
+- Posts 92 (Shenzhen Natural History Museum) and 94 (Claude Frontier Academy) are published with EN/FA/AR article sections, source lists, generated editorial images, and localized alt text/captions. Article Pipeline rows 9–10 are marked Published and Approved.
+- Live verification found the body content in the selected language, but the global article header and browser title can still show the older “Infinite Library” title. Root cause: the legacy `fd-article-language-fix-v1` script applies the old article title to every article route.
+- Staged fix commit: `b3a831d2567cbeaba0ef72936d1947ea13398bfd`. It scopes the legacy script to `?fd=article4` and localizes the dynamic article heading, browser title, article label, and studio-return link from the selected language section.
+- One-file deployment archive: [Drive ZIP](https://drive.google.com/file/d/1yJt9suzVgXUXqWizN3CpvsOCmipt7uga/view?usp=drivesdk). ZIP contains only `site/index.html`; extract under `htdocs/wp-content/themes/fourth-dimension-theme/` to replace that one file. Back up the existing file first.
+- Not yet deployed: this Cloud Browser session received 403 from filemanager.ai and the managed browser denied navigation to dash.infinityfree.com. No host files were changed.
