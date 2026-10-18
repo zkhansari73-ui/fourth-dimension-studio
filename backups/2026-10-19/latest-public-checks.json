@@ -1,0 +1,877 @@
+{
+  "routes": [
+    {
+      "id": 92,
+      "language": "fa",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/17/%D9%85%D9%88%D8%B2%D9%87%D9%94-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D8%B7%D8%A8%DB%8C%D8%B9%DB%8C-%D8%B4%D9%86%DA%98%D9%86%D8%9B-%D9%BE%D9%86%D8%AC-%D8%AD%D8%AC%D9%85-%D8%AF%D8%B1-%D8%AF%D9%84-%DB%8C%DA%A9/?lang=fa",
+      "description": "معماری موزه تاریخ طبیعی شنژن، مسیرهای عمومی بام و روش‌های دیجیتال مستند پروژه را با تکیه بر منابع اولیه و تحلیل کاربردی طراحی بررسی کنید. بیشتر بخوانید.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-editorial-featured.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-site-diagram.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-roof-walk.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-gallery.webp"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 6,
+      "title": "موزهٔ تاریخ طبیعی شنژن؛ پنج حجم در دل یک منظر عمومی",
+      "visibleLanguages": [
+        "fa"
+      ],
+      "words": 1776
+    },
+    {
+      "id": 92,
+      "language": "en",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/17/%D9%85%D9%88%D8%B2%D9%87%D9%94-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D8%B7%D8%A8%DB%8C%D8%B9%DB%8C-%D8%B4%D9%86%DA%98%D9%86%D8%9B-%D9%BE%D9%86%D8%AC-%D8%AD%D8%AC%D9%85-%D8%AF%D8%B1-%D8%AF%D9%84-%DB%8C%DA%A9/?lang=en",
+      "description": "Explore Shenzhen Natural History Museum’s landscape design, documented digital methods and public roof routes, with primary sources and practical lessons.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-editorial-featured.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-site-diagram.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-roof-walk.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-gallery.webp"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 6,
+      "title": "Shenzhen Natural History Museum: A Public Landscape in Five Volumes",
+      "visibleLanguages": [
+        "en"
+      ],
+      "words": 1864
+    },
+    {
+      "id": 92,
+      "language": "ar",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/17/%D9%85%D9%88%D8%B2%D9%87%D9%94-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D8%B7%D8%A8%DB%8C%D8%B9%DB%8C-%D8%B4%D9%86%DA%98%D9%86%D8%9B-%D9%BE%D9%86%D8%AC-%D8%AD%D8%AC%D9%85-%D8%AF%D8%B1-%D8%AF%D9%84-%DB%8C%DA%A9/?lang=ar",
+      "description": "اكتشف عمارة متحف شينزين للتاريخ الطبيعي ومسارات السطح وأساليب التصميم الرقمي الموثقة، مع مصادر أولية وتحليل عملي لاستوديوهات التصميم. واقرأ تفاصيل المشروع.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-editorial-featured.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-site-diagram.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-roof-walk.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-gallery.webp"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 6,
+      "title": "متحف شينزين للتاريخ الطبيعي: خمسة أحجام في مشهد عام",
+      "visibleLanguages": [
+        "ar"
+      ],
+      "words": 1688
+    },
+    {
+      "id": 94,
+      "language": "fa",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/?lang=fa",
+      "description": "آکادمی Claude Frontier برای چه کسانی است؟ برنامه اعلام‌شده Anthropic و درس‌های کاربردی آن برای ارزیابی و اجرای مسئولانه پایلوت هوش مصنوعی را بخوانید.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-learning-featured.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-geometry.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-collaboration.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-workflow.webp"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 5,
+      "title": "آکادمی Claude Frontier؛ درس‌هایی برای استودیوهای معماری",
+      "visibleLanguages": [
+        "fa"
+      ],
+      "words": 1733
+    },
+    {
+      "id": 94,
+      "language": "en",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/17/%D8%A2%DA%A9%D8%A7%D8%AF%D9%85%DB%8C-claude-frontier%D8%9B-%D8%AF%D8%B1%D8%B3%D9%87%D8%A7%DB%8C%DB%8C-%D8%A8%D8%B1%D8%A7%DB%8C-%D8%A7%D8%B3%D8%AA%D9%88%D8%AF%DB%8C%D9%88%D9%87%D8%A7%DB%8C/?lang=en",
+      "description": "Understand Claude Frontier Academy, who it serves and what design studios can learn about supervised AI pilots, evaluation and responsible deployment.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-learning-featured.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-geometry.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-collaboration.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-workflow.webp"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 5,
+      "title": "Claude Frontier Academy: What Architecture Studios Can Learn",
+      "visibleLanguages": [
+        "en"
+      ],
+      "words": 1711
+    },
+    {
+      "id": 94,
+      "language": "ar",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/17/%D8%A2%DA%A9%D8%A7%D8%AF%D9%85%DB%8C-claude-frontier%D8%9B-%D8%AF%D8%B1%D8%B3%D9%87%D8%A7%DB%8C%DB%8C-%D8%A8%D8%B1%D8%A7%DB%8C-%D8%A7%D8%B3%D8%AA%D9%88%D8%AF%DB%8C%D9%88%D9%87%D8%A7%DB%8C/?lang=ar",
+      "description": "تعرّف إلى أكاديمية Claude Frontier وجمهورها، وما يمكن لاستوديوهات التصميم تعلمه عن تجارب الذكاء الاصطناعي الخاضعة للإشراف والتقييم المسؤول. مع أمثلة عملية.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-learning-featured.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-geometry.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-collaboration.webp"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-workflow.webp"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 5,
+      "title": "أكاديمية Claude Frontier: دروس لاستوديوهات العمارة",
+      "visibleLanguages": [
+        "ar"
+      ],
+      "words": 1617
+    },
+    {
+      "id": 15,
+      "language": "fa",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/13/%d8%a8%d9%87%d8%b1%d9%88%d8%b2%d8%b1%d8%b3%d8%a7%d9%86%db%8c%d9%87%d8%a7%db%8c-%d9%87%d9%88%d8%b4-%d9%85%d8%b5%d9%86%d9%88%d8%b9%db%8c-%da%af%d9%88%da%af%d9%84%d8%9b-%d8%a7%d8%a8/?lang=fa",
+      "description": "ابزارهای هوش مصنوعی گوگل را برای تحقیق، تصویر و دادهٔ پروژه بررسی کنید؛ با منابع اولیه، روش بازبینی کاربردی و توضیح روشن محدودیت زبان و دسترسی محصول.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-studio-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-research.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-visual-review.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-data-pilot.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 3,
+      "title": "هوش مصنوعی گوگل در استودیوی طراحی؛ از تحقیق تا بازبینی",
+      "visibleLanguages": [
+        "fa"
+      ],
+      "words": 1940
+    },
+    {
+      "id": 15,
+      "language": "en",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/13/%d8%a8%d9%87%d8%b1%d9%88%d8%b2%d8%b1%d8%b3%d8%a7%d9%86%db%8c%d9%87%d8%a7%db%8c-%d9%87%d9%88%d8%b4-%d9%85%d8%b5%d9%86%d9%88%d8%b9%db%8c-%da%af%d9%88%da%af%d9%84%d8%9b-%d8%a7%d8%a8/?lang=en",
+      "description": "Evaluate Google AI tools for design-studio research, imagery and project data, with primary sources, practical review methods and clear access limitations.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-studio-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-research.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-visual-review.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-data-pilot.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 3,
+      "title": "Google AI for Design Studios: Research, Images and Review",
+      "visibleLanguages": [
+        "en"
+      ],
+      "words": 1866
+    },
+    {
+      "id": 15,
+      "language": "ar",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/13/%d8%a8%d9%87%d8%b1%d9%88%d8%b2%d8%b1%d8%b3%d8%a7%d9%86%db%8c%d9%87%d8%a7%db%8c-%d9%87%d9%88%d8%b4-%d9%85%d8%b5%d9%86%d9%88%d8%b9%db%8c-%da%af%d9%88%da%af%d9%84%d8%9b-%d8%a7%d8%a8/?lang=ar",
+      "description": "قيّم أدوات Google AI للبحث والصور وبيانات المشروع، مع مصادر أولية وأساليب مراجعة عملية وحدود واضحة للغة والإتاحة، دون وعود إنتاجية أو نتائج مشروع غير مثبتة.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-studio-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-research.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-visual-review.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-data-pilot.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 3,
+      "title": "أدوات Google AI لاستوديو التصميم: من البحث إلى المراجعة",
+      "visibleLanguages": [
+        "ar"
+      ],
+      "words": 1743
+    },
+    {
+      "id": 16,
+      "language": "fa",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/?lang=fa",
+      "description": "برنامهٔ AI x Gaudí را با بریف رسمی، منطق طراحی و روش کاربردی استودیو بشناسید؛ با تفکیک تصویر مفهومی از مدارک معماری و بررسی محدودیت‌ها و منابع اصلی.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-civic-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-context.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-form-study.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-design-review.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 5,
+      "title": "هوش مصنوعی و گائودی؛ از منطق طراحی تا فضای عمومی",
+      "visibleLanguages": [
+        "fa"
+      ],
+      "words": 1878
+    },
+    {
+      "id": 16,
+      "language": "en",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/09/%d8%b1%d8%a7%d9%87%d8%a7%d9%86%d8%af%d8%a7%d8%b2%db%8c-%d8%b7%d8%b1%d8%ad-%d9%87%d9%88%d8%b4-%d9%85%d8%b5%d9%86%d9%88%d8%b9%db%8c-%d8%af%d8%b1-%da%af%d8%a7%d8%a6%d9%88%d8%af%db%8c/?lang=en",
+      "description": "Explore AI x Gaudí through its official civic brief, design principles and a practical workflow that separates conceptual images from architectural evidence.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-civic-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-context.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-form-study.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-design-review.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 5,
+      "title": "AI x Gaudí: Design Principles, Civic Space and AI Workflows",
+      "visibleLanguages": [
+        "en"
+      ],
+      "words": 1883
+    },
+    {
+      "id": 16,
+      "language": "ar",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/09/%d8%b1%d8%a7%d9%87%d8%a7%d9%86%d8%af%d8%a7%d8%b2%db%8c-%d8%b7%d8%b1%d8%ad-%d9%87%d9%88%d8%b4-%d9%85%d8%b5%d9%86%d9%88%d8%b9%db%8c-%d8%af%d8%b1-%da%af%d8%a7%d8%a6%d9%88%d8%af%db%8c/?lang=ar",
+      "description": "تعرّف إلى AI x Gaudí عبر الموجز الرسمي ومبادئ التصميم ومسار عملي يميز الصور المفاهيمية من الأدلة المعمارية، مع توضيح القيود ومصادر المعلومات الأولية.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-civic-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-context.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-form-study.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-design-review.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 5,
+      "title": "الذكاء الاصطناعي وغاودي: من منطق التصميم إلى الفضاء العام",
+      "visibleLanguages": [
+        "ar"
+      ],
+      "words": 1703
+    },
+    {
+      "id": 19,
+      "language": "fa",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/03/%da%a9%d8%aa%d8%a7%d8%a8%d8%ae%d8%a7%d9%86%d9%87-%d8%a8%db%8c%d9%be%d8%a7%db%8c%d8%a7%d9%86-%d9%82%d9%81%d8%b3%d9%87-%da%86%d8%b1%d8%ae%d8%a7%d9%86-%d8%ad%d8%a7%d9%81%d8%b8%d9%87-%d9%88/?lang=fa",
+      "description": "خوانشی تحریریه‌ای از کتابخانهٔ بی‌پایان اس دولین؛ پیوند کتاب، حرکت و روایت فضایی، با تفکیک واقعیت‌های مستند اثر از پیشنهادهای طراحی و جزئیات تأییدنشده.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-sequence.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-reading.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-prototype.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 2,
+      "title": "کتابخانهٔ بی‌پایان اس دولین؛ کتاب، حرکت و روایت فضایی",
+      "visibleLanguages": [
+        "fa"
+      ],
+      "words": 2215
+    },
+    {
+      "id": 19,
+      "language": "en",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/03/%da%a9%d8%aa%d8%a7%d8%a8%d8%ae%d8%a7%d9%86%d9%87-%d8%a8%db%8c%d9%be%d8%a7%db%8c%d8%a7%d9%86-%d9%82%d9%81%d8%b3%d9%87-%da%86%d8%b1%d8%ae%d8%a7%d9%86-%d8%ad%d8%a7%d9%81%d8%b8%d9%87-%d9%88/?lang=en",
+      "description": "A reading of Es Devlin’s Infinite Library, exploring books, movement and spatial narrative while separating verified facts from design recommendations.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-sequence.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-reading.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-prototype.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 2,
+      "title": "Es Devlin’s Infinite Library: Books, Movement and Spatial Narrative",
+      "visibleLanguages": [
+        "en"
+      ],
+      "words": 1974
+    },
+    {
+      "id": 19,
+      "language": "ar",
+      "brokenAnchors": [],
+      "canonical": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/03/%da%a9%d8%aa%d8%a7%d8%a8%d8%ae%d8%a7%d9%86%d9%87-%d8%a8%db%8c%d9%be%d8%a7%db%8c%d8%a7%d9%86-%d9%82%d9%81%d8%b3%d9%87-%da%86%d8%b1%d8%ae%d8%a7%d9%86-%d8%ad%d8%a7%d9%81%d8%b8%d9%87-%d9%88/?lang=ar",
+      "description": "قراءة تحريرية موثقة لمكتبة إس ديفلين اللانهائية وعلاقة الكتب بالحركة والسرد المكاني، مع فصل الحقائق الموثقة عن توصيات التصميم والتفاصيل غير المتحققة.",
+      "h1": 1,
+      "hreflangs": 4,
+      "images": [
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-cover.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-sequence.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-reading.png"
+        },
+        {
+          "alt": true,
+          "src": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-prototype.png"
+        }
+      ],
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "sourceLinks": 2,
+      "title": "مكتبة إس ديفلين اللانهائية: الكتب والحركة والسرد المكاني",
+      "visibleLanguages": [
+        "ar"
+      ],
+      "words": 1940
+    }
+  ],
+  "images": [
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-editorial-featured.png",
+      "state": [
+        {
+          "height": 907,
+          "loaded": true,
+          "width": 1734
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-site-diagram.webp",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-roof-walk.webp",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/shenzhen-gallery.webp",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-learning-featured.png",
+      "state": [
+        {
+          "height": 907,
+          "loaded": true,
+          "width": 1734
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-geometry.webp",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-collaboration.webp",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/claude-workflow.webp",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-studio-cover.png",
+      "state": [
+        {
+          "height": 907,
+          "loaded": true,
+          "width": 1734
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-research.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-visual-review.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/google-ai-data-pilot.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-civic-cover.png",
+      "state": [
+        {
+          "height": 907,
+          "loaded": true,
+          "width": 1735
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-context.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-form-study.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/gaudi-ai-design-review.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-cover.png",
+      "state": [
+        {
+          "height": 909,
+          "loaded": true,
+          "width": 1730
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-sequence.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-reading.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    },
+    {
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/library-editorial-prototype.png",
+      "state": [
+        {
+          "height": 941,
+          "loaded": true,
+          "width": 1672
+        }
+      ]
+    }
+  ],
+  "archives": [
+    {
+      "lang": "fa",
+      "cards": 5,
+      "images": [
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        }
+      ],
+      "titles": [
+        "آکادمی Claude Frontier؛ درس‌هایی برای استودیوهای معماری",
+        "موزهٔ تاریخ طبیعی شنژن؛ پنج حجم در دل یک منظر عمومی",
+        "هوش مصنوعی گوگل در استودیوی طراحی؛ از تحقیق تا بازبینی",
+        "هوش مصنوعی و گائودی؛ از منطق طراحی تا فضای عمومی",
+        "کتابخانهٔ بی‌پایان اس دولین؛ کتاب، حرکت و روایت فضایی"
+      ]
+    },
+    {
+      "lang": "en",
+      "cards": 5,
+      "images": [
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        }
+      ],
+      "titles": [
+        "Claude Frontier Academy: What Architecture Studios Can Learn",
+        "Shenzhen Natural History Museum: A Public Landscape in Five Volumes",
+        "Google AI for Design Studios: Research, Images and Review",
+        "AI x Gaudí: Design Principles, Civic Space and AI Workflows",
+        "Es Devlin’s Infinite Library: Books, Movement and Spatial Narrative"
+      ]
+    },
+    {
+      "lang": "ar",
+      "cards": 5,
+      "images": [
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        },
+        {
+          "alt": true,
+          "loaded": true
+        }
+      ],
+      "titles": [
+        "أكاديمية Claude Frontier: دروس لاستوديوهات العمارة",
+        "متحف شينزين للتاريخ الطبيعي: خمسة أحجام في مشهد عام",
+        "أدوات Google AI لاستوديو التصميم: من البحث إلى المراجعة",
+        "الذكاء الاصطناعي وغاودي: من منطق التصميم إلى الفضاء العام",
+        "مكتبة إس ديفلين اللانهائية: الكتب والحركة والسرد المكاني"
+      ]
+    }
+  ]
+}
