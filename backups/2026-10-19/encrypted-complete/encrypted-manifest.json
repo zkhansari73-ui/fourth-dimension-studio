@@ -1,0 +1,84 @@
+{
+  "format": "FD-AESGCM-1",
+  "header_bytes": 12,
+  "nonce_bytes": 12,
+  "archives": [
+    {
+      "original": "db-backup-20261019-070845.sql",
+      "original_sha256": "45d6976c94ff53fcc7e4be1df4f56af3ab33fa53a2919861eb0a9ccad8fe0d1c",
+      "parts": [
+        {
+          "name": "db-backup-20261019-070845.sql.aesgcm.part00",
+          "bytes": 3813187,
+          "sha256": "97369a832fac2639e461a5a31bb80e84043499db033d7e2cda8592561c719502",
+          "drive_id": "1H1gMmeTzU4076YLAu1RpSjQ8FRyLLyEF"
+        }
+      ]
+    },
+    {
+      "original": "backup-core-20261019-072841.zip",
+      "original_sha256": "b3b3bc2c3f3879410f24a9109a15315a7abb47e20363dce3d781bf448a39b573",
+      "parts": [
+        {
+          "name": "backup-core-20261019-072841.zip.aesgcm.part00",
+          "bytes": 17840848,
+          "sha256": "fa0bc8ec3c49c153afbc52faf9166cc059e322b3ce4ab41f889b738bc7be35ea",
+          "drive_id": "1szAmkfm88m-AWw09522sGPWd0v0hMohT"
+        }
+      ]
+    },
+    {
+      "original": "backup-plugins-20261019-071112.zip",
+      "original_sha256": "43ffd15d69b27814752992069b143d7482cf5d34e322d40af6cd6ec332153ac4",
+      "parts": [
+        {
+          "name": "backup-plugins-20261019-071112.zip.aesgcm.part00",
+          "bytes": 12603182,
+          "sha256": "e40fa1cc819f14c0a112a70b89cb9cae8c006bb12c8d61c06ba4d0b902ffc2de",
+          "drive_id": "1Pl9p34wLx6FSzjIfkK8d32izmnRjpoLQ"
+        }
+      ]
+    },
+    {
+      "original": "backup-themes-20261019-071112.zip",
+      "original_sha256": "4079b800179cbf3432a221a97e5af132ae464979fab5260a11472c740a6bab86",
+      "parts": [
+        {
+          "name": "backup-themes-20261019-071112.zip.aesgcm.part00",
+          "bytes": 67108864,
+          "sha256": "5922ce945e2f06d754a6db0554cd4c9a1860674435b5438a0f7df4da1575071e",
+          "drive_id": "1JLVKEj_S9B3aZUrONPcPtNBxm7cQfPsD"
+        },
+        {
+          "name": "backup-themes-20261019-071112.zip.aesgcm.part01",
+          "bytes": 40464571,
+          "sha256": "9e18d323729730641e52f4d6b0edc9bb5a1b5e5a587e83e85c257cfb7cf55ea9",
+          "drive_id": "1YbEv0taAK4KLslM0fhvhJlOiReGvTqf3"
+        }
+      ]
+    },
+    {
+      "original": "backup-uploads-20261019-072650.zip",
+      "original_sha256": "b39c922d0cbb049689150e1e3d7fddcb5960e8870c18eab5e8428f6a4fa42c0d",
+      "parts": [
+        {
+          "name": "backup-uploads-20261019-072650.zip.aesgcm.part00",
+          "bytes": 67108864,
+          "sha256": "e26ad3ead98ae35fb8429635024d8a3121f41bbd793e163165e21f42da59288c",
+          "drive_id": "1hAYnk4hvX56_KBxKd-tNyMg9CWxwar6I"
+        },
+        {
+          "name": "backup-uploads-20261019-072650.zip.aesgcm.part01",
+          "bytes": 58258123,
+          "sha256": "b2f0668c32f2e7a2c8cc904ccad2ac98d81b5f6338aedce15aa67a4640133299",
+          "drive_id": "1689ig3U5Y_JagM7wNOSMF_M8_RjiuXA_"
+        }
+      ]
+    }
+  ],
+  "key_drive_id": "1jhW4KSTYWkZseYLXJs10WmM-UlGgx-Vg",
+  "github_release_id": 417069924,
+  "github_status": "Complete: all seven encrypted parts stored as 376 verified chunks in the backup branch under backups/2026-10-19/encrypted-complete/parts. Draft Release retains three earlier assets; use the branch for the complete backup.",
+  "github_release_url": "https://github.com/zkhansari73-ui/fourth-dimension-studio/releases/tag/untagged-35e8119f5da6bf063c72",
+  "github_backup_path": "backups/2026-10-19/encrypted-complete/"
+}
