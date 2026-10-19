@@ -1,0 +1,178 @@
+{
+  "archives": [
+    {
+      "name": "backup-core-20261019-072841.zip",
+      "bytes": 17840808,
+      "sha256": "b3b3bc2c3f3879410f24a9109a15315a7abb47e20363dce3d781bf448a39b573",
+      "entries": 3510,
+      "crc_error": null,
+      "required_files": {
+        "wp-config.php": true,
+        ".htaccess": true,
+        "wp-settings.php": true,
+        "wp-load.php": true
+      },
+      "root_files": [
+        "index2.html",
+        "files for your website should be uploaded here!",
+        "index.php",
+        "license.txt",
+        "readme.html",
+        "wp-activate.php",
+        "wp-blog-header.php",
+        "wp-comments-post.php",
+        "wp-config-sample.php",
+        "wp-cron.php",
+        "wp-links-opml.php",
+        "wp-load.php",
+        "wp-login.php",
+        "wp-mail.php",
+        "wp-settings.php",
+        "wp-signup.php",
+        "wp-trackback.php",
+        "xmlrpc.php",
+        "wp-config.php",
+        ".htaccess",
+        "superpwa-manifest.json",
+        "superpwa-sw.js",
+        "google92bdacb5a6af2e8c.html"
+      ]
+    },
+    {
+      "name": "backup-plugins-20261019-071112.zip",
+      "bytes": 12603142,
+      "sha256": "43ffd15d69b27814752992069b143d7482cf5d34e322d40af6cd6ec332153ac4",
+      "entries": 5651,
+      "crc_error": null
+    },
+    {
+      "name": "backup-themes-20261019-071112.zip",
+      "bytes": 107573395,
+      "sha256": "4079b800179cbf3432a221a97e5af132ae464979fab5260a11472c740a6bab86",
+      "entries": 513,
+      "crc_error": null,
+      "active_theme_files": 119
+    },
+    {
+      "name": "backup-uploads-20261019-072650.zip",
+      "bytes": 125366947,
+      "sha256": "b39c922d0cbb049689150e1e3d7fddcb5960e8870c18eab5e8428f6a4fa42c0d",
+      "entries": 201,
+      "crc_error": null
+    }
+  ],
+  "limitations": [
+    "No full restore or SQL import has been tested.",
+    "Hosting account settings, mail, DNS and files outside these archives are not verified."
+  ],
+  "sql": {
+    "name": "db-backup-20261019-070845.sql",
+    "bytes": 3813147,
+    "sha256": "45d6976c94ff53fcc7e4be1df4f56af3ab33fa53a2919861eb0a9ccad8fe0d1c",
+    "tables": [
+      "wpbk_commentmeta",
+      "wpbk_comments",
+      "wpbk_links",
+      "wpbk_loginizer_logs",
+      "wpbk_options",
+      "wpbk_postmeta",
+      "wpbk_posts",
+      "wpbk_snippets",
+      "wpbk_term_relationships",
+      "wpbk_term_taxonomy",
+      "wpbk_termmeta",
+      "wpbk_terms",
+      "wpbk_usermeta",
+      "wpbk_users"
+    ],
+    "table_count": 14,
+    "insert_count": 17,
+    "config_prefix_matches": true
+  },
+  "drive_files": [
+    {
+      "name": "db-backup-20261019-070845.sql",
+      "drive_id": "1vxkE6NIr4QDxGUHVsUU4s2ASmkL2Vo8s",
+      "url": "https://drive.google.com/file/d/1vxkE6NIr4QDxGUHVsUU4s2ASmkL2Vo8s/view",
+      "bytes": 3813147,
+      "sha256": "45d6976c94ff53fcc7e4be1df4f56af3ab33fa53a2919861eb0a9ccad8fe0d1c"
+    },
+    {
+      "name": "backup-core-20261019-072841.zip",
+      "drive_id": "1glIcoeIcvCrUaiRTIcleaLNyOxxnkthb",
+      "url": "https://drive.google.com/file/d/1glIcoeIcvCrUaiRTIcleaLNyOxxnkthb/view",
+      "bytes": 17840808,
+      "sha256": "b3b3bc2c3f3879410f24a9109a15315a7abb47e20363dce3d781bf448a39b573"
+    },
+    {
+      "name": "backup-plugins-20261019-071112.zip",
+      "drive_id": "1jWbc_-FoyxyZI-rmSrhpsC7G0jlSheuq",
+      "url": "https://drive.google.com/file/d/1jWbc_-FoyxyZI-rmSrhpsC7G0jlSheuq/view",
+      "bytes": 12603142,
+      "sha256": "43ffd15d69b27814752992069b143d7482cf5d34e322d40af6cd6ec332153ac4"
+    },
+    {
+      "name": "backup-themes-20261019-071112.zip.segment00",
+      "drive_id": "1fcW1rjV3qsMgVbov_zxnWq9K-jqGZivN",
+      "url": "https://drive.google.com/file/d/1fcW1rjV3qsMgVbov_zxnWq9K-jqGZivN/view",
+      "bytes": 67108864,
+      "sha256": "33a5f4e06fa766215e002b2cc5de05f8bcd85d07b251e1179f7358a3591b3cf0"
+    },
+    {
+      "name": "backup-themes-20261019-071112.zip.segment01",
+      "drive_id": "1F1V-tJqFsp1E1negdKb9TvFqrBnnhcVe",
+      "url": "https://drive.google.com/file/d/1F1V-tJqFsp1E1negdKb9TvFqrBnnhcVe/view",
+      "bytes": 40464531,
+      "sha256": "ce326fe6304b1bed5ee2cf4545d50662d064153668ce1ee2cbad7b0e5950fad5"
+    },
+    {
+      "name": "backup-uploads-20261019-072650.zip.segment00",
+      "drive_id": "1cA4Uvo3lWTWZLG6T9qkdSU8yCnQ6mNMz",
+      "url": "https://drive.google.com/file/d/1cA4Uvo3lWTWZLG6T9qkdSU8yCnQ6mNMz/view",
+      "bytes": 67108864,
+      "sha256": "796218cdbf74376375a4b98d6b3f023dffdbcf2cdc4b0650371e7d9c90a17797"
+    },
+    {
+      "name": "backup-uploads-20261019-072650.zip.segment01",
+      "drive_id": "1IQ2_p9o1ok1sirPZ8C5krkAIZlgFElRh",
+      "url": "https://drive.google.com/file/d/1IQ2_p9o1ok1sirPZ8C5krkAIZlgFElRh/view",
+      "bytes": 58258083,
+      "sha256": "336a2bb005f512f842662044630a749b27b3792d9a6916435cc05e741a7dde23"
+    }
+  ],
+  "segments": [
+    {
+      "name": "backup-themes-20261019-071112.zip.segment00",
+      "bytes": 67108864,
+      "sha256": "33a5f4e06fa766215e002b2cc5de05f8bcd85d07b251e1179f7358a3591b3cf0",
+      "archive": "backup-themes-20261019-071112.zip"
+    },
+    {
+      "name": "backup-themes-20261019-071112.zip.segment01",
+      "bytes": 40464531,
+      "sha256": "ce326fe6304b1bed5ee2cf4545d50662d064153668ce1ee2cbad7b0e5950fad5",
+      "archive": "backup-themes-20261019-071112.zip"
+    },
+    {
+      "name": "backup-uploads-20261019-072650.zip.segment00",
+      "bytes": 67108864,
+      "sha256": "796218cdbf74376375a4b98d6b3f023dffdbcf2cdc4b0650371e7d9c90a17797",
+      "archive": "backup-uploads-20261019-072650.zip"
+    },
+    {
+      "name": "backup-uploads-20261019-072650.zip.segment01",
+      "bytes": 58258083,
+      "sha256": "336a2bb005f512f842662044630a749b27b3792d9a6916435cc05e741a7dde23",
+      "archive": "backup-uploads-20261019-072650.zip"
+    }
+  ],
+  "drive_verification": "All seven file sizes, parent folder and owner-only permissions re-read successfully. Remote bytes have not been re-downloaded.",
+  "github": "Verification report and restore instructions only; full backup bytes not uploaded to GitHub.",
+  "deployed_files_present": {
+    "site/index.html": true,
+    "site/journal/index.html": true,
+    "site/assets/fd-single-article-fix.js": true,
+    "site/assets/fd-articles-showcase.js": true,
+    "site/assets/fd-articles-catalog.json": true
+  }
+}
