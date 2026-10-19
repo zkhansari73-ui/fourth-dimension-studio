@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ابعاد طلایی فضاها | استودیو بُعد چهارم</title>
+<style>
+:root{
+  --bg:#0b0b0f; --panel:#14141b; --line:#2a2a35; --text:#f5f2ea; --muted:#a7a39a;
+  --accent:#f2b44f; --accent-dim:#8a6a2c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Tahoma,'Segoe UI',Arial,sans-serif;line-height:1.9;padding:24px 16px}
+.wrap{max-width:960px;margin:0 auto}
+.back{display:inline-block;color:var(--muted);text-decoration:none;font-size:13px;margin-bottom:18px}
+.back:hover{color:var(--accent)}
+.eyebrow{color:var(--accent);font-size:12px;letter-spacing:2px;margin-bottom:6px}
+h1{font-size:26px;margin-bottom:6px}
+.sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+.intro-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:22px;font-size:14px;color:var(--muted)}
+.intro-box b{color:var(--accent)}
+.intro-box ol{margin:10px 20px 0 0;padding:0}
+.intro-box li{margin-bottom:4px}
+.tool-panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 24px}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
+.panel-head small{color:var(--accent);letter-spacing:1px;font-size:11px}
+.panel-head h2{font-size:22px;margin:4px 0}
+.reset{background:none;border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:6px 14px;cursor:pointer;font-size:13px;font-family:inherit}
+.reset:hover{border-color:var(--accent);color:var(--accent)}
+.step{margin-top:20px}
+.step-title{font-size:15px;font-weight:bold;color:var(--accent);margin-bottom:10px}
+.step-title .num{display:inline-block;background:var(--accent);color:#1a1405;border-radius:50%;width:24px;height:24px;text-align:center;line-height:24px;font-size:13px;margin-left:8px}
+select,input[type=number]{width:100%;background:#0e0e13;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 12px;font-size:14px;font-family:inherit}
+select:focus,input:focus{outline:none;border-color:var(--accent)}
+.golden-checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin:12px 0}
+.golden-space{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;cursor:pointer;font-size:13px;background:#0e0e13}
+.golden-space:hover{border-color:var(--accent)}
+.golden-space input[type=checkbox]{width:auto;accent-color:var(--accent)}
+.golden-space.checked{border-color:var(--accent);background:#f2b44f10}
+#spaceAreas{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:12px}
+.space-area{background:#0e0e13;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.space-area .nm{font-size:13px;margin-bottom:8px;font-weight:bold}
+.space-area .row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.space-area .row:last-child{margin-bottom:0}
+.space-area label.fl{font-size:12px;color:var(--muted);white-space:nowrap;min-width:52px}
+.space-area input{padding:8px 10px;font-size:13px}
+.space-area .unit{font-size:12px;color:var(--muted);white-space:nowrap}
+.space-area .qty{max-width:70px;text-align:center}
+.total-bar{margin-top:14px;padding:10px 14px;border-radius:10px;font-size:13px;background:#0e0e13;border:1px solid var(--line)}
+.total-bar.ok{border-color:#4caf50;color:#4caf50}
+.total-bar.over{border-color:#f44336;color:#f44336}
+.actions{display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap}
+.primary{background:var(--accent);color:#1a1405;border:none;border-radius:12px;padding:12px 28px;font-size:15px;font-weight:bold;cursor:pointer;font-family:inherit}
+.primary:hover{filter:brightness(1.08)}
+#goldenMessage{color:var(--accent);font-size:13px}
+.results-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+.results-table th{background:#0e0e13;color:var(--accent);padding:12px 10px;text-align:right;font-size:13px;border-bottom:2px solid var(--accent-dim)}
+.results-table td{padding:10px;border-bottom:1px solid var(--line)}
+.results-table tr:hover td{background:#ffffff05}
+.results-table .dim{font-weight:bold;color:var(--text)}
+.results-title{font-size:16px;margin:20px 0 4px;color:var(--text)}
+.results-sub{font-size:13px;color:var(--muted);margin-bottom:8px}
+.formula{margin-top:22px;border:1px dashed var(--accent-dim);border-radius:12px;padding:14px 18px;font-size:13px;color:var(--muted)}
+.formula b{color:var(--accent)}
+@media(max-width:600px){.tool-panel{padding:20px 16px}.results-table{font-size:12px}.results-table th,.results-table td{padding:8px 6px}}
+@media print{
+  body{background:#fff;color:#000;padding:0}
+  .back,.intro-box,.tool-panel .panel-head,.step,.actions,#goldenMessage,.formula{display:none !important}
+  .tool-panel{border:none;padding:0}
+  .results-title{color:#000}
+  .results-table th{background:#eee;color:#000}
+  .results-table td{border-bottom:1px solid #ccc}
+  .results-table .dim{color:#000}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="https://fourth-dimension-studio.infinityfreeapp.com/wp-content/themes/fourth-dimension-theme/site/tools/">→ بازگشت به ابزارها</a>
+  <div class="eyebrow">FREE TOOL</div>
+  <h1>ابعاد طلایی فضاها</h1>
+  <p class="sub">ابعاد هر فضا را با نسبت طلایی (φ = ۱.۶۱۸) حساب کنید — بدون نیاز به نصب، همه‌چیز داخل مرورگر شما.</p>
+
+  <div class="intro-box">
+    <b>نسبت طلایی چیست؟</b><br>
+    نسبت طلایی (φ = ۱.۶۱۸۰۳۳...) عددی است که از تقسیم یک پاره‌خط به دو بخش نابرابر به دست می‌آید؛ به‌گونه‌ای که نسبت کل به بخش بزرگ‌تر، برابر نسبت بخش بزرگ‌تر به بخش کوچک‌تر باشد. این نسبت در طبیعت — از صدف ناتیلوس تا کهکشان‌های مارپیچی — و در بدن انسان به‌وفور دیده می‌شود؛ به همین دلیل چشم انسان آن را «طبیعی، متعادل و زیبا» ادراک می‌کند.
+    <br><br>
+    <b>کاربرد نسبت طلایی در معماری</b><br>
+    از اهرام مصر و پارتنون یونان تا آثار لوکوربوزیه و زاها حدید، معماران بزرگ از این نسبت برای خلق فضاهایی استفاده کرده‌اند که هم چشم‌نوازند و هم حس آرامش و تعادل منتقل می‌کنند. در معماری، نسبت طلایی در تناسبات نما، ابعاد فضاها، ارتفاع سقف نسبت به عرض اتاق، و حتی چیدمان پلان به کار می‌رود. وقتی طول یک فضا ۱.۶۱۸ برابر عرض آن باشد، فضا نه کشیده و راهرویی به نظر می‌رسد و نه مربعی و بسته؛ بلکه تعادلی دلنشین میان این دو دارد.
+    <br><br>
+    <b>چرا فضاها باید طبق نسبت طلایی باشند؟</b><br>
+    پژوهش‌های روان‌شناسی محیط نشان می‌دهد انسان در فضاهایی با تناسبات طلایی، احساس راحتی، تمرکز و رضایت بیشتری دارد. در طراحی داخلی، این نسبت کمک می‌کند:
+    <ol>
+      <li>ابعاد هر فضا از ابتدا درست و متناسب تعیین شود، نه حدسی</li>
+      <li>هماهنگی بصری میان فضاهای مختلف یک ساختمان حفظ شود</li>
+      <li>از فضاهای «مرده» (بیش‌ازحد کشیده یا بیش‌ازحد مربعی) جلوگیری شود</li>
+      <li>ارزش ادراکی و کیفی پروژه نزد کارفرما و مخاطب بالاتر برود</li>
+    </ol>
+    این ابزار دقیقاً همین کار را می‌کند:
+    <ol>
+      <li>مساحت کلی زمین یا ساختمانتان را وارد کنید</li>
+      <li>نوع ساختمان را انتخاب کنید</li>
+      <li>فضاهای موردنظرتان را تیک بزنید (مساحت پیشنهادی هر فضا قابل تغییر است)</li>
+      <li>تعداد هر فضا را مشخص کنید (مثلاً ۲ خواب مستر)</li>
+      <li>دکمه محاسبه را بزنید تا طول و عرض هر فضا با نسبت طلایی حساب شود</li>
+    </ol>
+  </div>
+
+  <article class="tool-panel">
+    <div class="panel-head">
+      <div>
+        <small>GOLDEN RATIO SPACES</small>
+        <h2>محاسبه ابعاد</h2>
+      </div>
+      <button class="reset" id="goldenReset" type="button">شروع دوباره</button>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="num">۱</span>مساحت کلی (مترمربع)</div>
+      <input type="number" id="totalArea" min="1" step="any" placeholder="مثلاً ۲۰۰">
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="num">۲</span>نوع ساختمان</div>
+      <select id="goldenCategory"></select>
+    </div>
+
+    <div class="step">
+      <div class="step-title"><span class="num">۳</span>فضاهای مورد نظر رو انتخاب کن</div>
+      <div id="goldenSpaces" class="golden-checks"></div>
+    </div>
+
+    <div class="step" id="areasStep" style="display:none">
+      <div class="step-title"><span class="num">۴</span>مساحت و تعداد هر فضا</div>
+      <div id="spaceAreas"></div>
+      <div class="total-bar" id="totalBar"></div>
+    </div>
+
+    <div class="actions">
+      <button id="goldenCalc" class="primary" type="button">محاسبه ابعاد</button>
+      <span id="goldenMessage"></span>
+    </div>
+    <div id="goldenResults"></div>
+  </article>
+
+  <div class="formula">
+    <b>فرمول:</b> طول = √(مساحت × φ) و عرض = طول ÷ φ — که φ همان عدد طلایی ۱.۶۱۸ است؛
+    یعنی مستطیلی که طولش ۱.۶۱۸ برابر عرضش باشد.
+  </div>
+</div>
+
+<script>
+// ===== Golden Ratio Space Calculator v3 =====
+// Flow: total area → building type → select spaces → area + quantity → calculate → table
+const PHI = 1.6180339887;
+
+// Default areas (sqm) per space - used for proportional distribution
+const DEFAULT_AREAS = {
+  // residential - واژه‌های به‌روز معماری
+  "نشیمن":25,"پذیرایی":30,"ناهارخوری":15,"نشیمن خصوصی":20,"آشپزخانه":12,
+  "آشپزخانه دوم":8,"صبحانه‌خوری":8,
+  "خواب مستر":20,"خواب کودک":12,"خواب مهمان":14,"سوئیت مهمان":25,
+  "سرویس بهداشتی":4,"حمام":6,
+  "لاندری":6,"واکینگ کلوزت":6,"انباری":8,"زیرزمین":30,"راهرو":10,"ورودی":8,
+  "لابی ورودی":6,
+  "تراس":12,"بالکن":6,"حیاط":40,"حیاط خلوت":15,"حوض‌خانه":20,"پارکینگ":25,"اتاق کار":12,
+  "کتابخانه":15,"سینمای خانگی":20,"باشگاه خانگی":20,"سونا و جکوزی":10,"سرایداری":12,
+  // office
+  "لابی":30,"پذیرش":10,"اتاق مدیریت":20,"فضای کار باز":50,"اتاق جلسات":20,"سالن کنفرانس":40,
+  "آبدارخانه":8,"آرشیو":15,"اتاق سرور":10,"اتاق استراحت":12,"اتاق مصاحبه":12,
+  // commercial
+  "مغازه":40,"ویترین":10,"انبار":30,"دفتر":15,"فودکورت":60,"کافه":40,"رستوران":80,
+  "سوپرمارکت":200,"هایپرمارکت":500,"بانک":60,"داروخانه":30,"آرایشگاه":25,
+  // educational
+  "کلاس درس":50,"آزمایشگاه":60,"کتابخانه":80,"سالن اجتماعات":150,"دفتر اساتید":12,
+  "سلف‌سرویس":100,"خوابگاه":200,"کارگاه":80,"سالن ورزشی":300,"نمازخانه":40,
+  // healthcare
+  "اتاق انتظار":25,"اتاق معاینه":15,"اتاق عمل":40,"بخش بستری":100,"اورژانس":60,
+  "رادیولوژی":30,"فیزیوتراپی":40,"دندانپزشکی":20,
+  // cultural
+  "گالری":100,"سالن نمایشگاه":200,"آمفی‌تئاتر":300,"سینما":250,"کتابفروشی":60,
+  "موزه":300,"سالن تئاتر":400,
+  // sports
+  "سالن بدنسازی":150,"استخر":200,"رختکن":30,"سونا":15,"زمین چمن":800,"زمین تنیس":260,"سالن چندمنظوره":400,
+  // hospitality
+  "لابی هتل":80,"اتاق مهمان":25,"سوئیت":50,"سالن همایش":200,"اسپا":60,"مهمانسرا":150,
+  // industrial
+  "سالن تولید":500,"غذاخوری":60,"اتاق کنترل":20,"سردخانه":100,
+  // religious
+  "مسجد":200,"حسینیه":150,"وضوخانه":20,
+  // animal
+  "اصطبل":100,"باکس اسب":12,"انبار علوفه":30,"اتاق زین":15,"اتاق دامپزشک":20,
+  "مانژ":800,"گاوداری":200,"مرغداری":150,"سگدونی":50,"شست‌وشوی حیوانات":20,
+  // outdoor
+  "گلخانه":50,"آلاچیق":15,"باربیکیو":10,"روف‌گاردن":40,"زمین بازی":60,
+  "پارکینگ روباز":100,"اتاق نگهبانی":8,"موتورخانه":15
+};
+const FALLBACK_AREA = 20;
+
+const GOLDEN_SPACES = {
+  "residential": { name: "🏠 مسکونی", spaces: ["نشیمن","پذیرایی","ناهارخوری","نشیمن خصوصی","آشپزخانه","آشپزخانه دوم","صبحانه‌خوری","خواب مستر","خواب کودک","خواب مهمان","سوئیت مهمان","سرویس بهداشتی","حمام","لاندری","واکینگ کلوزت","انباری","زیرزمین","راهرو","ورودی","لابی ورودی","تراس","بالکن","حیاط","حیاط خلوت","حوض‌خانه","پارکینگ","اتاق کار","کتابخانه","سینمای خانگی","باشگاه خانگی","سونا و جکوزی","سرایداری"] },
+  "office": { name: "🏢 اداری", spaces: ["لابی","پذیرش","اتاق مدیریت","فضای کار باز","اتاق جلسات","سالن کنفرانس","آبدارخانه","سرویس بهداشتی","آرشیو","اتاق سرور","انباری","اتاق استراحت","اتاق مصاحبه"] },
+  "commercial": { name: "🏪 تجاری", spaces: ["مغازه","ویترین","انبار","دفتر","سرویس بهداشتی","فودکورت","کافه","رستوران","سوپرمارکت","هایپرمارکت","بانک","داروخانه","آرایشگاه"] },
+  "educational": { name: "🎓 آموزشی", spaces: ["کلاس درس","آزمایشگاه","کتابخانه","سالن اجتماعات","دفتر اساتید","سلف‌سرویس","خوابگاه","کارگاه","سالن ورزشی","نمازخانه"] },
+  "healthcare": { name: "🏥 درمانی", spaces: ["پذیرش","اتاق انتظار","اتاق معاینه","اتاق عمل","بخش بستری","داروخانه","آزمایشگاه","اورژانس","رادیولوژی","فیزیوتراپی","دندانپزشکی"] },
+  "cultural": { name: "🎭 فرهنگی", spaces: ["گالری","سالن نمایشگاه","آمفی‌تئاتر","سینما","کافه","کتابفروشی","موزه","سالن تئاتر"] },
+  "sports": { name: "🏋️ ورزشی", spaces: ["سالن بدنسازی","استخر","رختکن","سونا","زمین چمن","زمین تنیس","سالن چندمنظوره"] },
+  "hospitality": { name: "🏨 اقامتی", spaces: ["لابی هتل","پذیرش","اتاق مهمان","سوئیت","رستوران","کافی‌شاپ","سالن همایش","استخر","باشگاه","اسپا","مهمانسرا"] },
+  "industrial": { name: "🏭 صنعتی", spaces: ["سالن تولید","انبار","دفتر","غذاخوری","سرویس بهداشتی","اتاق کنترل","آزمایشگاه","سردخانه"] },
+  "religious": { name: "🕌 مذهبی", spaces: ["مسجد","نمازخانه","حسینیه","وضوخانه"] },
+  "animal": { name: "🐴 دامی", spaces: ["اصطبل","باکس اسب","انبار علوفه","اتاق زین","اتاق دامپزشک","مانژ","گاوداری","مرغداری","سگدونی","شست‌وشوی حیوانات"] },
+  "outdoor": { name: "🌿 فضای باز", spaces: ["گلخانه","آلاچیق","باربیکیو","روف‌گاردن","زمین بازی","پارکینگ روباز","اتاق نگهبانی","موتورخانه","حیاط","تراس"] }
+};
+
+function getDefaultArea(space) {
+  return DEFAULT_AREAS[space] || FALLBACK_AREA;
+}
+
+function goldenInit() {
+  const cat = document.getElementById('goldenCategory');
+  if (!cat || cat.options.length) return;
+  Object.keys(GOLDEN_SPACES).forEach(function(k) {
+    const o = document.createElement('option');
+    o.value = k; o.textContent = GOLDEN_SPACES[k].name;
+    cat.appendChild(o);
+  });
+  cat.onchange = goldenRenderSpaces;
+  goldenRenderSpaces();
+  document.getElementById('totalArea').oninput = distributeAreas;
+}
+
+function goldenRenderSpaces() {
+  const k = document.getElementById('goldenCategory').value;
+  const box = document.getElementById('goldenSpaces');
+  box.innerHTML = '';
+  GOLDEN_SPACES[k].spaces.forEach(function(s) {
+    const l = document.createElement('label');
+    l.className = 'golden-space';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.value = s;
+    cb.onchange = function() {
+      l.classList.toggle('checked', cb.checked);
+      renderSpaceAreas();
+    };
+    const sp = document.createElement('span');
+    sp.textContent = s;
+    l.appendChild(cb); l.appendChild(sp);
+    box.appendChild(l);
+  });
+  renderSpaceAreas();
+}
+
+function getCheckedSpaces() {
+  return Array.prototype.map.call(
+    document.querySelectorAll('#goldenSpaces input:checked'),
+    function(i){ return i.value; });
+}
+
+// Distribute total area proportionally based on default areas (count = 1 initially)
+// The distributed value is the TOTAL for that space type (all instances combined)
+function distributeAreas() {
+  const checked = getCheckedSpaces();
+  if (!checked.length) return;
+  const total = parseFloat(document.getElementById('totalArea').value);
+  if (!total || total <= 0) return;
+  let sumDefaults = 0;
+  const qtys = {};
+  checked.forEach(function(s){
+    const q = getQty(s);
+    qtys[s] = q;
+    sumDefaults += getDefaultArea(s) * q;
+  });
+  // compute raw values, round to 1 decimal, absorb residue into largest space
+  const raws = [];
+  checked.forEach(function(s){
+    raws.push({s: s, v: total * getDefaultArea(s) * qtys[s] / sumDefaults});
+  });
+  // find largest for residue absorption
+  let maxIdx = 0;
+  raws.forEach(function(r, i){ if (r.v > raws[maxIdx].v) maxIdx = i; });
+  let sumRounded = 0;
+  raws.forEach(function(r, i){
+    if (i === maxIdx) return;
+    r.rounded = Math.round(r.v * 10) / 10;
+    sumRounded += r.rounded;
+  });
+  raws[maxIdx].rounded = Math.round((total - sumRounded) * 10) / 10;
+  raws.forEach(function(r){
+    const inp = document.querySelector('#spaceAreas input[data-area="' + r.s + '"]');
+    if (inp && !inp.dataset.manual) {
+      inp.value = r.rounded.toFixed(1);
+    }
+  });
+  updateTotalBar();
+}
+
+function getQty(space) {
+  const q = document.querySelector('#spaceAreas input[data-qty="' + space + '"]');
+  const v = q ? parseInt(q.value) : 1;
+  return (v && v > 0) ? v : 1;
+}
+
+function renderSpaceAreas() {
+  const checked = getCheckedSpaces();
+  const wrap = document.getElementById('spaceAreas');
+  const step = document.getElementById('areasStep');
+  wrap.innerHTML = '';
+  if (!checked.length) { step.style.display = 'none'; updateTotalBar(); return; }
+  step.style.display = 'block';
+  checked.forEach(function(s) {
+    const div = document.createElement('div');
+    div.className = 'space-area';
+
+    const nm = document.createElement('div');
+    nm.className = 'nm'; nm.textContent = s;
+    div.appendChild(nm);
+
+    // area row
+    const rowA = document.createElement('div');
+    rowA.className = 'row';
+    const labA = document.createElement('label');
+    labA.className = 'fl'; labA.textContent = 'مساحت';
+    const inpA = document.createElement('input');
+    inpA.type = 'number'; inpA.min = '1'; inpA.step = 'any';
+    inpA.setAttribute('data-area', s);
+    inpA.placeholder = getDefaultArea(s);
+    inpA.oninput = function(){ inpA.dataset.manual = '1'; updateTotalBar(); };
+    const unit = document.createElement('span');
+    unit.className = 'unit'; unit.textContent = 'مترمربع';
+    rowA.appendChild(labA); rowA.appendChild(inpA); rowA.appendChild(unit);
+    div.appendChild(rowA);
+
+    // qty row
+    const rowQ = document.createElement('div');
+    rowQ.className = 'row';
+    const labQ = document.createElement('label');
+    labQ.className = 'fl'; labQ.textContent = 'تعداد';
+    const inpQ = document.createElement('input');
+    inpQ.type = 'number'; inpQ.min = '1'; inpQ.step = '1';
+    inpQ.className = 'qty';
+    inpQ.setAttribute('data-qty', s);
+    inpQ.value = '1';
+    inpQ.oninput = function(){
+      // clear manual flag so areas redistribute with new qty
+      const a = document.querySelector('#spaceAreas input[data-area="' + s + '"]');
+      if (a) delete a.dataset.manual;
+      distributeAreas();
+    };
+    const unitQ = document.createElement('span');
+    unitQ.className = 'unit'; unitQ.textContent = 'عدد';
+    rowQ.appendChild(labQ); rowQ.appendChild(inpQ); rowQ.appendChild(unitQ);
+    div.appendChild(rowQ);
+
+    wrap.appendChild(div);
+  });
+  distributeAreas();
+  updateTotalBar();
+}
+
+function updateTotalBar() {
+  const bar = document.getElementById('totalBar');
+  const total = parseFloat(document.getElementById('totalArea').value) || 0;
+  // FIX: areas shown are already TOTALS per space type (distribution scaled by qty),
+  // so just sum them directly - do NOT multiply by qty again
+  let sum = 0;
+  document.querySelectorAll('#spaceAreas input[data-area]').forEach(function(inp){
+    sum += parseFloat(inp.value) || 0;
+  });
+  sum = Math.round(sum * 10) / 10;
+  bar.className = 'total-bar';
+  if (!total) {
+    bar.textContent = 'جمع فضاها: ' + sum.toFixed(1) + ' مترمربع';
+    return;
+  }
+  const diff = Math.round((sum - total) * 10) / 10;
+  if (Math.abs(diff) < 0.05) {
+    bar.classList.add('ok');
+    bar.textContent = '✅ جمع فضاها (' + sum.toFixed(1) + ') = مساحت کلی (' + total + ')';
+  } else if (diff > 0) {
+    bar.classList.add('over');
+    bar.textContent = '⚠️ جمع فضاها ' + diff.toFixed(1) + ' متر از مساحت کلی بیشتره';
+  } else {
+    bar.textContent = 'جمع فضاها: ' + sum.toFixed(1) + ' از ' + total + ' مترمربع (' + Math.abs(diff).toFixed(1) + ' متر باقی مونده)';
+  }
+}
+
+function goldenCalc() {
+  const msg = document.getElementById('goldenMessage');
+  const res = document.getElementById('goldenResults');
+  const inputs = document.querySelectorAll('#spaceAreas input[data-area]');
+  if (!inputs.length) { msg.textContent = 'اول فضاها را تیک بزنید.'; res.innerHTML = ''; return; }
+
+  let rows = '';
+  let ok = false;
+  inputs.forEach(function(inp) {
+    const areaTotal = parseFloat(inp.value);
+    const name = inp.getAttribute('data-area');
+    const qty = getQty(name);
+    if (!areaTotal || areaTotal <= 0) return;
+    ok = true;
+    // FIX: dimensions are per-INSTANCE (areaTotal / qty), not on the combined area
+    const areaEach = areaTotal / qty;
+    // Golden ratio: L = sqrt(A × φ), W = L / φ
+    const L = Math.sqrt(areaEach * PHI);
+    const W = L / PHI;
+    const label = qty > 1 ? name + ' (×' + qty + ' — هر واحد ' + areaEach.toFixed(1) + ' مترمربع)' : name;
+    rows += '<tr><td>' + label + '</td><td>' + areaTotal.toFixed(1) + '</td>' +
+            '<td class="dim">' + L.toFixed(2) + ' م</td>' +
+            '<td class="dim">' + W.toFixed(2) + ' م</td></tr>';
+  });
+
+  if (!ok) { msg.textContent = 'مساحت فضاها را وارد کنید.'; res.innerHTML = ''; return; }
+  msg.textContent = '';
+  res.innerHTML =
+    '<div class="results-title">نتایج ابعاد طلایی</div>' +
+    '<div class="results-sub">نسبت طلایی φ = ۱.۶۱۸ — طول = √(مساحت × φ)، عرض = طول ÷ φ — ابعاد هر واحد جداگانه حساب شده</div>' +
+    '<table class="results-table"><thead><tr>' +
+    '<th>فضا</th><th>مساحت کل (مترمربع)</th><th>طول هر واحد (متر)</th><th>عرض هر واحد (متر)</th>' +
+    '</tr></thead><tbody>' + rows + '</tbody></table>' +
+    '<div class="actions"><button class="primary" type="button" onclick="window.print()">🖨️ چاپ نتایج</button></div>';
+}
+
+function goldenReset() {
+  document.getElementById('goldenResults').innerHTML = '';
+  document.getElementById('goldenMessage').textContent = '';
+  document.getElementById('totalArea').value = '';
+  document.querySelectorAll('#goldenSpaces input:checked').forEach(function(i){
+    i.checked = false;
+    i.closest('label').classList.remove('checked');
+  });
+  renderSpaceAreas();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  goldenInit();
+  document.getElementById('goldenCalc').onclick = goldenCalc;
+  document.getElementById('goldenReset').onclick = goldenReset;
+});
+</script>
+</body>
+</html>
