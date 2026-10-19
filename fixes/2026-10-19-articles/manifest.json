@@ -1,0 +1,38 @@
+{
+  "before/site-index.html": {
+    "bytes": 91691,
+    "sha256": "ac66023a0fc4ed4ef4f642321a12f5f9466fde5241a0a5a70b35836ad37e7d0c"
+  },
+  "before/fd-single-article-fix.js": {
+    "bytes": 326802,
+    "sha256": "69eb373dfc91d3bee6e4b27fbd8a114c38e0586077e970927ad0da48ca123fba"
+  },
+  "before/journal-index.html": {
+    "bytes": 39355,
+    "sha256": "33229c7cb27836900244468cb43afd550010f54ccf38a6cbfc73ef7fe142cc4e"
+  },
+  "after/site-index.html": {
+    "bytes": 159178,
+    "sha256": "7e3914b0b2a9b53827b3e7a9dde1d4b46c0b8696ffb60e0a99ec903020b5001c"
+  },
+  "after/fd-single-article-fix.js": {
+    "bytes": 327957,
+    "sha256": "130ebef784ca50e0e5aa86db71e40031fd9ab0aa91dff0c4d2605d2d2418cdf6"
+  },
+  "after/journal-index.html": {
+    "bytes": 39520,
+    "sha256": "ba2f367a33ddddc29e3efca647dce64d8beffc7bf2780236d6e20395f1680aa7"
+  },
+  "RESULT-FA.md": {
+    "bytes": 3625,
+    "sha256": "b57a8de953caa7d7f45bd9ce45e4d0bf11adfc646af8f1385ba5c4d9f01cc055"
+  },
+  "live-checks.json": {
+    "bytes": 24490,
+    "sha256": "43171e89a5c6c1100dd88573b592ac7d07307437afcdca867ed5f6a6663d9889"
+  },
+  "article-fixed.jpg": {
+    "bytes": 96579,
+    "sha256": "c0020eb8aed4c7cf0167eb12b4da00205a57b561a6d47565617108686a8de934"
+  }
+}
