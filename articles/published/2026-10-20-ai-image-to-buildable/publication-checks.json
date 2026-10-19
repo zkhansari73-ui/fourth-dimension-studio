@@ -1,0 +1,95 @@
+{
+  "id": 173,
+  "checks": [
+    {
+      "activeScripts": 0,
+      "alts": true,
+      "brokenAnchors": 0,
+      "canonical": [
+        "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/19/ai-image-to-buildable-architecture/?lang=fa"
+      ],
+      "faq": 5,
+      "h1": [
+        "از تصویر هوش مصنوعی تا طرح قابل ساخت؛ مسیر تصمیم‌های معماری"
+      ],
+      "images": 4,
+      "lang": "fa",
+      "overflow": false,
+      "robots": "index,follow,max-image-preview:large",
+      "schemas": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/19/ai-image-to-buildable-architecture/?lang=fa"
+    },
+    {
+      "activeScripts": 0,
+      "alts": true,
+      "brokenAnchors": 0,
+      "canonical": [
+        "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/19/ai-image-to-buildable-architecture/?lang=en"
+      ],
+      "faq": 5,
+      "h1": [
+        "From AI Image to Buildable Design: An Architect’s Workflow"
+      ],
+      "images": 4,
+      "lang": "en",
+      "overflow": false,
+      "robots": "index,follow,max-image-preview:large",
+      "schemas": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/19/ai-image-to-buildable-architecture/?lang=en"
+    },
+    {
+      "activeScripts": 0,
+      "alts": true,
+      "brokenAnchors": 0,
+      "canonical": [
+        "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/19/ai-image-to-buildable-architecture/?lang=ar"
+      ],
+      "faq": 5,
+      "h1": [
+        "من صورة الذكاء الاصطناعي إلى تصميم قابل للبناء: مسار معماري"
+      ],
+      "images": 4,
+      "lang": "ar",
+      "overflow": false,
+      "robots": "index,follow,max-image-preview:large",
+      "schemas": [
+        "Article",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/2026/10/19/ai-image-to-buildable-architecture/?lang=ar"
+    }
+  ],
+  "archives": {
+    "fa": 6,
+    "en": 6,
+    "ar": 6
+  },
+  "homeCards": 6,
+  "media": [
+    {
+      "id": 169,
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/ai-image-to-design-01-hero.webp"
+    },
+    {
+      "id": 170,
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/ai-image-to-design-02-assumptions.webp"
+    },
+    {
+      "id": 171,
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/ai-image-to-design-03-coordination.webp"
+    },
+    {
+      "id": 172,
+      "url": "https://fourth-dimension-studio.infinityfreeapp.com/wp-content/uploads/2026/10/ai-image-to-design-04-review.webp"
+    }
+  ]
+}
