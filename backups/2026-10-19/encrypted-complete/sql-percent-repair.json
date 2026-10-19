@@ -1,0 +1,11 @@
+{
+  "original_bytes": 3813147,
+  "original_sha256": "45d6976c94ff53fcc7e4be1df4f56af3ab33fa53a2919861eb0a9ccad8fe0d1c",
+  "placeholder_occurrences": 9914,
+  "unique_placeholders": 1,
+  "corrected_bytes": 3168756,
+  "corrected_sha256": "0de673e66b1761574075c59e0fa580b7a32400fb38165848f01cc83a363e3092",
+  "replacement": "WordPress escaped-percent placeholder restored to percent; original SQL preserved",
+  "utf8mb4_header_added": true,
+  "live_article_content_hashes_match": true
+}
