@@ -1,0 +1,61 @@
+{
+  "table_rows": {
+    "wpbk_commentmeta": 0,
+    "wpbk_comments": 1,
+    "wpbk_links": 0,
+    "wpbk_loginizer_logs": 0,
+    "wpbk_options": 377,
+    "wpbk_postmeta": 226,
+    "wpbk_posts": 115,
+    "wpbk_snippets": 20,
+    "wpbk_term_relationships": 118,
+    "wpbk_term_taxonomy": 27,
+    "wpbk_termmeta": 0,
+    "wpbk_terms": 27,
+    "wpbk_usermeta": 23,
+    "wpbk_users": 1
+  },
+  "posts": [
+    {
+      "id": 15,
+      "sha256": "675cb42ca74955a0762dbab38e14f5cd40eca52ca61bfee955b30fc1143e6998",
+      "bytes": 62317,
+      "slug_sha256": "a0a79a108d954f93e3e9121b93f32f32da374c54c7ec66000c6aa84153d5112c",
+      "slug_chars": 178
+    },
+    {
+      "id": 16,
+      "sha256": "5537bca5d0a3e065f91a1bb3ee031623f174fc4e2955ad351a051cb0a67ce3b3",
+      "bytes": 62281,
+      "slug_sha256": "47256b19b3c633c83f1b224658ca1897a6ef691a026969ce2b8cd958170ba481",
+      "slug_chars": 179
+    },
+    {
+      "id": 19,
+      "sha256": "8d8597a83dced6aa10bb45513ba60f240cb14a1cbc5ee2c50b5238b2e2d21537",
+      "bytes": 68396,
+      "slug_sha256": "04ff6e2272473dfe002b4496fe26e455688c4dcdcb92b43fec8211605e66d2cf",
+      "slug_chars": 185
+    },
+    {
+      "id": 92,
+      "sha256": "0e0155549e633e8c1147903a3e3fb7a32e06690d12b1283cbc2f47c3cb550c9a",
+      "bytes": 61657,
+      "slug_sha256": "5e2cac57e0b440ef182d2a0354caf134b24e593061799f963cf2399526392047",
+      "slug_chars": 200
+    },
+    {
+      "id": 94,
+      "sha256": "9b9dba66446aaf03114072585f9b2e44c3831c84f3fb14f5e840355f3bf6d2cc",
+      "bytes": 59879,
+      "slug_sha256": "0a1f681bae1679f823a071cbc9fe3676482684ea79e2ac294c3aedae714e095a",
+      "slug_chars": 187
+    }
+  ],
+  "live_article_content_and_slugs_match": true,
+  "table_count": 14,
+  "total_rows": 935,
+  "method": "MariaDB 10.11.7 socketless bootstrap SQL import and readback",
+  "full_wordpress_runtime_test": false,
+  "runtime_blocker": "Environment disallows UNIX socket creation"
+}
