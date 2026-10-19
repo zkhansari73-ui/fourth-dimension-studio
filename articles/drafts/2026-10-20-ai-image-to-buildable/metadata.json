@@ -1,0 +1,317 @@
+{
+  "article_id": "ARTICLE-20261020-AI-IMAGE-TO-BUILDABLE",
+  "workflow_status": "Waiting Approval",
+  "human_approval": "Pending",
+  "wordpress_post_id": null,
+  "published_url": null,
+  "date_prepared": "2026-10-20",
+  "timezone": "Asia/Tehran",
+  "sources": [
+    {
+      "id": "riba",
+      "title": "RIBA Plan of Work",
+      "url": "https://www.riba.org/work/insights-and-resources/riba-plan-of-work/",
+      "use": "Distinction between concept design, spatial coordination and technical design; not a universal legal approval procedure."
+    },
+    {
+      "id": "bim",
+      "title": "UK BIM Framework: Guidance Part D, Developing information requirements, Edition 1, September 2020",
+      "url": "https://ukbimframework.org/wp-content/uploads/2020/09/Guidance-Part-D_Developing-information-requirements_Edition-1.pdf",
+      "use": "Geometrical information, alphanumerical information and documentation. Historic edition explicitly identified."
+    },
+    {
+      "id": "nist",
+      "title": "NIST AI 600-1: Generative Artificial Intelligence Profile, July 2024",
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+      "use": "Confident false content and the importance of evaluation; application to architectural practice is editorial analysis."
+    },
+    {
+      "id": "iaac",
+      "title": "IAAC: From Pixels to Parameters",
+      "url": "https://blog.iaac.net/from-pixels-to-parameters/",
+      "use": "A documented research workflow for facade segmentation and parametric reconstruction; not independently tested or proof of buildability."
+    }
+  ],
+  "locales": {
+    "fa": {
+      "title": "از تصویر هوش مصنوعی تا طرح قابل ساخت؛ مسیر تصمیم‌های معماری",
+      "seo_title": "از تصویر هوش مصنوعی تا طرح معماری؛ راهنمای کار استودیو",
+      "description": "مسیر تبدیل تصویر هوش مصنوعی به طرح معماری را بشناسید؛ از ثبت فرض‌ها و مدل‌سازی تا هماهنگی، آزمون و تحویل، با منابع اصلی و یک مثال مفهومی برای استودیوها.",
+      "primary": "تبدیل تصویر هوش مصنوعی به طرح معماری",
+      "related": [
+        "رندر هوش مصنوعی معماری",
+        "تصویر به BIM",
+        "هماهنگی فضایی",
+        "بازبینی طرح معماری"
+      ],
+      "slug": "از-تصویر-هوش-مصنوعی-تا-طرح-معماری",
+      "toc": "در این مقاله",
+      "related_label": "مطالب مرتبط",
+      "sources_label": "منابع اصلی",
+      "credit": "تصویر مفهومی اختصاصی تولیدشده با هوش مصنوعی؛ عکس پروژهٔ واقعی، مدل هماهنگ یا نقشهٔ اجرایی نیست.",
+      "image_credit": "Fourth Dimension Studio / تولید تصویر OpenAI",
+      "read": "زمان مطالعهٔ برآوردی: {n} دقیقه",
+      "alts": [
+        "تصویر مفهومی یک ارائهٔ معماری کنار ماکت سفید پاویون حیاط‌دار",
+        "ماکت مفهومی پاویون کنار کاغذ کالک و نمونه‌های مصالح",
+        "ماکت مفهومی با سقف جداشده برای دیدن حیاط و سازمان فضایی",
+        "دست‌های دو نفر هنگام بررسی مدل مفهومی و نمونه‌های مصالح"
+      ],
+      "captions": [
+        "فاصلهٔ میان تصویر قانع‌کننده و تصمیم قابل بررسی.",
+        "ثبت کیفیت مطلوب و فرض‌های نامعلوم، پیش از افزایش جزئیات.",
+        "بازکردن مدل برای طرح پرسش‌های فضایی؛ بدون مشخصات مهندسی.",
+        "مراجعهٔ انسانی به مدل و مدارک، پیش از تصمیم دربارهٔ تحویل."
+      ],
+      "primary_search": "تبدیل تصویر هوش مصنوعی به نقشه معماری اجرایی",
+      "words": 2294,
+      "reading_minutes_estimate": 12,
+      "canonical": null,
+      "hreflang": null,
+      "seo_title_length": 54,
+      "meta_description_length": 152,
+      "faq_count": 5
+    },
+    "en": {
+      "title": "From AI Image to Buildable Design: An Architect’s Workflow",
+      "seo_title": "AI Image to Buildable Architecture: A Studio Workflow",
+      "description": "Move from an AI architecture image to reviewed design information: a practical guide to assumptions, modelling, coordination, evidence and honest handover.",
+      "primary": "AI architecture image to buildable design",
+      "related": [
+        "image-to-BIM workflow",
+        "AI architectural visualisation",
+        "spatial coordination",
+        "architectural design review"
+      ],
+      "slug": "ai-image-to-buildable-architecture",
+      "toc": "In this article",
+      "related_label": "Related reading",
+      "sources_label": "Primary sources",
+      "credit": "Original AI-generated editorial visualisation; not a real-project photograph, a coordinated model or construction drawing.",
+      "image_credit": "Fourth Dimension Studio / OpenAI image generation",
+      "read": "Estimated reading time: {n} minutes",
+      "alts": [
+        "Conceptual architectural image beside a white courtyard pavilion study model",
+        "Conceptual pavilion model with tracing paper and material samples",
+        "Conceptual pavilion model with its roof lifted to reveal the courtyard and spaces",
+        "Two people reviewing a conceptual pavilion model and material samples"
+      ],
+      "captions": [
+        "From a persuasive image to a proposal that can be questioned.",
+        "Record the intended quality and unverified assumptions before adding detail.",
+        "Opening the model to discuss space, without engineering specifications.",
+        "Human review of a model and information before a handover decision."
+      ],
+      "primary_search": "AI architecture image to BIM workflow",
+      "words": 2270,
+      "reading_minutes_estimate": 12,
+      "canonical": null,
+      "hreflang": null,
+      "seo_title_length": 53,
+      "meta_description_length": 155,
+      "faq_count": 5
+    },
+    "ar": {
+      "title": "من صورة الذكاء الاصطناعي إلى تصميم قابل للبناء: مسار معماري",
+      "seo_title": "من صورة الذكاء الاصطناعي إلى تصميم معماري قابل للبناء",
+      "description": "دليل الانتقال من صور الذكاء الاصطناعي إلى تصميم معماري قابل للمراجعة: المدخلات والنمذجة والتنسيق والأدلة والتسليم، بمصادر أصلية ومثال تحريري افتراضي.",
+      "primary": "تحويل صور الذكاء الاصطناعي إلى تصميم معماري",
+      "related": [
+        "الصور إلى BIM",
+        "التصور المعماري بالذكاء الاصطناعي",
+        "التنسيق المكاني",
+        "مراجعة التصميم المعماري"
+      ],
+      "slug": "من-صور-الذكاء-الاصطناعي-إلى-تصميم-معماري",
+      "toc": "في هذا المقال",
+      "related_label": "قراءات ذات صلة",
+      "sources_label": "المصادر الأصلية",
+      "credit": "تصور تحريري أصلي مولد بالذكاء الاصطناعي؛ ليس صورة مشروع حقيقي أو نموذجاً منسقاً أو رسماً تنفيذياً.",
+      "image_credit": "Fourth Dimension Studio / توليد الصور من OpenAI",
+      "read": "وقت القراءة التقديري: {n} دقائق",
+      "alts": [
+        "صورة معمارية مفاهيمية إلى جوار مجسم أبيض لجناح بفناء",
+        "مجسم جناح مفاهيمي مع ورق شفاف وعينات مواد",
+        "مجسم جناح مفاهيمي بسقف مرفوع لإظهار الفناء والفراغات",
+        "شخصان يراجعان مجسم جناح مفاهيمي وعينات مواد"
+      ],
+      "captions": [
+        "المسافة بين صورة مقنعة واقتراح يمكن مراجعته.",
+        "تسجيل الصفة المطلوبة والافتراضات قبل زيادة التفاصيل.",
+        "فتح المجسم لطرح أسئلة مكانية، دون مواصفات هندسية.",
+        "مراجعة بشرية للمجسم والمعلومات قبل قرار التسليم."
+      ],
+      "primary_search": "من صور الذكاء الاصطناعي إلى مخططات معمارية قابلة للتنفيذ",
+      "words": 1983,
+      "reading_minutes_estimate": 10,
+      "canonical": null,
+      "hreflang": null,
+      "seo_title_length": 53,
+      "meta_description_length": 149,
+      "faq_count": 5
+    }
+  },
+  "keyword_research": {
+    "method": "Qualitative review of English, Persian and Arabic query results and terminology in primary professional sources; no paid-volume dataset or Search Console access.",
+    "volume": null,
+    "ranking_claim": null
+  },
+  "images": [
+    {
+      "id": "01-hero",
+      "file": "assets/ai-image-to-design-01-hero.webp",
+      "original": "generated_images/exec-c7ec7aaf-05f7-465c-84a9-d1c0622cfd60.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 165846,
+      "source_sha256": "35e69ea79ae4687cd5d9b820136c408711c6b7ece1baa509488c3ee9510b3620",
+      "role": "hero",
+      "credit": "Fourth Dimension Studio / OpenAI image generation",
+      "source_type": "Original AI-generated editorial visualisation",
+      "source_url": "https://drive.google.com/file/d/1fX39KXuHR_iqapEt-as-6qVSoMn5EG_f/view?usp=drivesdk",
+      "source_url_status": "Private source asset saved in project Drive folder; not a public website image URL.",
+      "reference_sources": [
+        "https://www.riba.org/work/insights-and-resources/riba-plan-of-work/",
+        "https://ukbimframework.org/wp-content/uploads/2020/09/Guidance-Part-D_Developing-information-requirements_Edition-1.pdf",
+        "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+        "https://blog.iaac.net/from-pixels-to-parameters/"
+      ],
+      "image_keywords": [
+        "fictional courtyard pavilion",
+        "architectural design review",
+        "concept model"
+      ],
+      "locales": {
+        "fa": {
+          "alt": "تصویر مفهومی یک ارائهٔ معماری کنار ماکت سفید پاویون حیاط‌دار",
+          "caption": "فاصلهٔ میان تصویر قانع‌کننده و تصمیم قابل بررسی. تصویر مفهومی اختصاصی تولیدشده با هوش مصنوعی؛ عکس پروژهٔ واقعی، مدل هماهنگ یا نقشهٔ اجرایی نیست."
+        },
+        "en": {
+          "alt": "Conceptual architectural image beside a white courtyard pavilion study model",
+          "caption": "From a persuasive image to a proposal that can be questioned. Original AI-generated editorial visualisation; not a real-project photograph, a coordinated model or construction drawing."
+        },
+        "ar": {
+          "alt": "صورة معمارية مفاهيمية إلى جوار مجسم أبيض لجناح بفناء",
+          "caption": "المسافة بين صورة مقنعة واقتراح يمكن مراجعته. تصور تحريري أصلي مولد بالذكاء الاصطناعي؛ ليس صورة مشروع حقيقي أو نموذجاً منسقاً أو رسماً تنفيذياً."
+        }
+      }
+    },
+    {
+      "id": "02-assumptions",
+      "file": "assets/ai-image-to-design-02-assumptions.webp",
+      "original": "generated_images/exec-aa8c4a44-156d-41f9-822e-6ecaf66e0893.png",
+      "width": 1672,
+      "height": 940,
+      "bytes": 168638,
+      "source_sha256": "eb24de7d6bbcc5bce9bd5c38dec13be603d9c0feecb659f2496635fcbfcfdcf8",
+      "role": "inline",
+      "credit": "Fourth Dimension Studio / OpenAI image generation",
+      "source_type": "Original AI-generated editorial visualisation",
+      "source_url": "https://drive.google.com/file/d/1IZmC_-Vhqfaq9Ix_CZjfzJ-fOtJaS0Tw/view?usp=drivesdk",
+      "source_url_status": "Private source asset saved in project Drive folder; not a public website image URL.",
+      "reference_sources": [
+        "https://www.riba.org/work/insights-and-resources/riba-plan-of-work/",
+        "https://ukbimframework.org/wp-content/uploads/2020/09/Guidance-Part-D_Developing-information-requirements_Edition-1.pdf",
+        "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+        "https://blog.iaac.net/from-pixels-to-parameters/"
+      ],
+      "image_keywords": [
+        "fictional courtyard pavilion",
+        "architectural design review",
+        "concept model"
+      ],
+      "locales": {
+        "fa": {
+          "alt": "ماکت مفهومی پاویون کنار کاغذ کالک و نمونه‌های مصالح",
+          "caption": "ثبت کیفیت مطلوب و فرض‌های نامعلوم، پیش از افزایش جزئیات. تصویر مفهومی اختصاصی تولیدشده با هوش مصنوعی؛ عکس پروژهٔ واقعی، مدل هماهنگ یا نقشهٔ اجرایی نیست."
+        },
+        "en": {
+          "alt": "Conceptual pavilion model with tracing paper and material samples",
+          "caption": "Record the intended quality and unverified assumptions before adding detail. Original AI-generated editorial visualisation; not a real-project photograph, a coordinated model or construction drawing."
+        },
+        "ar": {
+          "alt": "مجسم جناح مفاهيمي مع ورق شفاف وعينات مواد",
+          "caption": "تسجيل الصفة المطلوبة والافتراضات قبل زيادة التفاصيل. تصور تحريري أصلي مولد بالذكاء الاصطناعي؛ ليس صورة مشروع حقيقي أو نموذجاً منسقاً أو رسماً تنفيذياً."
+        }
+      }
+    },
+    {
+      "id": "03-coordination",
+      "file": "assets/ai-image-to-design-03-coordination.webp",
+      "original": "generated_images/exec-5809aedc-5b32-450f-85b4-92da96e23823.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 110288,
+      "source_sha256": "a932f88ba269a16a642e5f10359d1611c09deaca0aae707d668a3c8d9e3fcbeb",
+      "role": "inline",
+      "credit": "Fourth Dimension Studio / OpenAI image generation",
+      "source_type": "Original AI-generated editorial visualisation",
+      "source_url": "https://drive.google.com/file/d/1TqO5Bl0uHlm0Y6Eo-kQfDiiWyO6Om-7-/view?usp=drivesdk",
+      "source_url_status": "Private source asset saved in project Drive folder; not a public website image URL.",
+      "reference_sources": [
+        "https://www.riba.org/work/insights-and-resources/riba-plan-of-work/",
+        "https://ukbimframework.org/wp-content/uploads/2020/09/Guidance-Part-D_Developing-information-requirements_Edition-1.pdf",
+        "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+        "https://blog.iaac.net/from-pixels-to-parameters/"
+      ],
+      "image_keywords": [
+        "fictional courtyard pavilion",
+        "architectural design review",
+        "concept model"
+      ],
+      "locales": {
+        "fa": {
+          "alt": "ماکت مفهومی با سقف جداشده برای دیدن حیاط و سازمان فضایی",
+          "caption": "بازکردن مدل برای طرح پرسش‌های فضایی؛ بدون مشخصات مهندسی. تصویر مفهومی اختصاصی تولیدشده با هوش مصنوعی؛ عکس پروژهٔ واقعی، مدل هماهنگ یا نقشهٔ اجرایی نیست."
+        },
+        "en": {
+          "alt": "Conceptual pavilion model with its roof lifted to reveal the courtyard and spaces",
+          "caption": "Opening the model to discuss space, without engineering specifications. Original AI-generated editorial visualisation; not a real-project photograph, a coordinated model or construction drawing."
+        },
+        "ar": {
+          "alt": "مجسم جناح مفاهيمي بسقف مرفوع لإظهار الفناء والفراغات",
+          "caption": "فتح المجسم لطرح أسئلة مكانية، دون مواصفات هندسية. تصور تحريري أصلي مولد بالذكاء الاصطناعي؛ ليس صورة مشروع حقيقي أو نموذجاً منسقاً أو رسماً تنفيذياً."
+        }
+      }
+    },
+    {
+      "id": "04-review",
+      "file": "assets/ai-image-to-design-04-review.webp",
+      "original": "generated_images/exec-22d9d719-dcef-40db-9d81-d2586be194c3.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 162072,
+      "source_sha256": "51805206d23f57b0c12a5e4f86767d02df4312424cc1cf5be232e4f733e78bde",
+      "role": "inline",
+      "credit": "Fourth Dimension Studio / OpenAI image generation",
+      "source_type": "Original AI-generated editorial visualisation",
+      "source_url": "https://drive.google.com/file/d/12Ys30Bm3N0Ffi59GnkZCAtthv1j8MTXw/view?usp=drivesdk",
+      "source_url_status": "Private source asset saved in project Drive folder; not a public website image URL.",
+      "reference_sources": [
+        "https://www.riba.org/work/insights-and-resources/riba-plan-of-work/",
+        "https://ukbimframework.org/wp-content/uploads/2020/09/Guidance-Part-D_Developing-information-requirements_Edition-1.pdf",
+        "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+        "https://blog.iaac.net/from-pixels-to-parameters/"
+      ],
+      "image_keywords": [
+        "fictional courtyard pavilion",
+        "architectural design review",
+        "concept model"
+      ],
+      "locales": {
+        "fa": {
+          "alt": "دست‌های دو نفر هنگام بررسی مدل مفهومی و نمونه‌های مصالح",
+          "caption": "مراجعهٔ انسانی به مدل و مدارک، پیش از تصمیم دربارهٔ تحویل. تصویر مفهومی اختصاصی تولیدشده با هوش مصنوعی؛ عکس پروژهٔ واقعی، مدل هماهنگ یا نقشهٔ اجرایی نیست."
+        },
+        "en": {
+          "alt": "Two people reviewing a conceptual pavilion model and material samples",
+          "caption": "Human review of a model and information before a handover decision. Original AI-generated editorial visualisation; not a real-project photograph, a coordinated model or construction drawing."
+        },
+        "ar": {
+          "alt": "شخصان يراجعان مجسم جناح مفاهيمي وعينات مواد",
+          "caption": "مراجعة بشرية للمجسم والمعلومات قبل قرار التسليم. تصور تحريري أصلي مولد بالذكاء الاصطناعي؛ ليس صورة مشروع حقيقي أو نموذجاً منسقاً أو رسماً تنفيذياً."
+        }
+      }
+    }
+  ]
+}
