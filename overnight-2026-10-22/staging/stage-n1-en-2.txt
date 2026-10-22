@@ -1,0 +1,54 @@
+<h2>What AI cannot do: the territory of the architect's responsibility</h2>
+<p>Against the strengths, the limits must be recognised with equal clarity. A generative tool does not produce construction details: it does not know how a panel is fixed to a wall, where rainwater runs off an edge, or how materials behave over time. It does not know structure: the facade's weight, wind loads, and their effect on the frame are matters of calculation and engineering, not image-making. Nor does it know local codes reliably; the rules of every city and district differ, and responsibility for compliance rests with the designer and the competent authorities. Most importantly, an algorithm accepts no responsibility: the signature on the drawing is a human name, and accountability to the client, the municipality, and future occupants belongs to that human.</p>
+<p>There is one more subtle boundary: generated images sometimes carry quiet, invisible errors — an opening that repeats with no logic across floors, a shadow that contradicts the sun's direction, a texture that means nothing at real scale. An untrained eye misses these slips, and if the raw image becomes the basis of decisions, the error is planted in the project from the start. This is why the architect's role in the age of AI does not fade; it changes — from producer of images to judge, editor, and the person finally responsible for the design.</p>
+<h2>Material and climate: lessons from sun, dust, and privacy</h2>
+<p>Across most of Iran and the Middle East, a facade is first of all an answer to the sun. Strong, long hours of sunshine — above all on western and southern fronts — will turn an interior into a greenhouse if left unmoderated, pushing cooling costs upward. Shading screens, louvres, recessed openings, and reduced glass area on the hot fronts are therefore climatic decisions, not decoration. In the tradition of this very region, the mashrabiya and pierced screens were built for exactly this trio: shade, airflow, and privacy. A contemporary rereading of that logic — grids and perforated patterns that break the light and soften direct views — can be both a climatic answer and a living link to local memory; not by copying old forms, but by understanding why they existed.</p>
+<p>Dust is the second reality of this climate. A facade of deep recesses and very fine textures in a dusty city changes its face quickly and is hard to maintain; surfaces that rain or simple washing cannot clean are condemned to early decay. Privacy is the third reality: in dense residential fabric, a generous opening designed without thought for a neighbour's view destroys the comfort of both sides, and perforated patterns, frosted glass in sensitive parts, and intelligently turned openings are tested answers. Whenever you see a generated facade image, ask it three questions: what does it do with the sun? With dust? With privacy?</p>
+<h2>Presenting to the client, and disclosing the role of AI honestly</h2>
+<p>A generated image is a powerful presentation tool, and for precisely that reason it must be used honestly. An ideation image is a "visual draft," not a photograph of the future building; saying so in the very first meeting prevents later misunderstandings and unrealistic expectations. Professional work means the status of every image is clear: this one is for inspiration, this model follows real dimensions, and this drawing is the basis for construction. Clients are not troubled by hearing about AI's role; what destroys trust is the late discovery of the gap between image and reality. At Fourth Dimension Studio we treat this as a rule: the tool may be new, but honesty about the tool is the profession's oldest principle.</p>
+<h2>Risks and common mistakes when using AI for facades</h2>
+<ul>
+<li>Deciding by image instead of by design: when the prettiest picture wins, rather than the most buildable direction.</li>
+<li>Prompt obsession: spending hours generating images while forgetting that the project's real problem is regulation, budget, or structure.</li>
+<li>Hidden sameness: despite their surface variety, generated outputs often lean toward a global average taste and detach the building from its local context and culture.</li>
+<li>Trusting fake textures and details: materials that exist in the image but cannot be sourced or built at that scale in the real market.</li>
+<li>Ignoring maintenance: a facade that is beautiful on handover day but whose cleaning and repair were never considered.</li>
+<li>Unreal expectations of time and cost: the image is ready in minutes, but developing a buildable design still requires professional time.</li>
+</ul>
+<p>One remedy covers all of these mistakes: process discipline. With the steps of survey, testing, and development in place, AI is a good servant; without that discipline, the fastest tool is the fastest route to being misled.</p>
+<h2>A practical checklist: before starting any facade project</h2>
+<ul>
+<li>Establish the building's orientation, sun path, and prevailing wind for the site.</li>
+<li>Check the facade regulations for the project's city and district before ideation begins.</li>
+<li>If the project is a renovation, complete the documents and measured survey of the existing building.</li>
+<li>Set a realistic facade budget and maintenance ceiling from the start.</li>
+<li>Rank the priorities: identity, light, energy, privacy, or cost — they cannot all stand first together.</li>
+<li>For option generation, define several genuinely different directions, not colour changes of a single one.</li>
+<li>Test every option through the three filters of sun, dust, and privacy.</li>
+<li>For the chosen direction, view real material samples in the site's own light.</li>
+<li>Decide early which images are inspiration and which documents govern construction.</li>
+<li>State the role of AI in the process to the client transparently and in writing.</li>
+</ul>
+<h2>Why does it matter?</h2>
+<p>Because the facade is a building's most expensive and most enduring visual decision, and an error in it stays on the city's wall for decades. AI has not made that decision cheaper or easier; it has only widened its ideation phase. The real benefit goes to the team that already possesses process discipline, climate knowledge, and professional honesty; for such a team, generative tools mean more options, a clearer conversation with the client, and a faster route to a direction that is both beautiful and buildable. For everyone else, the danger is that fantasy takes the place of design. Choosing between these two is not a choice of tool; it is a choice of working method — and that is why this discussion matters to every client and architect starting a project today.</p>
+<h2>Frequently asked questions</h2>
+<h3>Can AI design our building's facade entirely on its own?</h3>
+<p>No. Generative tools can produce visual options for ideation, but a complete facade design includes compliance with regulations, coordination with structure and plan, construction detailing, and real material selection — the architect's work and responsibility. These tools serve best alongside the design team, in the early stages.</p>
+<h3>How closely will an AI image of the future facade resemble the final result?</h3>
+<p>A generated image is an approximation and an inspiration, not an exact prediction. As the design develops, proportions, materials, and details change so it becomes buildable and regulation-compliant. What should remain constant is the idea and feeling of the chosen direction, not every pixel of the first image.</p>
+<h3>Does using AI reduce the cost of facade design?</h3>
+<p>At the ideation stage, time — and with it part of the cost — does fall, because unsuitable directions are discarded sooner and the client conversation concludes faster. But design development, construction drawings, and technical coordination still require complete professional work.</p>
+<h3>Will the facade style end up copied from other people's work?</h3>
+<p>If raw generated output is used unfiltered, the risk of resembling an average of existing images is real. The design team's task is to redesign the idea through knowledge of the place, climate, culture, and the project's particular needs, so the result carries an identity belonging to that building and location.</p>
+<h3>What should a client prepare to start a facade project this way?</h3>
+<p>The property documents and any existing drawings, a general awareness of the budget, and a list of priorities and tastes — even a few images of facades they like or dislike. The rest, from survey to design development, proceeds with the design team.</p>
+<h2>A note on evidence and sources</h2>
+<p>This text is an analytical guide written from the professional experience and working practice of Fourth Dimension Studio in facade design projects. No specific project is documented here, no particular statistics or research data are claimed, and no quotations from persons or institutions are included. Climatic principles and traditions such as the logic of shade and privacy in the region's architecture are presented as general professional knowledge. Building regulations differ in every city and country and must be confirmed with official authorities for any given project.</p>
+<h2>About the editorial team</h2>
+<p>The Fourth Dimension Studio editorial team is a group of architects and researchers working where architecture meets artificial intelligence: from designing villas, facades, and interiors to analytical guides on new design technologies. We believe new tools are valuable when they strengthen human judgement, climate knowledge, and honesty in presentation — not when they take their place.</p>
+<h2>Related reading</h2>
+<ul>
+<li>From an AI image to a buildable design</li>
+<li>The Shenzhen Natural History Museum</li>
+</ul>
+</section>
