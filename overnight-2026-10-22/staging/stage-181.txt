@@ -1,0 +1,44 @@
+<!--FD-EXP:181:en-->
+<h2>Going deeper: the mistakes that make AI renovation go wrong — and how to avoid them</h2>
+<p>Most AI renovation projects do not fail because the tool was weak, but because an image stood in for measurement, structure, and budget.</p>
+<h3>Trusting the render as a survey</h3>
+<p>A generated image is a suggestion, not a record: dimensions drift, windows move, radiators vanish. Keep an evidence pack — measured plans, photos and notes — held apart from every proposal as the record of the existing home. If a render disagrees with it, the pack wins.</p>
+<h3>Removing walls with a prompt</h3>
+<p>Ask for an open-plan kitchen, and the model erases the wall holding up the floor above. AI knows nothing of load, lintels, or permits. Any structural idea in an image is a question for a qualified professional, never an instruction to a contractor.</p>
+<h3>Designing before sequencing the budget</h3>
+<p>A scheme that spends everything on finishes leaves nothing for wiring, plumbing, or insulation — invisible work you live with daily. Spend in the building's order: structure, services, comfort, appearance.</p>
+<h3>Mixing styles without a brief</h3>
+<p>Without a brief — the problem, for whom, within what limits — each image pulls the project in a new direction. Judge options against the brief, not the last pretty picture.</p>
+<h3>Losing the decision trail</h3>
+<p>Renovations outlive memories. Keep a decision record: what was chosen, why, what it replaced, what it costs. It answers the contractor's "who approved this?" and stops settled questions reopening.</p>
+<h3>Pre-flight checklist</h3>
+<ul>
+<li>Evidence pack separate from proposals</li>
+<li>Brief agreed before any options</li>
+<li>Three different options, same criteria</li>
+<li>Structural changes professionally reviewed</li>
+<li>Budget order: structure, services, comfort, finishes</li>
+<li>Decision record kept current</li>
+</ul>
+<!--FD-EXP:181:ar-->
+<h2>نظرة أعمق: الأخطاء التي تُفسد تجديد المنزل بالذكاء الاصطناعي — وكيف نتجنبها</h2>
+<p>حين يفشل مشروع تجديد يعتمد على الذكاء الاصطناعي، نادراً ما يكون السبب ضعف الأداة. السبب الأغلب أن صورة مصقولة سُمح لها أن تؤدي دوراً لم تُصنع له: أن تحل محل القياس الدقيق، ومعرفة البنية الإنشائية، وانضباط الميزانية. الأخطاء التالية أنماط تتكرر، ولكل منها عادة بسيطة مضادة.</p>
+<h3>الوثوق بالصورة كأنها مسح ميداني</h3>
+<p>الصورة التي يولّدها النموذج لغرفتك ليست وثيقة، بل اقتراح. فيها تنزاح الأبعاد عن حقيقتها، وتتحرك النوافذ من أماكنها، وتختفي عناصر موجودة فعلاً. لذلك احتفظ قبل أي عمل تصميمي بحزمة أدلة منفصلة: مخططات مقاسة، وصور مؤرخة، وارتفاعات الأسقف، ومواضع الأنابيب والمقابس. هذه الحزمة هي المرجع الوحيد لحال المنزل كما هو، ومتى تعارضت صورة مولّدة معها، فالكلمة الأخيرة للحزمة دائماً.</p>
+<h3>إزالة الجدران بجملة واحدة</h3>
+<p>اطلب مطبخاً مفتوحاً، وسيزيل النموذج بطيبة خاطر الجدار الذي يحمل الطابق العلوي كله. الذكاء الاصطناعي لا يدرك الأحمال ولا الأعتاب ولا التراخيص، ولا يعرف أي جدار يقوم عليه البناء وأي جدار مجرد قاطع خفيف. أي فكرة إنشائية تظهر في صورة مولّدة يجب أن تُعامل بوصفها سؤالاً يُعرض على مختص مؤهل، لا تعليمات تُسلَّم إلى منفّذ.</p>
+<h3>التصميم قبل ترتيب الميزانية</h3>
+<p>ثمة خطأ آخر يتكرر: مخطط مبهر يستهلك المال كله على التشطيبات الظاهرة، فلا يتبقى شيء للأسلاك والسباكة والعزل، أي للأعمال التي لا تظهر في الصور لكنك ستعيش مع نتائجها كل يوم. رتّب الإنفاق بحسب حاجة المبنى نفسه لا بحسب جاذبية الصورة: البنية أولاً، ثم الشبكات والخدمات، ثم الراحة الحرارية والصوتية، وأخيراً المظهر.</p>
+<h3>خلط الأساليب بلا موجز مكتوب</h3>
+<p>من دون موجز تصميم مكتوب يحدد المشكلة التي تحلّها، ولمن تحلّها، وبأي حدود وقيود، ستسحبك كل صورة جديدة في اتجاه مختلف، وينتهي المنزل خليطاً من أذواق لحظية لا يجمعها شيء. اكتب الموجز قبل توليد أي خيار، واحكم على كل خيار بميزانه هو، لا بميزان آخر صورة أعجبتك.</p>
+<h3>ضياع سجل القرارات</h3>
+<p>مشروعات التجديد أطول عمراً من الذاكرة. كثير من النزاعات مع المنفّذين تبدأ بسؤال بسيط: من وافق على هذا؟ فاحتفظ بسجل قرارات جارٍ يدوّن ما اخترته ولماذا، وما الذي استبدلته، وكم يكلف. هذا السجل يحميك عند الخلاف، ويمنع إعادة فتح مسائل حُسمت منذ أسابيع، ويجعل تسليم المشروع لمن يأتي بعدك ممكناً بلا فوضى.</p>
+<h3>قائمة تحقق قبل الانطلاق</h3>
+<ul>
+<li>نموذج الحالة القائمة وحزمة الأدلة محفوظان بعيداً عن كل المقترحات</li>
+<li>موجز مكتوب معتمد قبل توليد أي خيار تصميمي</li>
+<li>ثلاثة خيارات مختلفة فعلاً، تُقارن بالمعايير نفسها</li>
+<li>أي تعديل إنشائي موسوم بوضوح لمراجعة مختص مؤهل</li>
+<li>الميزانية مرتبة: بنية، ثم خدمات، ثم راحة، ثم تشطيبات</li>
+<li>سجل قرارات مفتوح منذ اليوم الأول، ويُحدَّث عند كل اختيار</li>
+</ul>

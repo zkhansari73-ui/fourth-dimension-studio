@@ -1,0 +1,61 @@
+<!--FD-EXP:19:fa-->
+<h2>نگاهی عمیق‌تر: روش طراحی نمایشگاه روایی؛ از جملهٔ کیوریتور تا مسیر بازدیدکننده</h2>
+<p>هر نمایشگاه روایی از یک جمله شروع می‌شود؛ جمله‌ای در پاسخ این پرسش: بازدیدکننده بعد از خروج، چه چیزی را متفاوت بفهمد؟ این جمله نه شعار است و نه خلاصهٔ محتوا؛ قرارداد طراحی است. هر تصمیم بعدی، از چیدمان تا نور و صدا، باید به همین جمله برگردد. بخشی از طرح که با آن جمله توضیح داده نشود، برای این نمایشگاه نیست.</p>
+<h3>مسیر بازدیدکننده، ستون فقرات طرح</h3>
+<p>بعد از جمله، نوبت سفر است. سفر بازدیدکننده سه لایه دارد: ورود و جهت‌یابی، غوطه‌وری در روایت، و خروج همراه با مکثی برای جمع‌بندی. روی نقشه مشخص کنید بازدیدکننده کجا می‌ایستد، کجا شتاب می‌گیرد و کجا حق انتخاب دارد. روایت خوب تحمیلی نیست؛ مثل محله‌ای است با خیابان اصلی و کوچه‌های فرعی برای کشف.</p>
+<h3>دو سرعت بازدید: نگاه سریع و نگاه عمیق</h3>
+<p>همهٔ بازدیدکنندگان وقت یکسان ندارند. لایهٔ اول باید در چند دقیقه، از دور فهمیده شود: پیام کلی، نقاط اوج و جهت حرکت. لایهٔ دوم برای کسی است که می‌ایستد و نزدیک می‌شود: متن و جزئیات پنهان. اگر فهم نمایشگاه به لایهٔ دوم وابسته بماند، بیشتر بازدیدکنندگان از دست می‌روند.</p>
+<h3>نمونه‌سازی و جلسهٔ نقد</h3>
+<p>پیش از ساخت، گلوگاه مسیر و نقطهٔ اوج روایت را در مقیاس واقعی نمونه‌سازی کنید و با چند بازدیدکنندهٔ واقعی بیازمایید. پرسش جلسهٔ نقد یکی است: آیا بازدیدکننده همان جملهٔ اول را با زبان خودش بازگو می‌کند؟ خروجی جلسه سه تصمیم است: چه چیزی می‌ماند، چه چیزی حذف می‌شود و چه چیزی پیش از افتتاح تعمیر می‌شود. نمایشگاهی که چرخهٔ نگهداری‌اش از روز اول بودجه و مسئول مشخص نداشته باشد، روایتش هم آرام‌آرام از دست می‌رود.</p>
+<!--FD-EXP:19:en-->
+<h2>Going deeper: designing a narrative exhibition — from curatorial sentence to visitor journey</h2>
+<p>The work discussed above is one answer to a general problem: how does a space tell a story? Behind any successful narrative exhibition sits a repeatable method that can be learned, briefed and reviewed like any other design discipline. The sequence matters more than any single device: begin with a sentence, turn it into a journey, give the journey rhythm, layer the content for different depths of attention, prototype before building, and design operations as carefully as opening day.</p>
+<h3>Step one: write the curatorial sentence</h3>
+<p>Before any sketch, curator and designer agree on one sentence: after leaving, what exactly will the visitor understand differently? The sentence is not a slogan, nor a summary of the content list; it is the contract every later decision must answer to. Any striking image or device that cannot be traced back to it is decoration, however beautiful. Teams that skip this step learn the cost late, when the exhibition impresses but visitors cannot say what it was about.</p>
+<h3>Step two: storyboard the journey</h3>
+<p>With the sentence fixed, design the visit as a storyboard, not a floor plan. A journey has three movements: arrival and orientation, immersion in the narrative, and a closing moment to assemble what they have seen. Mark where people stop, where they accelerate, where queues form and where a genuine choice of route exists. An enforced single path feels like a corridor; a clear main street with quieter side lanes invites exploration while delivering the core story to everyone.</p>
+<h3>Rhythm: pacing the movement</h3>
+<p>Stories in space are experienced in time, so pacing is a design material. Alternate intensity with rest: a dense, information-rich room lands harder when the next space is quieter, and a spectacular moment needs an approach that builds expectation and an exit that allows reflection. Think in beats, as editors think in scenes: where does the visitor breathe, and where do they lean in? Crowding is a rhythm problem too — if everyone stops at the same point, the beat collapses.</p>
+<h3>Two speeds of looking: the fast view and the deep view</h3>
+<p>Visitors bring very different budgets of time and attention, so layer the content. The fast view must work within minutes and from a distance: the overall argument, the landmarks, where to go next. The deep view rewards those who stop and approach: readable texts, fine detail, secondary stories. The test is strict. A fast-view visitor should still leave with the curatorial sentence intact; a visitor who invests an hour should find that the promised depth was real, not a lure.</p>
+<h3>Prototype the question before the mechanism</h3>
+<p>When a display depends on movement, interaction or timing, resist engineering the mechanism first. Prototype the question: what should the visitor feel, notice or do at this moment? A full-scale cardboard mock-up, tested with a few real visitors, answers faster and cheaper than any rendering. Only when the moment works in rough form does the mechanism earn serious engineering — with its own accountable brief covering loads, duty cycles, noise, failure behaviour, spare parts and named responsibility when it stops on a busy afternoon.</p>
+<h3>Operations is part of the design</h3>
+<p>An exhibition is finished not at opening, but when its full cycle of use is budgeted and staffed. Consumables run out, lamps age, interactive surfaces wear and content needs refreshing; each task needs a named owner. Invite the operations team into the design review as authors, not audience — they know which detail will be cleaned, repaired or quietly removed within a month. Access panels, replaceable parts and documented settings are how a concept survives contact with reality.</p>
+<h3>Questions for the design review</h3>
+<p>End with a critique session whose output is a decision list, not a mood. Its questions include:</p>
+<ul>
+<li>Can a first-time visitor state our curatorial sentence in their own words after one visit?</li>
+<li>Where does the journey depend on a single path, a single device or a single member of staff?</li>
+<li>What does the fast view contain, and what is only available to the deep view?</li>
+<li>Which moment was prototyped with real visitors, and what did the test change?</li>
+<li>What breaks first, who fixes it, and how long does the exhibition stay honest while broken?</li>
+<li>Which elements earn their cost across the whole run, not just the opening week?</li>
+</ul>
+<p>A narrative exhibition designed this way is not guaranteed to move anyone; no method can promise that. But when it fails, it fails for honest reasons the team can see, discuss and repair — not because nobody ever agreed what the story was.</p>
+<!--FD-EXP:19:ar-->
+<h2>نظرة أعمق: منهج تصميم معرض سردي؛ من جملة القيّم إلى رحلة الزائر</h2>
+<p>العمل الذي يناقشه هذا المقال إجابة واحدة عن سؤال عام: كيف يروي المكان قصة؟ فخلف كل معرض سردي ناجح يقف منهج قابل للتكرار، منهج يمكن تعلُّمه وتحويله إلى موجز تصميمي ومراجعته كما تُراجَع أي ممارسة مهنية أخرى. والتسلسل هنا أهم من أي وسيلة منفردة: ابدأ بجملة واحدة، حوّلها إلى رحلة، امنح الرحلة إيقاعاً، رتّب المحتوى في طبقات تسمح لزوار مختلفين بالدخول من أعماق مختلفة، ابنِ نموذجاً أولياً قبل البناء النهائي، وصمّم التشغيل اليومي بالعناية نفسها التي تصمّم بها يوم الافتتاح. ما يلي هو هذا المنهج خطوة خطوة، بصيغة يستطيع فريق التصميم استخدامها فعلاً في عمله.</p>
+<h3>الخطوة الأولى: كتابة جملة القيّم</h3>
+<p>قبل أي رسم أو مخطط، يتفق القيّم والمصمم على جملة واحدة: بعد مغادرة المعرض، ما الذي سيفهمه الزائر على نحو مختلف؟ هذه الجملة ليست شعاراً تسويقياً ولا ملخصاً لقائمة المحتويات، بل هي العقد الذي تُقاس عليه كل القرارات اللاحقة. فحين تعجز صورة مبهرة أو وسيلة تفاعلية أو لحظة مسرحية مدهشة عن الرجوع إلى هذه الجملة، تتحول إلى زخرفة مهما بلغت من الجمال. والفرق التي تتجاوز هذه الخطوة تكتشف المشكلة متأخرة عادة، حين يبدو المعرض مثيراً للإعجاب لكن الزوار يغادرونه عاجزين عن القول عمّا كان يتحدث. اكتبوا الجملة، ثبّتوها على جدار الاستوديو، ودعوها تحسم كل خلاف ينشأ بعد ذلك؛ فهي المرجع الأول حين تتنافس الأفكار الجيدة فيما بينها.</p>
+<h3>الخطوة الثانية: رحلة الزائر بوصفها قصة مصوَّرة</h3>
+<p>حين تثبت الجملة، صمّموا الزيارة بوصفها قصة مصوَّرة لا مجرد مخطط أرضي. فللرحلة ثلاث حركات: الوصول والتوجيه، والانغماس في السرد، ولحظة ختامية تتيح للزائر تجميع ما رآه في صورة مفهومة. حدّدوا على المخطط أين سيقف الناس، وأين ستتسارع خطاهم، وأين قد تتشكل الطوابير، وأين يوجد خيار حقيقي بين مسارات متعددة. فالسرد الذي يفرض طريقاً واحداً يبدو كممر ضيق، أما السرد الذي يمنح الزائر شارعاً رئيسياً واضحاً وأزقة جانبية أهدأ فيدعو إلى الاستكشاف، مع ضمان وصول القصة الأساسية إلى الجميع، بما فيهم من لا يغادرون الطريق الرئيسي أبداً.</p>
+<h3>الإيقاع: تنظيم زمن الحركة</h3>
+<p>القصص في المكان تُعاش عبر الزمن، ولذلك فإن الإيقاع مادة تصميمية بحد ذاته. بادِلوا بين الكثافة والراحة: فالغرفة الغنية بالمعلومات تؤثر بقوة أكبر حين تليها مساحة أهدأ، واللحظة المدهشة تحتاج إلى مقاربة تبني التوقع وإلى مخرج يسمح بالتأمل. فكّروا بمفردات النبضات كما يفكر المحرر بمشاهد الفيلم: أين يتنفس الزائر؟ وأين يقترب ويتفحص؟ والازدحام أيضاً مشكلة إيقاع؛ فإذا توقف الجميع عند النقطة نفسها انهارت النبضة. وزّعوا لحظات الجذب الأعلى، وامنحوا كل واحدة منها مساحة محيطة تكفي للحشد الذي ستجتذبه في ساعات الذروة، لا في صباح هادئ فحسب.</p>
+<h3>مستويان للنظر: المشاهدة السريعة والمشاهدة العميقة</h3>
+<p>يصل الزوار بميزانيات مختلفة جداً من الوقت والانتباه، لذا رتّبوا المحتوى في طبقات. المشاهدة السريعة يجب أن تعمل خلال دقائق معدودة ومن مسافة بعيدة: الحجة العامة للمعرض، والمعالم البارزة، والإحساس الواضح بالوجهة التالية. أما المشاهدة العميقة فتكافئ من يتوقف ويقترب: نصوص قابلة للقراءة، وتفاصيل دقيقة، وقصص ثانوية، ومواد يمكن أخذها مع الزائر. والاختبار صارم: فالزائر الذي يكتفي بالمشاهدة السريعة يجب أن يغادر وجملة القيّم سليمة في ذهنه، بينما يجب أن يجد الزائر الذي يستثمر ساعة كاملة أن العمق الموعود حقيقي لا مجرد وعد يخلفه المعرض. تصميم الطبقتين معاً عمل أكثر من تصميم طبقة واحدة، لكنه الفرق بين معرض للمختصين ومعرض للجمهور.</p>
+<h3>النموذج الأولي: جرّبوا السؤال قبل الآلية</h3>
+<p>حين يعتمد عرض ما على الحركة أو التفاعل أو التوقيت، يكون الإغراء الأكبر هو هندسة الآلية أولاً. اعكسوا الترتيب: ابنوا نموذجاً أولياً للسؤال نفسه؛ ما الذي يجب أن يشعر به الزائر أو يلاحظه أو يفعله في هذه اللحظة؟ فالنموذج الكرتوني بالحجم الكامل، حين يُختبَر مع حفنة من الزوار الحقيقيين، يجيب عن هذا السؤال بسرعة وكلفة أقل من أي تصور رقمي. وحين تنجح اللحظة في صورتها الخشنة فقط، تستحق الآلية الهندسة الجدية، وتحصل هذه الهندسة عندها على موجز مسؤول خاص بها: الأحمال، ودورات التشغيل، والضجيج، وسلوك النظام عند العطل، وقطع الغيار، ومن المسؤول حين تتوقف الآلية بعد ظهر يوم مزدحم. فالنموذج الذي لا يمكن أن يفشل لا يعلّم شيئاً؛ ابنوا الاختبار بحيث تكون دروسه قابلة للاستخدام، وسجّلوها.</p>
+<h3>التشغيل والصيانة جزء من التصميم</h3>
+<p>المعرض لا يكتمل عند الافتتاح، بل يكتمل حين تُرصد ميزانية دورة استخدامه الكاملة ويُعيَّن طاقمها. فالمواد الاستهلاكية تنفد، والمصابيح تشيخ، والأسطح التفاعلية تبلى، والمحتوى يحتاج إلى تجديد، ويجب أن يملك شخص محدد بالاسم كل مهمة من هذه المهام. لذلك ينبغي أن تضم مراجعة التصميم فريق التشغيل بوصفهم مؤلفين لا جمهوراً؛ فهم يعرفون أي تفصيلة ستُنظَّف أو تُصلَح أو تُزال بهدوء خلال الشهر الأول. والتصميم من أجل الصيانة، عبر ألواح وصول وأجزاء قابلة للاستبدال وإعدادات موثقة، ليس تنازلاً عن الفكرة، بل هو الطريقة التي تنجو بها الفكرة من الاحتكاك بالواقع.</p>
+<h3>أسئلة لجلسة النقد والمراجعة</h3>
+<p>اختتموا العملية بجلسة نقد يكون ناتجها قائمة قرارات لا انطباعاً عاماً. ومن الأسئلة المفيدة في هذه الجلسة:</p>
+<ul>
+<li>هل يستطيع زائر يزور المعرض أول مرة أن يعيد صياغة جملة القيّم بكلماته الخاصة بعد زيارة واحدة؟</li>
+<li>أين تعتمد الرحلة على مسار وحيد أو جهاز وحيد أو موظف وحيد؟</li>
+<li>ما الذي تحتويه المشاهدة السريعة، وما الذي لا يتوافر إلا للمشاهدة العميقة؟</li>
+<li>أي لحظة اختُبرت بنموذج أولي مع زوار حقيقيين، وما الذي غيّره الاختبار؟</li>
+<li>ما الذي يتعطل أولاً، ومن يصلحه، وكم يبقى المعرض صادقاً مع زواره أثناء تعطله؟</li>
+<li>أي العناصر تبرر كلفتها عبر مدة العرض كاملة، لا في أسبوع الافتتاح فقط؟</li>
+</ul>
+<p>المعرض السردي المصمم بهذه الطريقة ليس مضمون التأثير في أحد؛ فلا منهج يستطيع أن يعد بذلك. لكنه حين يخفق، سيخفق لأسباب صادقة يستطيع الفريق رؤيتها ومناقشتها وإصلاحها، لا لسبب يمكن تجنبه تماماً: أن أحداً لم يتفق يوماً على ما هي القصة أصلاً.</p>

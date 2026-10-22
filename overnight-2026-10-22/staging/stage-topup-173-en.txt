@@ -1,0 +1,10 @@
+<!--FD-EXP:173:en-->
+<h2>Going deeper: keep a one-page decision card for every gate</h2>
+<p>Images are easy to regenerate; decisions are not. For each gate in the workflow — image selection, first model, coordination, issue — keep one short card that records four things in plain language:</p>
+<ul>
+<li>What was decided, in one sentence a client could understand.</li>
+<li>Why this option won, and which alternatives were set aside.</li>
+<li>What evidence the decision rests on: a measurement, a model check, a site visit.</li>
+<li>Who owns the decision, and what would make the team revisit it.</li>
+</ul>
+<p>Five honest cards protect the original idea better than five hundred saved images, because they show later hands exactly where the design was steered — and where it was not.</p>

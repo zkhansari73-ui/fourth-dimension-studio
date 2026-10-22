@@ -1,0 +1,22 @@
+<!--FD-EXP:181:en-->
+<h2>Going deeper: the mistakes that make AI renovation go wrong — and how to avoid them</h2>
+<p>Most AI renovation projects do not fail because the tool was weak, but because an image stood in for measurement, structure, and budget.</p>
+<h3>Trusting the render as a survey</h3>
+<p>A generated image is a suggestion, not a record: dimensions drift, windows move, radiators vanish. Keep an evidence pack — measured plans, photos and notes — held apart from every proposal as the record of the existing home. If a render disagrees with it, the pack wins.</p>
+<h3>Removing walls with a prompt</h3>
+<p>Ask for an open-plan kitchen, and the model erases the wall holding up the floor above. AI knows nothing of load, lintels, or permits. Any structural idea in an image is a question for a qualified professional, never an instruction to a contractor.</p>
+<h3>Designing before sequencing the budget</h3>
+<p>A scheme that spends everything on finishes leaves nothing for wiring, plumbing, or insulation — invisible work you live with daily. Spend in the building's order: structure, services, comfort, appearance.</p>
+<h3>Mixing styles without a brief</h3>
+<p>Without a brief — the problem, for whom, within what limits — each image pulls the project in a new direction. Judge options against the brief, not the last pretty picture.</p>
+<h3>Losing the decision trail</h3>
+<p>Renovations outlive memories. Keep a decision record: what was chosen, why, what it replaced, what it costs. It answers the contractor's "who approved this?" and stops settled questions reopening.</p>
+<h3>Pre-flight checklist</h3>
+<ul>
+<li>Evidence pack separate from proposals</li>
+<li>Brief agreed before any options</li>
+<li>Three different options, same criteria</li>
+<li>Structural changes professionally reviewed</li>
+<li>Budget order: structure, services, comfort, finishes</li>
+<li>Decision record kept current</li>
+</ul>

@@ -1,0 +1,63 @@
+<!--FD-EXP:15:en-->
+<h2>Going deeper: a two-week evaluation protocol for any new AI tool in the studio</h2>
+
+<p>Announcements are easy to like; adoption is harder. Once a tool enters live projects, the studio pays for its mistakes in rework, confused revisions and client material ending up where it should not be. The protocol below turns a vague first impression — "it felt fast" — into a written, repeatable verdict in two weeks, alongside normal project work, for any new tool: a research assistant, an image generator, a review helper or a documentation add-on.</p>
+
+<h3>Before day one: set the test properly</h3>
+
+<p>Choose one bounded task, not "productivity in general": something done every week with a known current cost — preparing a research brief, producing first-pass imagery for a concept meeting, or checking a drawing set against a checklist. Record the baseline first: how long it takes today, who does it, and what a good result looks like. Name one evaluator and one deputy, so the test does not depend on a single enthusiast. Write down the access conditions the tool asks for — accounts, uploads, integrations — before anyone clicks "accept". If they are unclear, the trial has produced its first finding.</p>
+
+<h3>Days 1–3: first runs on real work</h3>
+
+<p>Run the task three times, using real studio material rather than tidy demonstration content. Keep every output, including the failures. Note the questions the tool asks, the defaults it chooses silently, and anything it assumes about your project that you never told it. Resist feeding it cleaner inputs until it looks good; the point is to meet the tool as it will actually be used, on an ordinary week's messy material.</p>
+
+<h3>Days 4–7: check the evidence, not the polish</h3>
+
+<p>Now verify instead of admiring. For research outputs, trace each important claim back to its source; a claim that cannot be traced goes into the register as unverified, however confident it sounds. For images, judge them against the brief and the project's art direction, not the pleasure of having them quickly. For anything numerical, recompute a sample by hand. Measure correction time separately from generation time. A tool that produces in two minutes what takes forty minutes to repair has saved the studio nothing.</p>
+
+<h3>Days 8–11: widen the circle, carefully</h3>
+
+<p>Let a second team member repeat the task without your coaching. If the tool only works in its champion's hands, that is a finding, not a training problem. Watch how drafts, options and issued information behave: can a reviewer tell at a glance what is exploratory and what is approved for issue? Test the exits too — how work is exported, how material is deleted, and what remains if the studio stops using the tool next month.</p>
+
+<h3>The evidence register: what to record</h3>
+
+<p>One shared document holds the whole trial. Every run gets an entry with the same fields:</p>
+
+<ul>
+<li>Date, evaluator, and project — or an anonymised project code where the client requires it.</li>
+<li>The task attempted, and the exact input given.</li>
+<li>A short summary of the output, and where the full output is stored.</li>
+<li>Claims checked, and the source each was traced to.</li>
+<li>Errors found, classified: factual, visual, numerical, formatting, or missing context.</li>
+<li>Time to generate; time to correct; and the honest net result — saved or lost.</li>
+<li>Client material involved, where it was processed, and under whose account.</li>
+<li>A verdict for this run alone: usable as produced, usable after editing, or unusable.</li>
+</ul>
+
+<h3>Red flags that should stop adoption</h3>
+
+<ul>
+<li>The tool presents guesses and sourced facts in the same confident tone, and cannot show where an answer came from.</li>
+<li>Identical inputs produce materially different outputs that nobody can explain or control.</li>
+<li>Client material must be uploaded before anyone can say where it is stored, who can access it, or how it is deleted.</li>
+<li>Drafts, alternatives and issued versions flow into one undifferentiated stream.</li>
+<li>Correction time quietly grows beyond the time the tool claims to save.</li>
+<li>Access conditions expand during the trial — more accounts, more integrations, more data — without a clear reason.</li>
+<li>The team begins trusting outputs because they look polished, and checking quietly stops.</li>
+</ul>
+
+<h3>Data hygiene for client material</h3>
+
+<ul>
+<li>During the trial, prefer anonymised briefs or material from closed projects; strip client names and identifying details before any upload.</li>
+<li>Never trial a tool on contracts, fees or personal data covered by a confidentiality clause.</li>
+<li>Use studio accounts, not personal ones, so access and deletion stay under the studio's control.</li>
+<li>One named person owns the end of the trial: exporting what must be kept, deleting what must not, and confirming deletion in the register.</li>
+<li>If a client or consultant could be affected by where their material travels, tell them before real material is used — not after.</li>
+</ul>
+
+<h3>Days 12–14: write the decision note</h3>
+
+<p>The trial ends with a one-page note, written by the evaluator and read by whoever approves studio tools. It states the tool and task tested; baseline and trial figures side by side; the strongest evidence in favour, drawn from the register; the strongest against; and, if the answer is yes, the conditions — which project types, which material, who reviews the output, and when the decision is revisited. The decision is one of three: adopt, adopt with conditions, or reject. "Everyone liked the demo" is not a fourth option.</p>
+
+<p>Two weeks can feel slow in a season of weekly launches, but a rejected tool costs a fortnight while a badly adopted one taxes every project that touches it. The studios that gain most from new AI tools are rarely the first to adopt them; they are the ones whose decisions survive contact with their own evidence.</p>

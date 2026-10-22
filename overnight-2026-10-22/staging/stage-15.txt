@@ -1,0 +1,183 @@
+<!--FD-EXP:15:fa-->
+<h2>نگاهی عمیق‌تر: پروتکل ارزیابی دوهفته‌ای هر ابزار هوش مصنوعی تازه در استودیو</h2>
+
+<p>معرفی یک ابزار تازه معمولاً پرزرق‌وبرق است، اما پذیرفتنش در استودیو موضوع دیگری است. وقتی ابزاری وارد پروژه‌های زنده می‌شود، خطاهایش را استودیو می‌پردازد: دوباره‌کاری، بازبینی‌های آشفته و مطالب کارفرما که سر از جاهایی درمی‌آورد که نباید. پروتکل زیر برداشت مبهم روزهای اول («سریع به نظر می‌رسید») را به داوری مکتوب و تکرارپذیر تبدیل می‌کند؛ دو هفته، در کنار کار عادی پروژه.</p>
+
+<h3>پیش از روز اول: آزمون را درست تعریف کنید</h3>
+
+<p>یک تکلیف محدود انتخاب کنید، نه «بهره‌وری به‌طور کلی» را. کاری هفتگی با هزینه معلوم برگزینید: آماده‌کردن گزارش پژوهشی، ساخت تصاویر اولیه برای جلسه ایده، یا بازبینی یک دسته نقشه با چک‌لیستی ثابت. خط مبنا را پیش از شروع ثبت کنید: این کار امروز چقدر طول می‌کشد و خروجی خوب چیست. شرایط دسترسی‌ای را که ابزار می‌خواهد (حساب، بارگذاری فایل، اتصال به سرویس‌های دیگر) پیش از کلیک روی «پذیرش» بنویسید؛ اگر روشن نباشد، آزمون همین حالا نخستین یافته‌اش را داده است.</p>
+
+<h3>روزهای ۱ تا ۳: نخستین اجراها روی کار واقعی</h3>
+
+<p>تکلیف را سه بار با مطالب واقعی استودیو اجرا کنید، نه با محتوای نمایشی مرتب. همه خروجی‌ها را نگه دارید، شکست‌ها را هم. بنویسید ابزار چه پیش‌فرض‌هایی را بی‌صدا برمی‌گزیند و درباره پروژه چه حدس‌هایی می‌زند که نگفته‌اید. ورودی‌ها را برای درخشش ابزار تمیز نکنید؛ هدف، شناخت آن در هفته‌ای عادی است.</p>
+
+<h3>روزهای ۴ تا ۷: شواهد را بسنجید، نه ظاهر را</h3>
+
+<p>حالا وقت راستی‌آزمایی است، نه تحسین. هر ادعای مهم در خروجی پژوهشی را تا منبعش دنبال کنید؛ ادعایی که به منبعی نمی‌رسد «تأییدنشده» ثبت می‌شود. تصاویر را با خواسته پروژه و کارگردانی هنری آن بسنجید، نه با لذت سریع آماده‌شدنشان. داده‌های عددی را با نمونه‌گیری دستی بازحساب کنید و زمان اصلاح را جدا از تولید بسنجید؛ ابزاری که در دو دقیقه چیزی می‌سازد که اصلاحش چهل دقیقه طول می‌کشد، چیزی نبخشیده است. عضوی از تیم نیز همان تکلیف را بی‌راهنمایی تکرار کند؛ اگر ابزار فقط در دست حامی‌اش کار می‌کند، این یک یافته است.</p>
+
+<h3>دفتر ثبت شواهد: چه چیزهایی ثبت شود</h3>
+
+<p>یک سند مشترک کل آزمون را نگه می‌دارد و هر اجرا با فیلدهای ثابت ثبت می‌شود:</p>
+
+<ul>
+<li>تاریخ، نام ارزیاب و پروژه (یا کد ناشناس پروژه).</li>
+<li>تکلیف اجراشده و ورودی دقیق داده‌شده.</li>
+<li>خلاصه خروجی و محل نگهداری نسخه کامل.</li>
+<li>ادعاهای بررسی‌شده و منبعی که هر ادعا تا آن ردیابی شد.</li>
+<li>خطاهای یافت‌شده، با دسته‌بندی: واقعی، تصویری، عددی، قالبی یا کمبود زمینه.</li>
+<li>زمان تولید، زمان اصلاح و نتیجه نهایی: ذخیره شد یا از دست رفت.</li>
+<li>مطالب کارفرمای درگیر، محل پردازش و حسابِ به‌کاررفته.</li>
+<li>داوری همان اجرا: قابل استفاده همان‌گونه که هست، پس از ویرایش، یا غیرقابل استفاده.</li>
+</ul>
+
+<h3>نشانه‌های هشدار: چه زمانی باید پذیرش را متوقف کرد</h3>
+
+<ul>
+<li>ابزار حدس و واقعیت مستند را با یک لحن مطمئن می‌گوید و نمی‌تواند نشان دهد پاسخ از کجا آمده است.</li>
+<li>ورودی‌های یکسان خروجی‌های محسوساً متفاوت می‌دهند، بی‌توضیح و بی‌امکان کنترل.</li>
+<li>پیش از آنکه معلوم باشد مطالب کارفرما کجا نگهداری و چگونه حذف می‌شود، باید بارگذاریش کرد.</li>
+<li>پیش‌نویس‌ها و اطلاعات صادرشده در یک جریان بدون تمایز روی هم می‌ریزند.</li>
+<li>زمان اصلاح بی‌سروصدا از صرفه‌جویی ادعاشده بیشتر می‌شود.</li>
+<li>شرایط دسترسی در میانه آزمون بی‌دلیل گسترش می‌یابد.</li>
+<li>تیم چون خروجی‌ها خوش‌ساخت‌اند اعتماد می‌کند و بازبینی کنار می‌رود.</li>
+</ul>
+
+<h3>بهداشت داده در کار با مطالب کارفرما</h3>
+
+<ul>
+<li>در آزمون، بریف‌های ناشناس‌شده یا مطالب پروژه‌های بسته را ترجیح دهید و نشانه‌های شناسایی را پیش از بارگذاری حذف کنید.</li>
+<li>هیچ ابزاری را روی قراردادها، مبالغ یا داده‌های شخصیِ مشمول محرمانگی آزمایش نکنید.</li>
+<li>از حساب استودیو استفاده کنید، نه حساب شخصی، تا دسترسی و حذف در کنترل استودیو بماند.</li>
+<li>یک نفر مالک پایان آزمون باشد: خروجی گرفتن از آنچه باید بماند، حذف آنچه نباید و ثبت تأیید حذف در دفتر شواهد.</li>
+<li>اگر کارفرما یا مشاوری ممکن است از مسیر مطالبش اثر بپذیرد، پیش از استفاده واقعی به او اطلاع دهید.</li>
+</ul>
+
+<h3>روزهای پایانی: یادداشت تصمیم</h3>
+
+<p>آزمون با یادداشتی یک‌صفحه‌ای تمام می‌شود که ارزیاب می‌نویسد و تأییدکننده ابزارها می‌خواند: ابزار و تکلیف آزموده‌شده، ارقام خط مبنا و دوره آزمون کنار هم، قوی‌ترین شاهد له و علیه (هر دو از دفتر ثبت) و اگر پاسخ مثبت است، شرایط پذیرش؛ کدام پروژه‌ها، کدام مطالب، بازبینی خروجی با چه کسی و بازنگری تصمیم کی. تصمیم یکی از این سه است: پذیرش، پذیرش مشروط، یا رد؛ «همه از نمایش خوششان آمد» گزینه چهارم نیست. ابزار ردشده دو هفته هزینه دارد، اما ابزار بدپذیرفته‌شده مالیاتی است بر هر پروژه بعدی.</p>
+<!--FD-EXP:15:en-->
+<h2>Going deeper: a two-week evaluation protocol for any new AI tool in the studio</h2>
+
+<p>Announcements are easy to like; adoption is harder. Once a tool enters live projects, the studio pays for its mistakes in rework, confused revisions and client material ending up where it should not be. The protocol below turns a vague first impression — "it felt fast" — into a written, repeatable verdict in two weeks, alongside normal project work, for any new tool: a research assistant, an image generator, a review helper or a documentation add-on.</p>
+
+<h3>Before day one: set the test properly</h3>
+
+<p>Choose one bounded task, not "productivity in general": something done every week with a known current cost — preparing a research brief, producing first-pass imagery for a concept meeting, or checking a drawing set against a checklist. Record the baseline first: how long it takes today, who does it, and what a good result looks like. Name one evaluator and one deputy, so the test does not depend on a single enthusiast. Write down the access conditions the tool asks for — accounts, uploads, integrations — before anyone clicks "accept". If they are unclear, the trial has produced its first finding.</p>
+
+<h3>Days 1–3: first runs on real work</h3>
+
+<p>Run the task three times, using real studio material rather than tidy demonstration content. Keep every output, including the failures. Note the questions the tool asks, the defaults it chooses silently, and anything it assumes about your project that you never told it. Resist feeding it cleaner inputs until it looks good; the point is to meet the tool as it will actually be used, on an ordinary week's messy material.</p>
+
+<h3>Days 4–7: check the evidence, not the polish</h3>
+
+<p>Now verify instead of admiring. For research outputs, trace each important claim back to its source; a claim that cannot be traced goes into the register as unverified, however confident it sounds. For images, judge them against the brief and the project's art direction, not the pleasure of having them quickly. For anything numerical, recompute a sample by hand. Measure correction time separately from generation time. A tool that produces in two minutes what takes forty minutes to repair has saved the studio nothing.</p>
+
+<h3>Days 8–11: widen the circle, carefully</h3>
+
+<p>Let a second team member repeat the task without your coaching. If the tool only works in its champion's hands, that is a finding, not a training problem. Watch how drafts, options and issued information behave: can a reviewer tell at a glance what is exploratory and what is approved for issue? Test the exits too — how work is exported, how material is deleted, and what remains if the studio stops using the tool next month.</p>
+
+<h3>The evidence register: what to record</h3>
+
+<p>One shared document holds the whole trial. Every run gets an entry with the same fields:</p>
+
+<ul>
+<li>Date, evaluator, and project — or an anonymised project code where the client requires it.</li>
+<li>The task attempted, and the exact input given.</li>
+<li>A short summary of the output, and where the full output is stored.</li>
+<li>Claims checked, and the source each was traced to.</li>
+<li>Errors found, classified: factual, visual, numerical, formatting, or missing context.</li>
+<li>Time to generate; time to correct; and the honest net result — saved or lost.</li>
+<li>Client material involved, where it was processed, and under whose account.</li>
+<li>A verdict for this run alone: usable as produced, usable after editing, or unusable.</li>
+</ul>
+
+<h3>Red flags that should stop adoption</h3>
+
+<ul>
+<li>The tool presents guesses and sourced facts in the same confident tone, and cannot show where an answer came from.</li>
+<li>Identical inputs produce materially different outputs that nobody can explain or control.</li>
+<li>Client material must be uploaded before anyone can say where it is stored, who can access it, or how it is deleted.</li>
+<li>Drafts, alternatives and issued versions flow into one undifferentiated stream.</li>
+<li>Correction time quietly grows beyond the time the tool claims to save.</li>
+<li>Access conditions expand during the trial — more accounts, more integrations, more data — without a clear reason.</li>
+<li>The team begins trusting outputs because they look polished, and checking quietly stops.</li>
+</ul>
+
+<h3>Data hygiene for client material</h3>
+
+<ul>
+<li>During the trial, prefer anonymised briefs or material from closed projects; strip client names and identifying details before any upload.</li>
+<li>Never trial a tool on contracts, fees or personal data covered by a confidentiality clause.</li>
+<li>Use studio accounts, not personal ones, so access and deletion stay under the studio's control.</li>
+<li>One named person owns the end of the trial: exporting what must be kept, deleting what must not, and confirming deletion in the register.</li>
+<li>If a client or consultant could be affected by where their material travels, tell them before real material is used — not after.</li>
+</ul>
+
+<h3>Days 12–14: write the decision note</h3>
+
+<p>The trial ends with a one-page note, written by the evaluator and read by whoever approves studio tools. It states the tool and task tested; baseline and trial figures side by side; the strongest evidence in favour, drawn from the register; the strongest against; and, if the answer is yes, the conditions — which project types, which material, who reviews the output, and when the decision is revisited. The decision is one of three: adopt, adopt with conditions, or reject. "Everyone liked the demo" is not a fourth option.</p>
+
+<p>Two weeks can feel slow in a season of weekly launches, but a rejected tool costs a fortnight while a badly adopted one taxes every project that touches it. The studios that gain most from new AI tools are rarely the first to adopt them; they are the ones whose decisions survive contact with their own evidence.</p>
+<!--FD-EXP:15:ar-->
+<h2>نظرة أعمق: بروتوكول تقييم لأي أداة ذكاء اصطناعي جديدة خلال أسبوعين</h2>
+
+<p>من السهل أن يعجبنا إعلان أداة جديدة، لكن تبنّيها داخل الاستوديو مسألة مختلفة تماماً. فحين تدخل أداة ما إلى المشاريع الجارية، يدفع الاستوديو ثمن أخطائها بنفسه: إعادة عمل، ومراجعات مرتبكة، ومواد تخص العملاء تنتهي في أماكن لا ينبغي أن تصل إليها. يحوّل البروتوكول التالي الانطباع الغامض في الأيام الأولى — «بدت سريعة» — إلى حكم مكتوب قابل للتكرار والمراجعة. يستغرق الأمر أسبوعين، ويجري بالتوازي مع أعمال المشاريع المعتادة، ولا يتطلب شيئاً سوى الانضباط. وهو صالح لأي أداة جديدة يدرس الاستوديو اعتمادها: مساعد بحث، أو مولّد صور، أو أداة مراجعة، أو إضافة توثيق.</p>
+
+<h3>قبل اليوم الأول: حدّد الاختبار على نحو صحيح</h3>
+
+<p>اختر مهمة واحدة محدودة، لا «الإنتاجية بشكل عام». اختر عملاً يؤديه الاستوديو كل أسبوع وكلفته الحالية معروفة: إعداد موجز بحثي، أو إنتاج صور أولية لاجتماع عرض الأفكار، أو فحص مجموعة رسومات وفق قائمة تحقق ثابتة. سجّل خط الأساس قبل أن يبدأ الاختبار: كم يستغرق هذا العمل اليوم، ومن يؤديه، وما سمات النتيجة الجيدة فيه. عيّن مقيّماً واحداً ونائباً له، حتى لا يتوقف الاختبار على حماسة شخص واحد. وأخيراً، اكتب شروط الوصول التي تطلبها الأداة — الحسابات، ورفع الملفات، والربط بخدمات أخرى — قبل أن ينقر أي شخص على «قبول». فإذا كانت تلك الشروط غير واضحة، فقد أنتج الاختبار أولى نتائجه بالفعل.</p>
+
+<h3>الأيام ١ إلى ٣: التشغيل الأول على عمل حقيقي</h3>
+
+<p>نفّذ المهمة المختارة ثلاث مرات، مستخدماً مواد حقيقية من أعمال الاستوديو لا محتوى استعراضياً مرتباً. احتفظ بكل المخرجات، بما فيها الفاشلة وتلك التي تتمنى نسيانها. لاحظ الأسئلة التي تطرحها الأداة، والافتراضات التي تختارها بصمت، وأي شيء تفترضه عن مشروعك مما لم تخبرها به أبداً. قاوم إغراء تغذيتها بمدخلات أنظف فأنظف حتى تبدو متألقة؛ فالغاية من هذه الأيام هي لقاء الأداة كما ستُستخدم فعلاً، على مواد أسبوع عادي بما فيه من فوضى.</p>
+
+<h3>الأيام ٤ إلى ٧: تحقق من الأدلة لا من اللمعان</h3>
+
+<p>الآن تحقق بدلاً من الإعجاب. في مخرجات البحث، تتبع كل ادعاء مهم حتى مصدره الذي يستند إليه؛ فالادعاء الذي لا يمكن تتبعه يدخل السجل بصفة «غير موثّق»، مهما بدا واثقاً في صياغته. وفي الصور، احكم عليها وفق متطلبات المشروع وإخراجه الفني، لا وفق متعة الحصول عليها بسرعة. وفي كل ما هو عددي أو جدولي، أعد حساب عينة منه يدوياً. قس زمن التصحيح منفصلاً عن زمن التوليد، واكتب الرقمين معاً. فالأداة التي تنتج في دقيقتين ما يحتاج إصلاحه إلى أربعين دقيقة لم توفّر على الاستوديو شيئاً يذكر.</p>
+
+<h3>الأيام ٨ إلى ١١: وسّع الدائرة بحذر</h3>
+
+<p>دع عضواً ثانياً من الفريق يكرر المهمة ذاتها من دون إرشادك. فإذا كانت الأداة لا تعمل إلا بين يدي من تحمّس لها، فتلك نتيجة بحد ذاتها، لا مشكلة تدريب. راقب كيف تتصرف المسودات والخيارات والمعلومات الصادرة: هل يستطيع المراجع أن يميز من نظرة واحدة ما هو استكشافي مما هو معتمد للإصدار؟ واختبر المخارج أيضاً: كيف تُصدَّر الأعمال، وكيف تُحذف المواد، وماذا يبقى خلفك إذا توقف الاستوديو عن استخدام الأداة في الشهر التالي.</p>
+
+<h3>سجل الأدلة: ما الذي يُدوَّن فيه</h3>
+
+<p>يحمل مستند مشترك واحد الاختبار كله، وتُسجَّل فيه كل جولة، جيدة كانت أو سيئة، بالحقول ذاتها:</p>
+
+<ul>
+<li>التاريخ، والمقيّم، والمشروع — أو رمز مشروع مجهّل الهوية حيث يطلب العميل ذلك.</li>
+<li>المهمة المنفذة، والمدخلات الدقيقة التي قُدّمت إلى الأداة.</li>
+<li>ملخص قصير للمخرجات، ومكان حفظ النسخة الكاملة منها.</li>
+<li>الادعاءات التي جرى التحقق منها، والمصدر الذي رُدّ إليه كل ادعاء بنجاح.</li>
+<li>الأخطاء المكتشفة، مصنفة بوضوح: واقعية، أو بصرية، أو عددية، أو تنسيقية، أو ناتجة عن نقص السياق.</li>
+<li>زمن التوليد، وزمن التصحيح، والنتيجة الصافية الصادقة: وقت جرى توفيره أو وقت ضاع.</li>
+<li>مواد العميل المشمولة، ومكان رفعها أو معالجتها، وبأي حساب جرى ذلك.</li>
+<li>حكم خاص بهذه الجولة وحدها: صالحة كما أُنتجت، أو صالحة بعد التحرير، أو غير صالحة.</li>
+</ul>
+
+<h3>علامات إنذار ينبغي أن توقف التبني</h3>
+
+<ul>
+<li>تقدّم الأداة التخمينات والوقائع الموثّقة بالمصادر بنبرة الثقة ذاتها، وتعجز عن إظهار من أين جاءت الإجابة.</li>
+<li>تُنتج المدخلات المتماثلة مخرجات مختلفة اختلافاً جوهرياً، ولا يستطيع أحد تفسير هذا التفاوت أو ضبطه.</li>
+<li>يجب رفع مواد العميل قبل أن يعرف أي شخص أين ستُحفظ، ومن يستطيع الوصول إليها، وكيف ستُحذف.</li>
+<li>تتدفق المسودات والبدائل والنسخ الصادرة في مجرى واحد غير مميَّز، من دون وضع واضح لأي منها.</li>
+<li>ينمو زمن التصحيح بصمت حتى يتجاوز الوقت الذي تدّعي الأداة توفيره.</li>
+<li>تتوسع شروط الوصول أثناء الاختبار — حسابات أكثر، وروابط أكثر، وبيانات أكثر — من دون سبب واضح.</li>
+<li>يبدأ الفريق بالوثوق بالمخرجات لأنها تبدو مصقولة، ويتوقف التحقق بصمت.</li>
+</ul>
+
+<h3>نظافة البيانات عند التعامل مع مواد العملاء</h3>
+
+<ul>
+<li>خلال الاختبار، فضّل الموجزات المجهّلة الهوية أو مواد المشاريع المغلقة، وانزع أسماء العملاء والعناوين وكل ما يدل على الهوية قبل أي رفع.</li>
+<li>لا تختبر أي أداة على عقود أو أتعاب أو بيانات شخصية أو أي مادة يشملها بند سرية، مهما وعدك المورّد.</li>
+<li>استخدم حسابات الاستوديو لا الحسابات الشخصية، حتى يبقى الوصول والحذف تحت سيطرة الاستوديو.</li>
+<li>شخص واحد مسمّى يملك إنهاء الاختبار: تصدير ما يجب الاحتفاظ به، وحذف ما لا يجب، وتوثيق الحذف في السجل.</li>
+<li>إذا كان عميل أو مستشار أو مقاول قد يتأثر بمآل مواده، فيُعلَم قبل استخدام مواد حقيقية، لا بعد ذلك.</li>
+</ul>
+
+<h3>الأيام ١٢ إلى ١٤: اكتب مذكرة القرار</h3>
+
+<p>ينتهي الاختبار بمذكرة من صفحة واحدة، يكتبها المقيّم ويقرؤها من يعتمد أدوات الاستوديو. تذكر المذكرة الأداة والمهمة المضبوطة التي اختُبرت عليها، وأرقام خط الأساس وأرقام الاختبار جنباً إلى جنب، وأقوى دليل لصالح الاعتماد مستخرجاً من السجل، وأقوى دليل ضده، والشروط إذا كان الجواب نعم: أي أنواع المشاريع، وأي مواد، ومن يراجع المخرجات، ومتى يُعاد النظر في القرار. أما القرار ذاته فواحد من ثلاثة: اعتماد، أو اعتماد بشروط، أو رفض. و«أعجب العرضُ الجميعَ» ليس خياراً رابعاً.</p>
+
+<p>قد يبدو أسبوعان بطيئين في موسم إطلاق أسبوعي تقريباً. لكن الأداة المرفوضة لا تكلف سوى أسبوعين، بينما تفرض الأداة المعتمدة على نحو سيئ ضريبتها على كل مشروع يمسّها بعد ذلك. فالاستوديوهات التي تجني أكبر فائدة من أدوات الذكاء الاصطناعي الجديدة نادراً ما تكون أول من يعتمدها؛ بل هي تلك التي تصمد قراراتها عند احتكاكها بأدلتها الخاصة.</p>
