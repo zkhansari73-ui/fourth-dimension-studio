@@ -1,3 +1,15 @@
+# Fourth Dimension Studio — استودیو بُعد چهارم
+
+🌐 **Website:** https://fourth-dimension-studio.infinityfreeapp.com
+
+Architecture × AI studio led by architect **Zahra Khansari** — villa, facade & interior design delivered remotely for clients worldwide, a daily trilingual (FA/EN/AR) architecture & AI newsletter, and free architecture tools.
+
+- 🏠 Start a project: https://fourth-dimension-studio.infinityfreeapp.com/start-project/
+- 📰 The Modern Villa in Hot, Dry Climates: https://fourth-dimension-studio.infinityfreeapp.com/2026/10/22/modern-villa-hot-arid-climate/
+- 🏡 The Smart Home in Today's Architecture: https://fourth-dimension-studio.infinityfreeapp.com/2026/10/22/smart-home-architecture-ai/
+
+---
+
 # Fourth Dimension Studio
 
 Editable source backup for the Fourth Dimension Studio website.
