@@ -2,7 +2,7 @@
 
 Posts: 0
 Pages: 0
-Media items: 0
+Media: 0
 
 
 ## Pages
