@@ -8,6 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install Playwright browser
+        run: |
+          pip install playwright
+          python3 -m playwright install --with-deps chromium
       - name: Build live-site snapshot and zip
         run: python3 scripts/backup-site-2026-10-30.py/backup-site-2026-10-30.py
       - name: Upload backup zip artifact
