@@ -1,0 +1,25 @@
+name: Site backup 2026-10-30
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build live-site snapshot and zip
+        run: python3 scripts/backup-site-2026-10-30.py
+      - name: Upload backup zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fourth-dimension-studio-complete-backup-2026-10-30
+          path: "Fourth Dimension Studio \u2014 Complete Backup \u2014 2026-10-30.zip"
+          if-no-files-found: error
+      - name: Commit text snapshot to repo
+        run: |
+          git config user.name "zkhansari73-ui"
+          git config user.email "zkhansari73-ui@users.noreply.github.com"
+          git add backup-2026-10-30/README.md backup-2026-10-30/posts-inventory.md backup-2026-10-30/index.html backup-2026-10-30/site/index.html backup-2026-10-30/posts.json backup-2026-10-30/pages.json backup-2026-10-30/media.json || true
+          git diff --cached --quiet || git commit -m "Backup 2026-10-30: latest homepage and site files (Design section, Five-books heading, Gaudi and home-renovation SEO)"
+          git push || true
