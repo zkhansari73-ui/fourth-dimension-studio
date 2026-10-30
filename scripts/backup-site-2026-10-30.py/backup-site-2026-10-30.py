@@ -21,7 +21,7 @@ def fetch(url, req):
         try:
             r = req.get(url, timeout=120000)
             if r.ok:
-                return r.body
+                return r.body()
             print('fetch failed', url, r.status, flush=True)
             if r.status in (429, 500, 502, 503, 504):
                 time.sleep(20 * (attempt + 1))
